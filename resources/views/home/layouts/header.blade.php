@@ -40,75 +40,54 @@
                     <div class="nav-outer">
                         <nav class="nav main-menu">
                             <ul class="navigation" id="navbar">
-                            <li><a href="{{route('home')}}">Home</a></li>
+                                <li><a href="{{route('home')}}">Home</a></li>
 
                                 <li class="dropdown">
                                     <span>Pages</span>
                                     <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="services.html">Gallery</a></li>
-                                        <li><a href="pricing-table.html">Pricing Table</a></li>
-                                        <li><a href="elements.html">UI Elements</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="error-page.html">Error 404</a></li>
-                                        <li><a href="terms-and-condition.html">Terms and Condition</a></li>
+                                        <li><a href="{{route('about.us')}}">About Us</a></li>
+                                        <li><a href="{{route('services')}}">Services</a></li>
+                                        <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                        <li><a href="{{route('price.table')}}">Pricing Table</a></li>
+                                        <li><a href="{{route('doctor')}}">UI Elements</a></li>
+                                        <li><a href="{{route('coming.soon')}}">Coming Soon</a></li>
+                                        <li><a href="{{route('error')}}">Error 404</a></li>
+                                        <li><a href="{{route('terms')}}">Terms and Condition</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <span>Doctors</span>
                                     <ul>
-                                        <li><a href="doctors.html">Doctors</a></li>
-                                        <li><a href="doctor-detail.html">Doctor Detail</a></li>
+                                        <li><a href="{{route('doctor')}}">Doctors</a></li>
+                                        <li><a href="{{route('doctor.details')}}">Doctor Detail</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <span>Departments</span>
                                     <ul>
-                                        <li><a href="departments.html">Departments</a></li>
-                                        <li><a href="department-detail.html">Cardiology</a></li>
-                                        <li><a href="department-detail.html">Neurology</a></li>
-                                        <li><a href="department-detail.html">Urology</a></li>
-                                        <li><a href="department-detail.html">Gynecological</a></li>
-                                        <li><a href="department-detail.html">Pediatrical</a></li>
-                                        <li><a href="department-detail.html">Laboratory</a></li>
-                                        <li><a href="department-detail.html">Department Detail</a></li>
+                                        <li><a href="{{route('departments')}}">Departments</a></li>
+                                        <li><a href="{{route('single.department')}}">Cardiology</a></li>
+                                        <li><a href="{{route('single.department')}}">Neurology</a></li>
+                                        <li><a href="{{route('single.department')}}">Urology</a></li>
+                                        <li><a href="{{route('single.department')}}">Gynecological</a></li>
+                                        <li><a href="{{route('single.department')}}">Pediatrical</a></li>
+                                        <li><a href="{{route('single.department')}}">Laboratory</a></li>
+                                        <li><a href="{{route('single.department')}}">Department Detail</a></li>
                                     </ul>
                                 </li>
 
-                                <li class="dropdown">
-                                    <span>Blog</span>
-                                    <ul>
-                                        <li><a href="blog-standard.html">Standard</a></li>
-                                        <li><a href="blog-checkboard.html">Checkerboard</a></li>
-                                        <li><a href="blog-masonry.html">Masonry</a></li>
-                                        <li><a href="blog-two-col.html">Two Columns</a></li>
-                                        <li><a href="blog-three-col.html">Three Colums</a></li>
-                                        <li><a href="blog-four-col-wide.html">Four Colums</a></li>
-                                        <li class="dropdown">
-                                            <span>Post Types</span>
-                                            <ul>
-                                                <li><a href="blog-post-image.html">Image Post</a></li>
-                                                <li><a href="blog-post-gallery.html">Gallery Post</a></li>
-                                                <li><a href="blog-post-link.html">Link Post</a></li>
-                                                <li><a href="blog-post-audio.html">Audio Post</a></li>
-                                                <li><a href="blog-post-quote.html">Quote Post</a></li>
-                                                <li><a href="blog-post-video.html">Video Post</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{route('blog')}}">Blog</a></li>
                                 <li class="dropdown">
                                     <span>Shop</span>
                                     <ul>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop-single.html">Shop Single</a></li>
-                                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="{{route('product')}}">Medicine</a></li>
+                                        <li><a href="{{route('single.product')}}">Medicine Single</a></li>
+                                        <li><a href="{{route('cart')}}"> Cart</a></li>
+                                        <li><a href="{{route('checkout')}}">Checkout</a></li>
+                                        <li><a href="{{route('login')}}">Login</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </nav>
                         <!-- Main Menu End-->
