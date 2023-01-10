@@ -14,7 +14,7 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-patients">
                 <li>
-                    <a href="add-patient.html">Add Patient</a>
+                    <a href="{{route('admin.patient')}}">Add Patient</a>
                 </li>
                 <li>
                     <a href="patients.html">All Patients</a>

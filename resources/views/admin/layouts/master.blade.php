@@ -36,7 +36,7 @@
 			<!-- /Top Navigation -->
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
-			@include('admin.layouts.breadcrumb')
+		
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->

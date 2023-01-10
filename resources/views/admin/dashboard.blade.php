@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+@include('admin.layouts.breadcrumb')
     <div class="container-fluid home">
         <div class="row">
             <!-- Widget Item -->
