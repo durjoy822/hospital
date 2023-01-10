@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,14 @@ Route::get('/coming-soon',[HomeController::class,'comingSoon'])->name('coming.so
 Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
 
+
 // Admin routes starts from here:
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/login',[AdminController::class,'loginForm'])->name('admin.login');
     Route::get('/register',[AdminController::class,'registerForm'])->name('admin.register');
     Route::get('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
+
+    Route::get('/patient_index',[PatientController::class,'patientIndex'])->name('admin.patient');
+
 });
