@@ -48,6 +48,6 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/register',[AdminController::class,'registerForm'])->name('admin.register');
     Route::get('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
 
-    Route::get('/patient_index',[PatientController::class,'patientIndex'])->name('admin.patient');
+    Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');
 
 });
