@@ -48,6 +48,12 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/register',[AdminController::class,'registerForm'])->name('admin.register');
     Route::get('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
 
+    //    patient 
     Route::get('/patient_index',[PatientController::class,'patientIndex'])->name('admin.patient');
+    Route::get('/patient_add',[PatientController::class,'patientAdd'])->name('admin.patientAdd');
+    Route::post('/patient_save',[PatientController::class,'patientSave'])->name('admin.patientSave');
+    Route::get('/patient_edit/{id}',[PatientController::class,'patientEdit'])->name('admin.patientEdit');
+    Route::post('/patient_update',[PatientController::class,'patientUpdate'])->name('admin.patientUpdate');
+    Route::post('/patient_delete',[PatientController::class,'patientDelete'])->name('admin.patientDelete');
 
 });
