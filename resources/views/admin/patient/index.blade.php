@@ -78,26 +78,6 @@
 									<td>
 										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-info">Edit</button></a>
 
-		<!-- Breadcrumb -->
-			<!-- Page Title -->
-			<div class="row no-margin-padding">
-				<div class="col-md-6">
-					<h3 class="block-title">Patients</h3>
-				</div>
-				<div class="col-md-6">
-					<ol class="breadcrumb">						
-						<li class="breadcrumb-item">
-							<a href="index.html">
-								<span class="ti-home"></span>
-							</a>
-                        </li>
-                        <li class="breadcrumb-item">Patients</li>
-						<li class="breadcrumb-item active">All Patients</li>
-					</ol>
-				</div>
-			</div>
-			<!-- /Page Title -->
-
 										<form action="{{route('admin.patientDelete')}}" method="post" style="display: inline">@csrf
 											<input type="hidden" name="id" value="{{$patient->id}}">
 											<input type="submit" value="Delete" class="btn  btn-danger" onclick="return confirm('Are you sure? you want to delete this?');">
