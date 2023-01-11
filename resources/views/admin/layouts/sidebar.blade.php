@@ -33,10 +33,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-doctors">
                 <li>
-                    <a href="add-doctor.html">Add Doctor</a>
+                    <a href="{{route('doctor.create')}}">Add Doctor</a>
                 </li>
                 <li>
-                    <a href="doctors.html">All Doctors</a>
+                    <a href="{{route('doctor.index')}}">All Doctors</a>
                 </li>
                 <li>
                     <a href="about-doctor.html">Doctor Details</a>
