@@ -77,6 +77,8 @@
 									</td>
 									<td>
 										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-info">Edit</button></a>
+<<<<<<< master
+=======
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
 			<div class="row no-margin-padding">
@@ -96,6 +98,7 @@
 				</div>
 			</div>
 			<!-- /Page Title -->
+>>>>>>> master
 
 										<form action="{{route('admin.patientDelete')}}" method="post" style="display: inline">@csrf
 											<input type="hidden" name="id" value="{{$patient->id}}">
