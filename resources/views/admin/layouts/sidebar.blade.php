@@ -14,16 +14,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-patients">
                 <li>
-                    <a href="{{route('admin.patientAdd')}}">Add Patient</a>
-                </li>
-                <li>
                     <a href="{{route('admin.patient')}}">All Patients</a>
                 </li>
                 <li>
-                    <a href="about-patient.html">Patient Details</a>
-                </li>
-                <li>
-                    <a href="edit-patient.html">Edit Patient</a>
+                    <a href="{{route('admin.patientAdd')}}">Add Patient</a>
                 </li>
             </ul>
         </li>

@@ -56,6 +56,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/patient_edit/{id}',[PatientController::class,'patientEdit'])->name('admin.patientEdit');
     Route::post('/patient_update',[PatientController::class,'patientUpdate'])->name('admin.patientUpdate');
     Route::post('/patient_delete',[PatientController::class,'patientDelete'])->name('admin.patientDelete');
+    Route::get('/patient/details/{id}',[PatientController::class,'singlePatient'])->name('patient.details');
 
     Route::resource('/doctor', DoctorController::class);
 });

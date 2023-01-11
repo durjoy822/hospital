@@ -22,12 +22,27 @@
 	<!-- /Breadcrumb -->
 	<!-- Main Content -->
 	<div class="container-fluid">
-
+		@if(Session::has('success'))
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<strong>{{Session::get('success')}}</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		@endif
+		@if(Session::has('warning'))
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>{{Session::get('warning')}}</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		@endif
 		<div class="row">
 			<!-- Widget Item -->
 			<div class="col-md-12">
 				<div class="widget-area-2 proclinic-box-shadow">
-					<h3 class="widget-title">Patients List <span style="padding-left: 3rem; font-size: 15px">{{Session::get('patient')}}</span> <span class="float-right btn btn-warning"><a href="{{route('admin.patientAdd')}}">Add patient</a></span></h3>
+					<h3 class="widget-title">Patients List</h3>
 					<div class="table-responsive mb-3">
 						<table id="tableId" class="table table-bordered table-striped">
 							<thead>
@@ -58,7 +73,7 @@
 										</div>
 									</td>
 									<td>{{$patient->id}}</td>
-									<td>{{$patient->patient_name}}</td>
+									<td><a href="{{route('patient.details',[$patient->id])}}">{{$patient->patient_name}}</a></td>
 									<td>{{$patient->age}}</td>
 									<td>{{$patient->phone}}</td>
 									<td>{{$patient->date}}</td>
@@ -71,16 +86,13 @@
 											@else
 											<span class="badge badge-danger">Cancelled</span>
 											@endif
-											<!-- {{--                                                {{$patient->status==0?'selected':''}}Cancelled--}}
-{{--                                                {{$patient->status==1?'selected':''}}Completed--}}
-{{--                                                {{$patient->status==2?'selected':''}}Pending--}} -->
 									</td>
 									<td>
-										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-info">Edit</button></a>
+										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-primary"><span class="ti-pencil-alt"></span> EDIT</button></a>
 
 										<form action="{{route('admin.patientDelete')}}" method="post" style="display: inline">@csrf
 											<input type="hidden" name="id" value="{{$patient->id}}">
-											<input type="submit" value="Delete" class="btn  btn-danger" onclick="return confirm('Are you sure? you want to delete this?');">
+											<button type="button" class="btn btn-danger" onclick="return confirm('Are you sure? you want to delete this?');"><span class="ti-trash"></span> DELETE</button>
 										</form>
 									</td>
 								</tr>
@@ -106,8 +118,7 @@
 							</ul>
 						</nav>
 						<!-- /Export links-->
-						<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
-						<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
+						
 					</div>
 				</div>
 			</div>

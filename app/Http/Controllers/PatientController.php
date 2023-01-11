@@ -20,7 +20,7 @@ class PatientController extends Controller
     public function patientSave(Request $request){
 
         $request->validate([
-            'patient_name'  => 'required|',
+            'patient_name'  => 'required',
             'age'           => 'required',
             'phone'           => 'required|min:11|max:11',
             'date'           => 'required',
@@ -35,9 +35,6 @@ class PatientController extends Controller
 
         );
 
-
-
-
         $this->patient= new Patient();
         $this->patient->patient_name=$request->patient_name;
         $this->patient->age=$request->age;
@@ -46,10 +43,10 @@ class PatientController extends Controller
         $this->patient->status=$request->status;
         $this->patient->save();
         if($this->patient->id){
-            $request->Session()->put('patient',' successfully add done');
+            Session::flash('success', 'successfully store done! Please add payment now!'); 
             return redirect(route('admin.patient'));
         }else{
-            $request->Session()->put('patient','patient add faild');
+            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.'); 
             return  back();
         }
 
@@ -61,6 +58,21 @@ class PatientController extends Controller
         ]);
     }
     public function patientUpdate(Request $request){
+        $request->validate([
+            'patient_name'  => 'required',
+            'age'           => 'required',
+            'phone'           => 'required|min:11|max:11',
+            'date'           => 'required',
+
+        ],
+        [
+            'patient_name.required'=>'please input your name!',
+            'age.required'=>'write your age!',
+            'phone.required'=>'phone is required!',
+            'phone.min'=>'input minimum 11 number!',
+        ]
+
+        );
         $this->patient=Patient::find($request->id);
         $this->patient->patient_name=$request->patient_name;
         $this->patient->age=$request->age;
@@ -69,10 +81,10 @@ class PatientController extends Controller
         $this->patient->status=$request->status;
         $this->patient->save();
         if($this->patient->id){
-            $request->Session()->put('patient',' successfully updated done');
+            Session::flash('success', 'successfully updated done! Please add payment now!'); 
             return redirect(route('admin.patient'));
         }else{
-            $request->Session()->put('patient','patient updated faild');
+            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.'); 
             return back();
         }
 
@@ -81,12 +93,16 @@ class PatientController extends Controller
         $this->patient=Patient::find($request->id);
         $this->patient->delete();
         if($this->patient->id){
-            $request->Session()->put('patient',' successfully Deleted ');
-            return back();
+            Session::flash('success', 'successfully Deleted'); 
+            return redirect(route('admin.patient'));
         }else{
-            $request->Session()->put('patient',' Deleted faild');
+            Session::flash('warning', 'Deleted failed'); 
             return back();
         }
     }
-
+    public function singlePatient($id = null)
+    {
+        $patient = Patient::findOrFail($id);
+        return view ('admin.patient.singlePatient',compact('patient'));
+    }
 }
