@@ -1,10 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
 <div id="content">
-<<<<<<< master
-=======
-<<<<<<< master
->>>>>>> master
 	<div class="row no-margin-padding">
 		<div class="col-md-6">
 			<h3 class="block-title">Patients </h3>
@@ -81,9 +77,6 @@
 									</td>
 									<td>
 										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-info">Edit</button></a>
-<<<<<<< master
-=======
-=======
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
 			<div class="row no-margin-padding">
@@ -103,8 +96,6 @@
 				</div>
 			</div>
 			<!-- /Page Title -->
->>>>>>> master
->>>>>>> master
 
 										<form action="{{route('admin.patientDelete')}}" method="post" style="display: inline">@csrf
 											<input type="hidden" name="id" value="{{$patient->id}}">
@@ -144,8 +135,5 @@
 	</div>
 	<!-- /Main Content -->
 </div>
-<<<<<<< master
 @endsection
-=======
 @endsection
->>>>>>> master
