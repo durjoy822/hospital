@@ -56,12 +56,12 @@
                     <span class="ti-user"></span>
                 </a>
                 <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                    <h5>John Willing</h5>
+                    <h5>{{Auth::guard('admin')->user()->name}}</h5>
                     <a class="dropdown-item" href="#">
                         <span class="ti-settings"></span> Settings</a>
                     <a class="dropdown-item" href="#">
                         <span class="ti-help-alt"></span> Help</a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{route('admin.logout')}}">
                         <span class="ti-power-off"></span> Logout</a>
                 </div>
             </li>

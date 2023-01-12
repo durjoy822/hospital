@@ -47,7 +47,9 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/login',[AdminController::class,'loginForm'])->name('admin.login');
     Route::get('/register',[AdminController::class,'registerForm'])->name('admin.register');
-    Route::get('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
+    Route::post('/auth',[AdminAuthController::class,'authCheck'])->name('admin.auth');
+    Route::post('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
+    Route::get('/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
 
     //    patient 
     Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');

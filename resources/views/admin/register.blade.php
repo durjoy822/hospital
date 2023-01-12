@@ -63,9 +63,9 @@
                                     <div class="col-sm-12">
                                         <input type="password" placeholder="Password" name="password" value="{{ old('password') }}"
                                             class="form-control" required>
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('password'))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('email') }}</strong>
+                                                <strong>{{ $errors->first('password') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -74,7 +74,7 @@
                                 
                                 <!-- Login Button -->
                                 <div class="button-btn-block">
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Register</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                                 </div>
                                 <!-- /Login Button -->
                                 <!-- Links -->
