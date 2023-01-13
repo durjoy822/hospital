@@ -33,7 +33,7 @@
                     <a href="{{route('doctor.index')}}">All Doctors</a>
                 </li>
                 <li>
-                    <a href="about-doctor.html">Doctor Details</a>
+                    <a href="">Doctor Details</a>
                 </li>
                 <li>
                     <a href="edit-doctor.html">Edit Doctor</a>

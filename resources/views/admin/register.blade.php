@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-sm-6 auth-box">
                         <div class="proclinic-box-shadow">
-                            <h3 class="widget-title">Login</h3>
+                            <h3 class="widget-title">Register</h3>
                             <form class="widget-form w-50 m-auto" action="{{route('admin.new')}}" method="post">@csrf
                                 <!-- form-group -->
                                 <div class="form-group row">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
-                                
+
                                 <!-- Login Button -->
                                 <div class="button-btn-block">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>

@@ -5,7 +5,7 @@
         <h3 class="block-title">Doctor Details</h3>
     </div>
     <div class="col-md-6">
-        <ol class="breadcrumb">						
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index.html">
                     <span class="ti-home"></span>
@@ -30,15 +30,14 @@
                 <div class="row no-mp">
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <img class="card-img-top" src="images/doctor.jpeg" alt="Card image">
+                            <img class="card-img-top" src="{{asset($doctor->photo)}}" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title">Dr Daniel Smith</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the
-                                    card's
-                                    content.</p>
-                                <button type="button" class="btn btn-success mb-2"><span class="ti-pencil-alt"></span> Edit
-                                    Doctor</button>
+                                <h4 class="card-title">{{$doctor->name}}</h4>
+                                <p class="card-text">{{$doctor->details}}</p>
+{{--                                <button type="button" class="btn btn-success mb-2"><span class="ti-pencil-alt"></span> Edit--}}
+{{--                                    Doctor</button>--}}
+                                <a href="{{route('doctor.edit',$doctor->id)}}"><button class="btn btn-success mb-2"><span class="ti-pencil-alt"></span> Edit Doctor</button></a>
+
                                 <button type="button" class="btn btn-danger"><span class="ti-trash"></span> Delete
                                     Doctor</button>
                             </div>
@@ -50,32 +49,47 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Specialization</strong></td>
-                                        <td>General Physician</td>
+                                        <td>{{$doctor->specialization}}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Experience</strong></td>
-                                        <td>14 Years</td>
+                                        <td>{{$doctor->experience}} year</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Gender</strong></td>
-                                        <td>Male</td>
+                                        <td>{{$doctor->gender}}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Address</strong></td>
-                                        <td>Koramangala
-                                            Banglore, India</td>
+                                        <td>{{$doctor->address}}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Phone</strong> </td>
-                                        <td>+91 11111 11111</td>
+                                        <td>{{$doctor->phone}}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Date Of Birth</strong> </td>
-                                        <td>26-10-1989</td>
+                                        <td>{{$doctor->dob}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Age</strong> </td>
+                                        <td>{{$doctor->age}} year</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Email</strong></td>
-                                        <td>your@email.com</td>
+                                        <td>{{$doctor->email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Working Day</strong></td>
+                                        <td>{{$doctor->working_days}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Fees</strong></td>
+                                        <td>{{$doctor->fees}} Tk</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>availability</strong></td>
+                                        <td>{{$doctor->availability==1?'Abailable':'Unabailable'}} </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -100,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         </div>
         <!-- /Widget Item -->
@@ -169,7 +183,7 @@
                             </tr>
                         </tbody>
                     </table>
-    
+
                     <!--Export links-->
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center export-pagination">
