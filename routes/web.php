@@ -51,7 +51,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
     Route::get('/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
 
-    //    patient 
+    //    patient
     Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');
     Route::get('/patient_add',[PatientController::class,'patientAdd'])->name('admin.patientAdd');
     Route::post('/patient_save',[PatientController::class,'patientSave'])->name('admin.patientSave');
@@ -60,5 +60,9 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/patient_delete',[PatientController::class,'patientDelete'])->name('admin.patientDelete');
     Route::get('/patient/details/{id}',[PatientController::class,'singlePatient'])->name('patient.details');
 
+//    doctor
     Route::resource('/doctor', DoctorController::class);
+    Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
+
+
 });

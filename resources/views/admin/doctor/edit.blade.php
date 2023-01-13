@@ -1,87 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
-<div id="content">
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="responsive-logo">
-                <a href="index.html"><img src="images/logo-dark.png" class="logo" alt="logo"></a>
-            </div>
-            <ul class="nav">
-                <li class="nav-item">
-                    <span class="ti-menu" id="sidebarCollapse"></span>
-                </li>
-                <li class="nav-item">
-                    <span title="Fullscreen" class="ti-fullscreen fullscreen"></span>
-                </li>
-                <li class="nav-item">
-                    <a  data-toggle="modal" data-target=".proclinic-modal-lg">
-                        <span class="ti-search"></span>
-                    </a>
-                    <div class="modal fade proclinic-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lorvens">
-                            <div class="modal-content proclinic-box-shadow2">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Search Patient/Doctor:</h5>
-                                    <span class="ti-close" data-dismiss="modal" aria-label="Close">
-                                    </span>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="search-term" placeholder="Type text here">
-                                            <button type="button" class="btn btn-lorvens proclinic-bg">
-                                                <span class="ti-location-arrow"></span> Search</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="ti-announcement"></span>
-                    </a>
-                    <div class="dropdown-menu proclinic-box-shadow2 notifications animated flipInY">
-                        <h5>Notifications</h5>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-wheelchair"></span> New Patient Added</a>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-money"></span> Patient payment done</a>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-time"></span>Patient Appointment booked</a>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-wheelchair"></span> New Patient Added</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="ti-user"></span>
-                    </a>
-                    <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                        <h5>John Willing</h5>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-settings"></span> Settings</a>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-help-alt"></span> Help</a>
-                        <a class="dropdown-item" href="#">
-                            <span class="ti-power-off"></span> Logout</a>
-                    </div>
-                </li>
-            </ul>
-        
-        </div>
-    </nav>
-    <!-- /Top Navigation -->
-    <!-- Breadcrumb -->
-    <!-- Page Title -->
     <div class="row no-margin-padding">
         <div class="col-md-6">
             <h3 class="block-title">Edit Doctor</h3>
         </div>
         <div class="col-md-6">
-            <ol class="breadcrumb">						
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.html">
                         <span class="ti-home"></span>
@@ -97,63 +21,152 @@
     <!-- /Breadcrumb -->
     <!-- Main Content -->
     <div class="container-fluid">
-
+        @if(Session::has('warning'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{Session::get('warning')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
                     <h3 class="widget-title">Edit Doctor</h3>
-                    <form>
+                    <form action="{{route('doctor.update',$doctor->id)}}" method="post" enctype="multipart/form-data">@csrf
+                        @method('put')
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="Doctor-name">Doctor Name</label>
-                                <input type="text" value="Dr Daniel Smith" class="form-control" placeholder="Doctor name" id="Doctor-name">
+                                <input type="text" name="name" value="{{$doctor->name}}" class="form-control" placeholder="Doctor name" id="Doctor-name">
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="dob">Date Of Birth</label>
-                                <input type="date" value="1989-12-12" placeholder="Date of Birth" class="form-control" id="dob">
+                                <input type="date"  name="dob" value="{{$doctor->dob}}" placeholder="Date of Birth" class="form-control" id="dob">
+                                @error('dob')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="specialization">Specialization</label>
-                                <input type="text" value="Dentist" placeholder="Specialization" class="form-control" id="specialization">
+                                <input type="text" name="specialization" value="{{$doctor->specialization}}" placeholder="Specialization" class="form-control" id="specialization">
+                                @error('specialization')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="experience">Experience</label>
-                                <input type="text" value="10 years"  placeholder="Experience" class="form-control" id="experience">
+                                <input type="text" name="experience" value="{{$doctor->experience}}" placeholder="Experience" class="form-control" id="experience">
+                                @error('experience')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="age">Age</label>
-                                <input type="text" value="29" placeholder="Age" class="form-control" id="age">
+                                <input type="text"  name="age" value="{{$doctor->age}}" placeholder="Age" class="form-control" id="age">
+                                @error('age')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone">Phone</label>
-                                <input type="text" value="+91 12345 67890" placeholder="Phone" class="form-control" id="phone">
+                                <input type="text" name="phone" value="{{$doctor->phone}}" placeholder="Phone" class="form-control" id="phone">
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" value="email@yourdomain.com"  placeholder="email" class="form-control" id="Email">
+                                <input type="email" name="email" value="{{$doctor->email}}" placeholder="email" class="form-control" id="Email">
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="gender">Gender</label>
-                                <select class="form-control" id="gender">
-                                    <option selected>Male</option>
-                                    <option>Female</option>
-                                    <option>Other</option>
+                                <select class="form-control" value="{{$doctor->gender}}" name="gender" id="gender">
+                                    <option {{ $doctor->gender == 'male' ? 'selected' : '' }} value="male">Male</option>
+                                    <option {{ $doctor->gender == 'female' ? 'selected' : '' }} value="female">Female</option>
+                                    <option {{ $doctor->gender == 'other' ? 'selected' : '' }} value="other">Other</option>
                                 </select>
+                                @error('gender')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="about-doctor">Doctor Details</label>
-                                <textarea placeholder="Doctor Details" class="form-control" id="about-doctor" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mauris odio, malesuada non rhoncus et, ultricies at turpis. Sed eget lectus nec magna bibendum ornare. </textarea>
+                                <textarea placeholder="Doctor Details" name="details" class="form-control" id="about-doctor" rows="3">{{$doctor->details}}</textarea>
+                                @error('details')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="address">Address</label>
-                                <textarea placeholder="Address" class="form-control" id="address" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mauris odio, malesuada non rhoncus et, ultricies at turpis.</textarea>
+                                <textarea placeholder="Address" name="address" class="form-control" id="address" rows="3">{{$doctor->address}}</textarea>
+                                @error('address')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="form-group col-md-12">
+{{--                            @php--}}
+{{--                                $doctor=json_decode($doctor->working_days);--}}
+{{--                                 print_r($doctor);--}}
+{{--                            @endphp--}}
+                            <div class="form-group col-md-6 ">
+                                <label for="address">Working Days</label><br>
+                                <input type="checkbox" id="sat" name="working_days[]" value="sat">
+{{--                                {{in_array('sat',$doctor)?'checked':''}}--}}
+                                <label for="sat"> Saturday</label>
+
+                                <input type="checkbox" id="sun" name="working_days[]" value="sun">
+                                <label for="sun"> Sunday</label>
+
+                                <input type="checkbox" id="mon" name="working_days[]" value="mon">
+                                <label for="mon" > Monday</label>
+
+                                <input type="checkbox" id="tue" name="working_days[]" value="tue">
+                                <label for="tue" > Tuesday</label>
+
+                                <input type="checkbox" id="wed" name="working_days[]" value="wed">
+                                <label for="wed" > Wednesday</label>
+
+                                <input type="checkbox" id="thu" name="working_days[]" value="thu">
+                                <label for="thu" > Thursday</label>
+                                @error('working_days')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="fees">fees</label>
+                                <input type="text" name="fees"  placeholder="fees" value="{{$doctor->fees}}" class="form-control" id="fees">
+                                @error('fees')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="file">File</label>
-                                <input type="file" class="form-control" id="file">
+                                <input type="file" name="photo" class="form-control" id="file">
+{{--                                @error('photo')--}}
+{{--                                <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                @enderror--}}
+                                old photo:
+                                <img class="img-fluid" style="width: 70px;" src="{{asset($doctor->photo)}}">
                             </div>
-                                                                
+
+                            <div class="form-group col-md-6">
+                                <label for="availability">Availability</label>
+                                <select class="form-control" value="{{$doctor->availability}}" name="availability" id="availability">
+                                    <option {{$doctor->availability==1? 'selected':''}} value="1">Abailable</option>
+                                    <option {{$doctor->availability==0? 'selected':''}} value="0">Unabailable</option>
+                                </select>
+                                @error('availability')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-check col-md-12 mb-2">
                                 <div class="text-left">
                                     <div class="custom-control custom-checkbox">
@@ -163,13 +176,13 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                                <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                             </div>
                         </div>
                     </form>
                     <!-- Alerts-->
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Updated Successfully!</strong> Please Check in doctors list
+                        <strong>Successfully Done!</strong> Please Check in doctors list
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -186,6 +199,4 @@
             <!-- /Widget Item -->
         </div>
     </div>
-    <!-- /Main Content -->
-</div>
 @endsection

@@ -23,9 +23,12 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('gender');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('details');
             $table->string('address');
+            $table->string('working_days')->nullable();
+            $table->string('fees')->nullable();
+            $table->string('availability',2);
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class PatientController extends Controller
         $request->validate([
             'patient_name'  => 'required',
             'age'           => 'required',
-            'phone'           => 'required|min:11|max:11',
+            'phone'          => 'required|min:11|max:11',
             'date'           => 'required',
 
         ],
