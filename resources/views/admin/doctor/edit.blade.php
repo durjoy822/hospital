@@ -21,9 +21,9 @@
     <!-- /Breadcrumb -->
     <!-- Main Content -->
     <div class="container-fluid">
-        @if(Session::has('warning'))
+        @if (Session::has('warning'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{Session::get('warning')}}</strong>
+                <strong>{{ Session::get('warning') }}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -34,136 +34,334 @@
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
                     <h3 class="widget-title">Edit Doctor</h3>
-                    <form action="{{route('doctor.update',$doctor->id)}}" method="post" enctype="multipart/form-data">@csrf
+                    <form action="{{ route('doctor.update', $doctor->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         @method('put')
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="Doctor-name">Doctor Name</label>
-                                <input type="text" name="name" value="{{$doctor->name}}" class="form-control" placeholder="Doctor name" id="Doctor-name">
+                                <input type="text" name="name" value="{{ $doctor->name }}" class="form-control"
+                                    placeholder="Doctor name" id="Doctor-name">
                                 @error('name')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="dob">Date Of Birth</label>
-                                <input type="date"  name="dob" value="{{$doctor->dob}}" placeholder="Date of Birth" class="form-control" id="dob">
+                                <input type="date" name="dob" value="{{ $doctor->dob }}" placeholder="Date of Birth"
+                                    class="form-control" id="dob">
                                 @error('dob')
-                                <div class="alert alert-danger ">{{ $message }}</div>
+                                    <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="specialization">Specialization</label>
-                                <input type="text" name="specialization" value="{{$doctor->specialization}}" placeholder="Specialization" class="form-control" id="specialization">
+                                <input type="text" name="specialization" value="{{ $doctor->specialization }}"
+                                    placeholder="Specialization" class="form-control" id="specialization">
                                 @error('specialization')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="experience">Experience</label>
-                                <input type="text" name="experience" value="{{$doctor->experience}}" placeholder="Experience" class="form-control" id="experience">
+                                <input type="text" name="experience" value="{{ $doctor->experience }}"
+                                    placeholder="Experience" class="form-control" id="experience">
                                 @error('experience')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="age">Age</label>
-                                <input type="text"  name="age" value="{{$doctor->age}}" placeholder="Age" class="form-control" id="age">
+                                <input type="text" name="age" value="{{ $doctor->age }}" placeholder="Age"
+                                    class="form-control" id="age">
                                 @error('age')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone">Phone</label>
-                                <input type="text" name="phone" value="{{$doctor->phone}}" placeholder="Phone" class="form-control" id="phone">
+                                <input type="text" name="phone" value="{{ $doctor->phone }}" placeholder="Phone"
+                                    class="form-control" id="phone">
                                 @error('phone')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" value="{{$doctor->email}}" placeholder="email" class="form-control" id="Email">
+                                <input type="email" name="email" value="{{ $doctor->email }}" placeholder="email"
+                                    class="form-control" id="Email">
                                 @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="gender">Gender</label>
-                                <select class="form-control" value="{{$doctor->gender}}" name="gender" id="gender">
+                                <select class="form-control" value="{{ $doctor->gender }}" name="gender" id="gender">
                                     <option {{ $doctor->gender == 'male' ? 'selected' : '' }} value="male">Male</option>
-                                    <option {{ $doctor->gender == 'female' ? 'selected' : '' }} value="female">Female</option>
-                                    <option {{ $doctor->gender == 'other' ? 'selected' : '' }} value="other">Other</option>
+                                    <option {{ $doctor->gender == 'female' ? 'selected' : '' }} value="female">Female
+                                    </option>
+                                    <option {{ $doctor->gender == 'other' ? 'selected' : '' }} value="other">Other
+                                    </option>
                                 </select>
                                 @error('gender')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="about-doctor">Doctor Details</label>
-                                <textarea placeholder="Doctor Details" name="details" class="form-control" id="about-doctor" rows="3">{{$doctor->details}}</textarea>
+                                <textarea placeholder="Doctor Details" name="details" class="form-control" id="about-doctor" rows="3">{{ $doctor->details }}</textarea>
                                 @error('details')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="address">Address</label>
-                                <textarea placeholder="Address" name="address" class="form-control" id="address" rows="3">{{$doctor->address}}</textarea>
+                                <textarea placeholder="Address" name="address" class="form-control" id="address" rows="3">{{ $doctor->address }}</textarea>
                                 @error('address')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-{{--                            @php--}}
-{{--                                $doctor=json_decode($doctor->working_days);--}}
-{{--                                 print_r($doctor);--}}
-{{--                            @endphp--}}
+                            @php $d=json_decode($doctor->working_days); @endphp
                             <div class="form-group col-md-6 ">
                                 <label for="address">Working Days</label><br>
-                                <input type="checkbox" id="sat" name="working_days[]" value="sat">
-{{--                                {{in_array('sat',$doctor)?'checked':''}}--}}
-                                <label for="sat"> Saturday</label>
+                                @if (isset($d[0]) && !isset($d[1]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
 
-                                <input type="checkbox" id="sun" name="working_days[]" value="sun">
-                                <label for="sun"> Sunday</label>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
 
-                                <input type="checkbox" id="mon" name="working_days[]" value="mon">
-                                <label for="mon" > Monday</label>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
 
-                                <input type="checkbox" id="tue" name="working_days[]" value="tue">
-                                <label for="tue" > Tuesday</label>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
 
-                                <input type="checkbox" id="wed" name="working_days[]" value="wed">
-                                <label for="wed" > Wednesday</label>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
 
-                                <input type="checkbox" id="thu" name="working_days[]" value="thu">
-                                <label for="thu" > Thursday</label>
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 6) checked @endif>
+                                    <label for="fri"> Friday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[1]) && !isset($d[2]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[2]) && !isset($d[3]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6 || $d[2] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7 || $d[2] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[3]) && !isset($d[4]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6 || $d[2] == 6 || $d[3] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7 || $d[2] == 7 || $d[3] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[4]) && !isset($d[5]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6 || $d[2] == 6 || $d[3] == 6 || $d[4] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7 || $d[2] == 7 || $d[3] == 7 || $d[4] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[5]) && !isset($d[6]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5 || $d[5] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6 || $d[2] == 6 || $d[3] == 6 || $d[4] == 6 || $d[5] == 6) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7 || $d[2] == 7 || $d[3] == 7 || $d[4] == 7 || $d[5] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
+
+                                @if (isset($d[6]))
+                                    <input type="checkbox" id="sat" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
+                                    <label for="sat"> Saturday</label>
+
+                                    <input type="checkbox" id="sun" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <label for="sun"> Sunday</label>
+
+                                    <input type="checkbox" id="mon" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
+                                    <label for="mon"> Monday</label>
+
+                                    <input type="checkbox" id="tue" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4) checked @endif>
+                                    <label for="tue"> Tuesday</label>
+
+                                    <input type="checkbox" id="wed" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5 || $d[5] == 5) checked @endif>
+                                    <label for="wed"> Wednesday</label>
+
+                                    <input type="checkbox" id="thu" name="working_days[]" value="6"
+                                        @if ($d[0] == 6 || $d[1] == 6 || $d[2] == 6 || $d[3] == 6 || $d[4] == 6 || $d[5] == 6 || $d[6] == 6) checked @endif>
+                                    <label for="fri"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="7"
+                                        @if ($d[0] == 7 || $d[1] == 7 || $d[2] == 7 || $d[3] == 7 || $d[4] == 7 || $d[5] == 7 || $d[6] == 7) checked @endif>
+                                    <label for="thu"> Friday</label>
+                                @endif
                                 @error('working_days')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="fees">fees</label>
-                                <input type="text" name="fees"  placeholder="fees" value="{{$doctor->fees}}" class="form-control" id="fees">
+                                <input type="text" name="fees" placeholder="fees" value="{{ $doctor->fees }}"
+                                    class="form-control" id="fees">
                                 @error('fees')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="file">File</label>
                                 <input type="file" name="photo" class="form-control" id="file">
-{{--                                @error('photo')--}}
-{{--                                <div class="alert alert-danger">{{ $message }}</div>--}}
-{{--                                @enderror--}}
+                                {{--                                @error('photo') --}}
+                                {{--                                <div class="alert alert-danger">{{ $message }}</div> --}}
+                                {{--                                @enderror --}}
                                 old photo:
-                                <img class="img-fluid" style="width: 70px;" src="{{asset($doctor->photo)}}">
+                                <img class="img-fluid" style="width: 70px;" src="{{ asset($doctor->photo) }}">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="availability">Availability</label>
-                                <select class="form-control" value="{{$doctor->availability}}" name="availability" id="availability">
-                                    <option {{$doctor->availability==1? 'selected':''}} value="1">Abailable</option>
-                                    <option {{$doctor->availability==0? 'selected':''}} value="0">Unabailable</option>
+                                <select class="form-control" value="{{ $doctor->availability }}" name="availability"
+                                    id="availability">
+                                    <option {{ $doctor->availability == 1 ? 'selected' : '' }} value="1">Abailable
+                                    </option>
+                                    <option {{ $doctor->availability == 0 ? 'selected' : '' }} value="0">Unabailable
+                                    </option>
                                 </select>
                                 @error('availability')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -180,20 +378,6 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Alerts-->
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Successfully Done!</strong> Please Check in doctors list
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <!-- /Alerts-->
                 </div>
             </div>
             <!-- /Widget Item -->

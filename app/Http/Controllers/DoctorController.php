@@ -166,7 +166,7 @@ class DoctorController extends Controller
         }
         $this->doctor->save();
         if($this->doctor->id){
-            Session::flash('success','successfully store done!');
+            Session::flash('success','Information store successfully');
             return redirect(route('doctor.index'));
         }else{
             Session::flash('warning','Holy guacamole! You should check in on some of those fields below.');
@@ -181,8 +181,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $this->doctor=Doctor::find($id);
-        $this->doctor->delete();
+        Doctor::destroy($id);
         return back();
     }
 

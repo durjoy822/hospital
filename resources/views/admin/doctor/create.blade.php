@@ -105,23 +105,26 @@
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="address">Working Days</label><br>
-                            <input type="checkbox" id="sat" name="working_days[]" value="sat">
+                            <input type="checkbox" id="sat" name="working_days[]" value="1">
                             <label for="sat"> Saturday</label>
 
-                            <input type="checkbox" id="sun" name="working_days[]" value="sun">
+                            <input type="checkbox" id="sun" name="working_days[]" value="2">
                             <label for="sun"> Sunday</label>
 
-                            <input type="checkbox" id="mon" name="working_days[]" value="mon">
+                            <input type="checkbox" id="mon" name="working_days[]" value="3">
                             <label for="mon" > Monday</label>
 
-                            <input type="checkbox" id="tue" name="working_days[]" value="tue">
+                            <input type="checkbox" id="tue" name="working_days[]" value="4">
                             <label for="tue" > Tuesday</label>
 
-                            <input type="checkbox" id="wed" name="working_days[]" value="wed">
+                            <input type="checkbox" id="wed" name="working_days[]" value="5">
                             <label for="wed" > Wednesday</label>
 
-                            <input type="checkbox" id="thu" name="working_days[]" value="thu">
+                            <input type="checkbox" id="thu" name="working_days[]" value="6">
                             <label for="thu" > Thursday</label>
+
+                            <input type="checkbox" id="fri" name="working_days[]" value="7">
+                            <label for="fri" > Friday</label>
                             @error('working_days')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
