@@ -5,7 +5,7 @@
         <h3 class="block-title">Add Room Allotment</h3>
     </div>
     <div class="col-md-6">
-        <ol class="breadcrumb">						
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index.html">
                     <span class="ti-home"></span>
@@ -27,37 +27,49 @@
         <div class="col-md-12">
             <div class="widget-area-2 proclinic-box-shadow">
                 <h3 class="widget-title">Add Room Allotment</h3>
-                <form>
+                <form action="{{route('admin.roomSave')}}" method="post" >@csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="room-number">Room Number</label>
-                            <input type="text" class="form-control" placeholder="Room Number" id="room-number">
+                            <input type="text" name="room_number" class="form-control" placeholder="Room Number" id="room-number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="room-type">Room Type</label>
-                            <select class="form-control" id="room-type">
-                                <option>ICU</option>
-                                <option>General</option>
-                                <option>AC Room</option>
+                            <select class="form-control" name="room_type" id="room-type">
+                                <option value="1">ICU</option>
+                                <option value="2">General</option>
+                                <option value="3">AC Room</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="patient-name">Patient Name</label>
-                            <input type="text" placeholder="Patient Name" class="form-control" id="patient-name">
+                            <label for="patient-name">Patient ID</label>
+                            <input type="text" name="patient_id" placeholder="Patient_ID" class="form-control" id="patient-name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="allot-date">Allotment Date</label>
-                            <input type="date" placeholder="Allotment Date" class="form-control" id="allot-date">
+                            <input type="date" name="allotment_date" placeholder="Allotment Date" class="form-control" id="allot-date">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="discharge-date">Discharge Date</label>
-                            <input type="date" placeholder="Discharge Date" class="form-control" id="discharge-date">
+                            <input type="date" name="discharge_date" placeholder="Discharge Date" class="form-control" id="discharge-date">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="doctor-name">Doctor Name</label>
-                            <input type="text" placeholder="Doctor Name" class="form-control" id="doctor-name">
+                            <label for="doctor_name">Doctor Name</label>
+                            <select class="form-control" name="doctor_name" id="doctor_name">
+                                <option selected>Slect Doctor</option>
+                                @foreach($doctors as $doctor)
+                                <option>{{$doctor->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                                                            
+                        <div class="form-group col-md-6">
+                            <label for="status">Room Status</label>
+                            <select class="form-control" name="status" id="status">
+                                <option value="1">Available</option>
+                                <option value="2">Not Discharged</option>
+                                <option value="3">Not Alloted</option>
+                            </select>
+                        </div>
                         <div class="form-check col-md-12 mb-2">
                             <div class="text-left">
                                 <div class="custom-control custom-checkbox">

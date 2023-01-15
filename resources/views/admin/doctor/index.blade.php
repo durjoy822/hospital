@@ -86,7 +86,7 @@
                                         <td>{{ $doctor->gender }}</td>
                                         @php $d=json_decode($doctor->working_days); @endphp
                                         <td>
-                                            @foreach ($d as $day)
+                                            @foreach ($doctor as $day)
                                                 @if ($day == 1)
                                                     Saturday
                                                 @elseif($day == 2)

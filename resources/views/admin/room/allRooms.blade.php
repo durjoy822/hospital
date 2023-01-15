@@ -21,7 +21,22 @@
     <!-- /Breadcrumb -->
     <!-- Main Content -->
     <div class="container-fluid">
-
+        @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('success') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+        @if (Session::has('warning'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('warning') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <!-- Widget Item -->
             <div class="col-md-12">
@@ -37,16 +52,19 @@
                                             <label class="custom-control-label" for="select-all"></label>
                                         </div>
                                     </th>
+                                    <th>id</th>
                                     <th>Room</th>
                                     <th>Room Type</th>
-                                    <th>Patient Name</th>
+                                    <th>Patient ID</th>
                                     <th>Allotment Date</th>
                                     <th>Discharge Date</th>
                                     <th>Doctor Name</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($rooms as $room)
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-checkbox">
@@ -54,203 +72,43 @@
                                             <label class="custom-control-label" for="1"></label>
                                         </div>
                                     </td>
-                                    <td>10</td>
-                                    <td>Icu</td>
-                                    <td>Manoj Kumar</td>
-                                    <td>12-11-2018</td>
-                                    <td>16-11-2018</td>
-                                    <td>Dr Daniel Smith</td>
+                                    <td>{{$room->id}}</td>
+                                    <td>{{$room->room_number}}</td>
                                     <td>
-                                        <span class="badge badge-success">Available</span>
+                                        @if($room->room_type==1)
+                                            ICU
+                                            @elseif($room->room_type==2)
+                                            General
+                                            @else
+                                            AC Room
+                                        @endif
+
                                     </td>
+                                    <td>{{$room->patient_id}}</td>
+                                    <td>{{$room->allotment_date}}</td>
+                                    <td>{{$room->discharge_date}}</td>
+                                    <td>{{$room->doctor_name}}</td>
+                                    <td>
+                                        @if($room->status==1)
+                                            <a href=""> <span class="badge badge-success">Available</span></a>
+                                        @elseif($room->room_type==2)
+                                            <a href=""> <span class="badge badge-warning">Not Discharged</span></a>
+                                        @else
+                                            <a href=""> <span class="badge badge-danger">Not Alloted</span></a>
+                                        @endif
+
+                                    </td>
+                                    <td>
+                                        <a href=""><button class="btn btn-info">Edit</button></a>
+
+                                        <form action="" method="post" style="display: inline" >@csrf
+                                            <input type="hidden" name="id" value="">
+                                            <input type="submit" value="Delete" class="btn  btn-danger">
+                                        </form>
+                                    </td>
+
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="2">
-                                            <label class="custom-control-label" for="2"></label>
-                                        </div>
-                                    </td>
-                                    <td>4</td>
-                                    <td>Ac Room</td>
-                                    <td>Susan</td>
-                                    <td>10-11-2018</td>
-                                    <td>-</td>
-                                    <td>Dr Daniel Smith</td>
-                                    <td>
-                                        <span class="badge badge-danger">Not Discharged</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="3">
-                                            <label class="custom-control-label" for="3"></label>
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>Ac Room</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <span class="badge badge-warning">Not Alloted</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="4">
-                                            <label class="custom-control-label" for="4"></label>
-                                        </div>
-                                    </td>
-                                    <td>3</td>
-                                    <td>General</td>
-                                    <td>Raj kiran</td>
-                                    <td>10-11-2018</td>
-                                    <td>12-11-2018</td>
-                                    <td>Dr Wilsson</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="5">
-                                            <label class="custom-control-label" for="5"></label>
-                                        </div>
-                                    </td>
-                                    <td>10</td>
-                                    <td>Icu</td>
-                                    <td>Manoj Kumar</td>
-                                    <td>12-11-2018</td>
-                                    <td>16-11-2018</td>
-                                    <td>Dr Daniel Smith</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="6">
-                                            <label class="custom-control-label" for="6"></label>
-                                        </div>
-                                    </td>
-                                    <td>4</td>
-                                    <td>Ac Room</td>
-                                    <td>Susan</td>
-                                    <td>10-11-2018</td>
-                                    <td>-</td>
-                                    <td>Dr Daniel Smith</td>
-                                    <td>
-                                        <span class="badge badge-danger">Not Discharged</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="7">
-                                            <label class="custom-control-label" for="7"></label>
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>Ac Room</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <span class="badge badge-warning">Not Alloted</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="8">
-                                            <label class="custom-control-label" for="8"></label>
-                                        </div>
-                                    </td>
-                                    <td>3</td>
-                                    <td>General</td>
-                                    <td>Raj kiran</td>
-                                    <td>10-11-2018</td>
-                                    <td>12-11-2018</td>
-                                    <td>Dr Wilsson</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="9">
-                                            <label class="custom-control-label" for="9"></label>
-                                        </div>
-                                    </td>
-                                    <td>10</td>
-                                    <td>Icu</td>
-                                    <td>Manoj Kumar</td>
-                                    <td>12-11-2018</td>
-                                    <td>16-11-2018</td>
-                                    <td>Dr Daniel Smith</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="10">
-                                            <label class="custom-control-label" for="10"></label>
-                                        </div>
-                                    </td>
-                                    <td>4</td>
-                                    <td>Ac Room</td>
-                                    <td>Susan</td>
-                                    <td>10-11-2018</td>
-                                    <td>-</td>
-                                    <td>Dr Daniel Smith</td>
-                                    <td>
-                                        <span class="badge badge-danger">Not Discharged</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="11">
-                                            <label class="custom-control-label" for="11"></label>
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>Ac Room</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <span class="badge badge-warning">Not Alloted</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="12">
-                                            <label class="custom-control-label" for="12"></label>
-                                        </div>
-                                    </td>
-                                    <td>3</td>
-                                    <td>General</td>
-                                    <td>Raj kiran</td>
-                                    <td>10-11-2018</td>
-                                    <td>12-11-2018</td>
-                                    <td>Dr Wilsson</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
 
         //    patient
-    
         Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');
         Route::get('/patient_add',[PatientController::class,'patientAdd'])->name('admin.patientAdd');
         Route::post('/patient_save',[PatientController::class,'patientSave'])->name('admin.patientSave');
@@ -63,9 +63,13 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/patient/details/{id}',[PatientController::class,'singlePatient'])->name('patient.details');
 
     //    doctor
-    
         Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
+    //room
+        Route::get('/room',[RoomController::class,'roomIndex'])->name('admin.room');
+        Route::get('/room_add',[RoomController::class,'roomAdd'])->name('admin.roomAdd');
+        Route::post('/room_save',[RoomController::class,'roomSave'])->name('admin.roomSave');
+
 });
 
 });
