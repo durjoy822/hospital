@@ -32,12 +32,6 @@
                 <li>
                     <a href="{{route('doctor.index')}}">All Doctors</a>
                 </li>
-                <li>
-                    <a href="">Doctor Details</a>
-                </li>
-                <li>
-                    <a href="edit-doctor.html">Edit Doctor</a>
-                </li>
             </ul>
         </li>
         <li>
@@ -46,16 +40,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-appointment">
                 <li>
-                    <a href="add-appointment.html">Add Appointment</a>
+                    <a href="{{route('appointment.create')}}">Add Appointment</a>
                 </li>
                 <li>
-                    <a href="appointments.html">All Appointments</a>
-                </li>
-                <li>
-                    <a href="about-appointment.html">Appointment Details</a>
-                </li>
-                <li>
-                    <a href="edit-appointment.html">Edit Appointment</a>
+                    <a href="{{route('appointment.index')}}">All Appointments</a>
                 </li>
             </ul>
         </li>
@@ -135,8 +123,8 @@
             </ul>
         </li>
         <li>
-            <a href="tables.html">
-                <span class="ti-layout-menu-v"></span> Tables
+            <a href="{{route('department.index')}}">
+                <span class="ti-layout-menu-v"></span> Department
             </a>
         </li>
         <li>
