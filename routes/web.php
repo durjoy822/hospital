@@ -77,15 +77,10 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/room_update',[RoomController::class,'roomUpdate'])->name('admin.roomUpdate');
         Route::post('/room_delete',[RoomController::class,'roomDelete'])->name('admin.roomDelete');
 
-
-    });
-
         Route::resource('/department', DepartmentController::class);
         Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
         Route::resource('/appointment', AppointmentController::class);
         Route::get('/appointment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
-});
-
-
+    });
 });
