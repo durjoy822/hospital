@@ -49,7 +49,8 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Specialization</strong></td>
-                                        <td>{{$doctor->specialization}}</td>
+                                        <td>@php $spec = \App\Models\Department::find($doctor->specialization); @endphp
+                                            {{ $spec->name }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Experience</strong></td>
@@ -81,7 +82,26 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Working Day</strong></td>
-                                        <td>{{$doctor->working_days}}</td>
+                                        @php $d=json_decode($doctor->working_days); @endphp
+                                        <td>
+                                            @foreach ($d as $day)
+                                                @if ($day == 1)
+                                                    Saturday
+                                                @elseif($day == 2)
+                                                    Sunday
+                                                @elseif($day == 3)
+                                                    Monday
+                                                @elseif($day == 4)
+                                                    Tuesday
+                                                @elseif($day == 5)
+                                                    Wednesday
+                                                @elseif($day == 6)
+                                                    Thrusday
+                                                @elseif($day == 7)
+                                                    Friday
+                                                @endif
+                                            @endforeach
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Fees</strong></td>

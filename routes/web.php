@@ -7,6 +7,9 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DepartmentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +56,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
         Route::get('/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
 
-        //    patient
         Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');
         Route::get('/patient_add',[PatientController::class,'patientAdd'])->name('admin.patientAdd');
         Route::post('/patient_save',[PatientController::class,'patientSave'])->name('admin.patientSave');
@@ -61,6 +63,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/patient_update',[PatientController::class,'patientUpdate'])->name('admin.patientUpdate');
         Route::post('/patient_delete',[PatientController::class,'patientDelete'])->name('admin.patientDelete');
         Route::get('/patient/details/{id}',[PatientController::class,'singlePatient'])->name('patient.details');
+
 
     //    doctor
         Route::resource('/doctor', DoctorController::class);
@@ -76,5 +79,13 @@ Route::group(['prefix'=>'admin'],function(){
 
 
     });
+
+        Route::resource('/department', DepartmentController::class);
+        Route::resource('/doctor', DoctorController::class);
+        Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
+        Route::resource('/appointment', AppointmentController::class);
+        Route::get('/appointment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
+});
+
 
 });

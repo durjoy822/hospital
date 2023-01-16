@@ -56,14 +56,10 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="specialization">Specialization</label>
-                                <select class="form-control" id="specialization" name="specialization">
-                                    <option disabled selected>Select a department</option>
-                                    @foreach ($speciallist as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="specialization" value="{{ $doctor->specialization }}"
+                                    placeholder="Specialization" class="form-control" id="specialization">
                                 @error('specialization')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">

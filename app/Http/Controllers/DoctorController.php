@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use App\Models\Department;
 use Session;
 
 class DoctorController extends Controller
@@ -15,7 +16,6 @@ class DoctorController extends Controller
      */
     public function index()
     {
-
         return view('admin.doctor.index',[
             'doctors'=>Doctor::all(),
         ]);
@@ -28,7 +28,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.doctor.create');
+        $speciallist = Department::get();
+        return view('admin.doctor.create',compact('speciallist'));
     }
 
     /**
@@ -131,7 +132,7 @@ class DoctorController extends Controller
     {
         $this->doctor=Doctor::find($id);
         return view('admin.doctor.edit',[
-            'doctor'=>$this->doctor,
+            'doctor'=>$this->doctor,'speciallist' => Department::get(),
             ]);
     }
 

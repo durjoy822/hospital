@@ -11,3 +11,4 @@
 
  <!-- Custom Script-->
  <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+@include('admin.layouts.ajax')
