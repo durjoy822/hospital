@@ -69,13 +69,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-rooms">
                 <li>
-                    <a href="add-room.html">Add Room Allotment</a>
+                    <a href="{{route('admin.roomAdd')}}">Add Room Allotment</a>
                 </li>
                 <li>
-                    <a href="rooms.html">All Rooms</a>
-                </li>
-                <li>
-                    <a href="edit-room.html">Edit Room Allotment</a>
+                    <a href="{{route('admin.room')}}">All Rooms</a>
                 </li>
             </ul>
         </li>
