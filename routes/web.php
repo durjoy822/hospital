@@ -65,11 +65,16 @@ Route::group(['prefix'=>'admin'],function(){
     //    doctor
         Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
+
     //room
         Route::get('/room',[RoomController::class,'roomIndex'])->name('admin.room');
         Route::get('/room_add',[RoomController::class,'roomAdd'])->name('admin.roomAdd');
         Route::post('/room_save',[RoomController::class,'roomSave'])->name('admin.roomSave');
+        Route::get('/room_edit/{id}',[RoomController::class,'roomEdit'])->name('admin.roomEdit');
+        Route::post('/room_update',[RoomController::class,'roomUpdate'])->name('admin.roomUpdate');
+        Route::post('/room_delete',[RoomController::class,'roomDelete'])->name('admin.roomDelete');
 
-});
+
+    });
 
 });

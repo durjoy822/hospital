@@ -21,7 +21,14 @@
 <!-- /Breadcrumb -->
 <!-- Main Content -->
 <div class="container-fluid">
-
+    @if (Session::has('warning'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('warning') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    @endif
     <div class="row">
         <!-- Widget Item -->
         <div class="col-md-12">
@@ -31,40 +38,55 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="room-number">Room Number</label>
-                            <input type="text" name="room_number" class="form-control" placeholder="Room Number" id="room-number">
+                            <input type="text" name="room_number"  value="{{ old('room_number') }}" class="form-control" placeholder="Room Number" id="room-number">
+                            @error('room_number')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="room-type">Room Type</label>
-                            <select class="form-control" name="room_type" id="room-type">
+                            <select class="form-control"  value="{{ old('room_type') }}" name="room_type" id="room-type" required>
                                 <option value="1">ICU</option>
                                 <option value="2">General</option>
                                 <option value="3">AC Room</option>
                             </select>
+                            @error('room_type')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="patient-name">Patient ID</label>
-                            <input type="text" name="patient_id" placeholder="Patient_ID" class="form-control" id="patient-name">
+                            <input type="text"  value="{{ old('patient_id') }}" name="patient_id" placeholder="Patient_ID" class="form-control" id="patient-name">
+                            @error('patient_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="allot-date">Allotment Date</label>
-                            <input type="date" name="allotment_date" placeholder="Allotment Date" class="form-control" id="allot-date">
+                            <input type="date"  value="{{ old('allotment_date') }}" name="allotment_date" placeholder="Allotment Date" class="form-control" id="allot-date">
+                            @error('allotment_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="discharge-date">Discharge Date</label>
-                            <input type="date" name="discharge_date" placeholder="Discharge Date" class="form-control" id="discharge-date">
+                            <input type="date" name="discharge_date"  value="{{ old('discharge_date') }}" placeholder="Discharge Date" class="form-control" id="discharge-date">
+                            @error('discharge_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="doctor_name">Doctor Name</label>
-                            <select class="form-control" name="doctor_name" id="doctor_name">
+                            <select class="form-control"  value="{{ old('doctor_name') }}" name="doctor_name" id="doctor_name" required>
                                 <option selected>Slect Doctor</option>
                                 @foreach($doctors as $doctor)
-                                <option>{{$doctor->name}}</option>
+                                <option value="{{$doctor->id}}">{{$doctor->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="status">Room Status</label>
-                            <select class="form-control" name="status" id="status">
+                            <select class="form-control" value="{{ old('status') }}" name="status" id="status" required>
                                 <option value="1">Available</option>
                                 <option value="2">Not Discharged</option>
                                 <option value="3">Not Alloted</option>
@@ -86,7 +108,7 @@
                 <!-- Alerts-->
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Successfully Done!</strong> Please check in Allotment list
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>

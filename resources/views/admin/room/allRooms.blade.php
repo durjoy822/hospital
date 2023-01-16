@@ -89,21 +89,21 @@
                                     <td>{{$room->discharge_date}}</td>
                                     <td>{{$room->doctor_name}}</td>
                                     <td>
-                                        @if($room->status==1)
-                                            <a href=""> <span class="badge badge-success">Available</span></a>
+                                      @if($room->status==1)
+                                            <span class="badge badge-success">Available</span>
                                         @elseif($room->room_type==2)
-                                            <a href=""> <span class="badge badge-warning">Not Discharged</span></a>
+                                            <span class="badge badge-warning">Not Discharged</span>
                                         @else
-                                            <a href=""> <span class="badge badge-danger">Not Alloted</span></a>
+                                         <span class="badge badge-danger">Not Alloted</span>
                                         @endif
 
                                     </td>
                                     <td>
-                                        <a href=""><button class="btn btn-info">Edit</button></a>
+                                        <a href="{{route('admin.roomEdit',['id'=>$room->id])}}"><button class="btn btn-info">Edit</button></a>
 
-                                        <form action="" method="post" style="display: inline" >@csrf
-                                            <input type="hidden" name="id" value="">
-                                            <input type="submit" value="Delete" class="btn  btn-danger">
+                                        <form action="{{route('admin.roomDelete')}}" method="post" style="display: inline" >@csrf
+                                            <input type="hidden" name="id" value="{{$room->id}}">
+                                            <input type="submit" value="Delete" class="btn  btn-danger" onclick="return confirm('Are you sure? you want to delete this?');">
                                         </form>
                                     </td>
 

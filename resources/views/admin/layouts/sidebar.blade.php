@@ -86,9 +86,6 @@
                 <li>
                     <a href="{{route('admin.room')}}">All Rooms</a>
                 </li>
-                <li>
-                    <a href="edit-room.html">Edit Room Allotment</a>
-                </li>
             </ul>
         </li>
         <li class="nav-level-one">
