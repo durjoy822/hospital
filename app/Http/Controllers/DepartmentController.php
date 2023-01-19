@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
+use Session;
 
 class DepartmentController extends Controller
 {
@@ -84,6 +85,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Department::destroy($id);
+        return redirect()->back();
     }
 }

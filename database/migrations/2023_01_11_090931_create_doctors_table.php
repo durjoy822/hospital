@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('working_days')->nullable();
             $table->string('fees')->nullable();
-            $table->string('availability',2);
+            $table->string('availability');
             $table->timestamps();
         });
     }

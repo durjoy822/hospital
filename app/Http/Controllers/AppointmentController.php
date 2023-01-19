@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use Session;
 
 class AppointmentController extends Controller
 {
@@ -16,7 +17,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('admin.appointment.index');
+        $appointments = Appointment::latest()->paginate(25);
+        return view('admin.appointment.index',compact('appointments'));
     }
 
     /**
@@ -57,6 +59,7 @@ class AppointmentController extends Controller
         $appointment->problem = $request->problem;
         $token=Appointment::where('date',$request->date)->count();
         $appointment->token = $token+1;
+        $appointment->status = $request->status;
         $appointment->save();
         Session::flash('success','successfully store done!');
         return redirect()->route('appointment.index');
@@ -81,8 +84,9 @@ class AppointmentController extends Controller
      */
     public function edit($id)
     {
+        $appointment = Appointment::findOrFail($id);
         $speciallist = Department::get();
-        return view('admin.appointment.edit',compact('speciallist'));
+        return view('admin.appointment.edit',compact('appointment','speciallist'));
     }
 
     /**
@@ -113,6 +117,7 @@ class AppointmentController extends Controller
         $appointment->problem = $request->problem;
         $token=Appointment::where('date',$request->date)->count();
         $appointment->token = $token+1;
+        $appointment->status = $request->status;
         $appointment->save();
         Session::flash('success','successfully store done!');
         return redirect()->route('appointment.index');
@@ -126,7 +131,9 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Appointment::destroy($id);
+        Session::flash('success','Data destroy done!');
+        return back();
     }
     public function findDoctor($id=null)
     {

@@ -21,7 +21,22 @@
     <!-- /Breadcrumb -->
     <!-- Main Content -->
     <div class="container-fluid">
-
+        @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('success') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+        @if (Session::has('warning'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('warning') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <!-- Widget Item -->
             <div class="col-md-12">
@@ -90,20 +105,6 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Alerts-->
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Successfully Updated!</strong> Appointment updated
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <!-- /Alerts-->
                 </div>
             </div>
             <!-- /Widget Item -->

@@ -106,14 +106,26 @@
                                     <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Visited">Visited</option>
+                                        <option value="Pending">Cancled</option>
+                                </select>
+                                @error('status')
+                                    <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
                                 <label for="problem">Problem</label>
                                 <textarea placeholder="Problem" class="form-control" id="problem" rows="3" name="problem"></textarea>
                                 @error('problem')
                                     <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
-
+ 
                             <div class="form-check col-md-12 mb-2">
                                 <div class="text-left">
                                     <div class="custom-control custom-checkbox">
@@ -127,20 +139,6 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Alerts-->
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Successfully Done!</strong> Appointment token Generated
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <!-- /Alerts-->
                 </div>
             </div>
             <!-- /Widget Item -->
