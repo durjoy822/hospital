@@ -18,13 +18,12 @@ class RoomController extends Controller
 
     public function roomAdd()
     {
-       $doctor = Doctor::all();
-        return view('admin.room.add',compact('doctor'));
+       $doctors = Doctor::get();
+        return view('admin.room.add',compact('doctors'));
     }
 
     public function roomSave(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             'room_number' => 'required',
             'room_type' => 'required',
@@ -63,7 +62,6 @@ class RoomController extends Controller
 
     public function roomUpdate(Request $request)
     {
-//        dd($request->all());
         $this->room = Room::find($request->id);
         $this->room->room_number = $request->room_number;
         $this->room->room_type = $request->room_type;

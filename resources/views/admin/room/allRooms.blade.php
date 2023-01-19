@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">
+                    <a href="{{route('admin.dashboard')}}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
@@ -64,51 +64,57 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($rooms as $room)
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="1">
-                                            <label class="custom-control-label" for="1"></label>
-                                        </div>
-                                    </td>
-                                    <td>{{$room->id}}</td>
-                                    <td>{{$room->room_number}}</td>
-                                    <td>
-                                        @if($room->room_type==1)
-                                            ICU
-                                            @elseif($room->room_type==2)
-                                            General
+                                @foreach ($rooms as $room)
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" id="1">
+                                                <label class="custom-control-label" for="1"></label>
+                                            </div>
+                                        </td>
+                                        <td>{{ $room->id }}</td>
+                                        <td>{{ $room->room_number }}</td>
+                                        <td>
+                                            @if ($room->room_type == 1)
+                                                ICU
+                                            @elseif($room->room_type == 2)
+                                                General
                                             @else
-                                            AC Room
-                                        @endif
+                                                AC Room
+                                            @endif
 
-                                    </td>
-                                    <td>{{$room->patient_id}}</td>
-                                    <td>{{$room->allotment_date}}</td>
-                                    <td>{{$room->discharge_date}}</td>
-                                    <td>{{$room->doctor_name}}</td>
-                                    <td>
-                                      @if($room->status==1)
-                                            <span class="badge badge-success">Available</span>
-                                        @elseif($room->room_type==2)
-                                            <span class="badge badge-warning">Not Discharged</span>
-                                        @else
-                                         <span class="badge badge-danger">Not Alloted</span>
-                                        @endif
+                                        </td>
+                                        @php $pname = \App\Models\Patient::where('id',$room->patient_id)->first(); @endphp
+                                        <td><a href="{{ route('patient.details', [$pname->id]) }}">{{ $pname->patient_name }}</a>
+                                        </td>
+                                        <td>{{ $room->allotment_date }}</td>
+                                        <td>{{ $room->discharge_date }}</td>
+                                        @php $dname = \App\Models\Doctor::where('id',$room->doctor_name)->first(); @endphp
+                                        <td><a href="{{ route('doctor.show', $dname->id) }}">{{ $dname->name }}</a></td>
+                                        <td>
+                                            @if ($room->status == 1)
+                                                <span class="badge badge-success">Available</span>
+                                            @elseif($room->room_type == 2)
+                                                <span class="badge badge-warning">Not Discharged</span>
+                                            @else
+                                                <span class="badge badge-danger">Not Alloted</span>
+                                            @endif
 
-                                    </td>
-                                    <td>
-                                        <a href="{{route('admin.roomEdit',['id'=>$room->id])}}"><button class="btn btn-info">Edit</button></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.roomEdit', ['id' => $room->id]) }}"><button
+                                                    class="btn btn-info">Edit</button></a>
 
-                                        <form action="{{route('admin.roomDelete')}}" method="post" style="display: inline" >@csrf
-                                            <input type="hidden" name="id" value="{{$room->id}}">
-                                            <input type="submit" value="Delete" class="btn  btn-danger" onclick="return confirm('Are you sure? you want to delete this?');">
-                                        </form>
-                                    </td>
+                                            <form action="{{ route('admin.roomDelete') }}" method="post"
+                                                style="display: inline">@csrf
+                                                <input type="hidden" name="id" value="{{ $room->id }}">
+                                                <input type="submit" value="Delete" class="btn  btn-danger"
+                                                    onclick="return confirm('Are you sure? you want to delete this?');">
+                                            </form>
+                                        </td>
 
-                                </tr>
-                            @endforeach
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 

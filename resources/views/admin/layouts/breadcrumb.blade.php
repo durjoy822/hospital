@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">
+                <a href="{{route('admin.dashboard')}}">
                     <span class="ti-home"></span>
                 </a>
             </li>

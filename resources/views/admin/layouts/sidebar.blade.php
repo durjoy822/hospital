@@ -1,6 +1,6 @@
 <nav id="sidebar" class="proclinic-bg">
     <div class="sidebar-header">
-        <a href="index.html"><img src="{{asset('assets/admin/images/logo.png')}}" class="logo" alt="logo"></a>
+        <a href="{{route('admin.dashboard')}}"><img src="{{asset('assets/admin/images/logo.png')}}" class="logo" alt="logo"></a>
     </div>
     <ul class="list-unstyled components">
         <li class="">

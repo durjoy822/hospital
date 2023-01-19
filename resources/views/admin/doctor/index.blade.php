@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">
+                    <a href="{{route('admin.dashboard')}}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
@@ -80,15 +80,14 @@
                                         </td>
                                         <td><a href="{{ route('doctor.show', $doctor->id) }}">{{ $doctor->name }}</a></td>
                                         <td>{{ $doctor->phone }}</td>
-                                        <td>
-                                            @php $spec = \App\Models\Department::find($doctor->specialization); @endphp
-                                            {{ $spec->name }}</td>
+                                        @php $spec = \App\Models\Department::find($doctor->specialization); @endphp
+                                        <td>@if(isset($spec)){{ $spec->name }} @else Department need update @endif</td>
                                         <td>{{ $doctor->email }}</td>
                                         <td>{{ $doctor->age }} year</td>
-                                        <td>{{ $doctor->gender }}</td>
+                                        <td style="text-transform:capitalize">{{ $doctor->gender }}</td>
                                         @php $d=json_decode($doctor->working_days); @endphp
                                         <td>
-                                            @foreach ($doctor as $day)
+                                            @foreach ($d as $day)
                                                 @if ($day == 1)
                                                     Saturday
                                                 @elseif($day == 2)
