@@ -2,7 +2,7 @@
 @section('content')
 <div class="row no-margin-padding">
     <div class="col-md-6">
-        <h3 class="block-title">Add Doctor</h3>
+        <h3 class="block-title">Add Depeartment</h3>
     </div>
     <div class="col-md-6">
         <ol class="breadcrumb">
@@ -11,8 +11,8 @@
                     <span class="ti-home"></span>
                 </a>
             </li>
-            <li class="breadcrumb-item">Doctors</li>
-            <li class="breadcrumb-item active">Add Doctor</li>
+            <li class="breadcrumb-item">Depeartment</li>
+            <li class="breadcrumb-item active">Add Depeartment</li>
         </ol>
     </div>
 </div>

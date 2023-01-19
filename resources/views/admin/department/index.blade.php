@@ -72,9 +72,9 @@
                                             </div>
                                         </td>
                                         <td><a href="{{ route('department.show', $department->id) }}">{{ $department->name }}</a></td>
-                                        
+
                                         <td>
-                                            <a href="{{ route('department.edit', $department->id) }}"><button
+                                            <a href="{{ route('department.edit', $department->id)}}"><button
                                                     class="btn btn-primary btn-sm"><span class="ti-pencil-alt"></span>
                                                     EDIT</button></a>
                                             <form action="{{ route('department.destroy', $department->id) }}" method="post"
