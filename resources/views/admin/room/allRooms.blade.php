@@ -82,7 +82,6 @@
                                             @else
                                                 AC Room
                                             @endif
-
                                         </td>
                                         @php $pname = \App\Models\Patient::where('id',$room->patient_id)->first(); @endphp
                                         <td><a href="{{ route('patient.details', [$pname->id]) }}">{{ $pname->patient_name }}</a>

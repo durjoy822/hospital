@@ -79,8 +79,8 @@
                             <label for="doctor_name">Doctor Name</label>
                             <select class="form-control"  value="{{ old('doctor_name') }}" name="doctor_name" id="doctor_name" required>
                                 <option selected>Slect Doctor</option>
-                                @foreach($doctors as $doctor)
-                                <option value="{{$doctor->id}}">{{$doctor->name}}</option>
+                                @foreach($doctor as $doctors)
+                                <option value="{{$doctors->id}}">{{$doctors->name}}</option>
                                 @endforeach
                             </select>
                         </div>

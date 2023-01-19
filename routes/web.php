@@ -77,7 +77,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/room/update',[RoomController::class,'roomUpdate'])->name('admin.roomUpdate');
         Route::post('/room/delete',[RoomController::class,'roomDelete'])->name('admin.roomDelete');
 
+//    department
         Route::resource('/department', DepartmentController::class);
+//   doctor
         Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
         Route::resource('/appointment', AppointmentController::class);
