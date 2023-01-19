@@ -87,6 +87,7 @@
                                     <td>{{$room->patient_id}}</td>
                                     <td>{{$room->allotment_date}}</td>
                                     <td>{{$room->discharge_date}}</td>
+{{--                                    @php $pname = \App\Models\Doctor::where('id',$room->doctor_name)->first(); @endphp--}}
                                     <td>{{$room->doctor_name}}</td>
                                     <td>
                                       @if($room->status==1)

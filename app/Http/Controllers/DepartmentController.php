@@ -40,7 +40,13 @@ class DepartmentController extends Controller
         $dep = new Department;
         $dep->name = $request->name;
         $dep->save();
-        return redirect()->route('department.index');
+        if($dep->id){
+            Session::flash('success','successfully store done!');
+            return redirect(route('department.index'));
+        }else{
+            Session::flash('warning','Holy guacamole! You should check in on some of those fields below.');
+            return back();
+        }
     }
 
     /**
@@ -62,7 +68,10 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dep=Department::find($id);
+        return view('admin.department.edit',[
+            'department'=>$dep,
+            ]);
     }
 
     /**
@@ -74,7 +83,16 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dep = Department::find($id);
+        $dep->name = $request->name;
+        $dep->save();
+        if($dep->id){
+            Session::flash('success',' updated successfully!');
+            return redirect(route('department.index'));
+        }else{
+            Session::flash('warning',' updated falid!');
+            return back();
+        }
     }
 
     /**
@@ -86,6 +104,12 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         Department::destroy($id);
-        return redirect()->back();
+        if($id){
+            Session::flash('success','successfully Deleted');
+            return redirect(route('department.index'));
+        }else{
+            Session::flash('warning',' Deleted falid!');
+            return back();
+        }
     }
 }
