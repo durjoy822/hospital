@@ -53,8 +53,10 @@ class PaymentController extends Controller
         Session::flash('success','Payment successfully recorded!');
         return redirect()->route('payment.create');
     }
-    public function invoice()
+    public function invoice($id = null)
     {
-        return view('admin.payment.invoice');
+        $payment = Payment::findOrFail($id);
+        $paymentServices = PaymentService::where('payment_id', $payment->id)->get();
+        return view('admin.payment.invoice',compact('payment','paymentServices'));
     }
 }

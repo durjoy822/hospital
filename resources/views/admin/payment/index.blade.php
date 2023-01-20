@@ -84,7 +84,7 @@
                                         <td>{{ $payment->discount }}</td>
                                         <td>{{ $payment->paid }}</td>
                                         <td>{{ $payment->status }}</td>
-                                        <td><a href="{{route('admin.invoice')}}" class="btn btn-primary"><span class="ti-file"></span>
+                                        <td><a href="{{route('admin.invoice',$payment->id)}}" class="btn btn-primary"><span class="ti-file"></span>
                                                 View</a></td>
                                     </tr>
                                 @endforeach

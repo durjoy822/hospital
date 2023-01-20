@@ -30,15 +30,15 @@
         event.preventDefault();
         $("#inputFields").append(
             '<div class="form-group col-md-6"> <label>Service Name</label> <input type="text" placeholder="Service Name" class="form-control" name="service[]"> </div> <div class="form-group col-md-6"> <label>Cost of Treatment</label> <input type="text" placeholder="Cost of Treatment" class="form-control" name="cost[]"> </div>'
-            );
+        );
     });
-    $(document).ready(function(){
-    $('#payment-type').change(function(){
-      if($(this).val() == 2 || $(this).val() == 3){
-        $('#card-check').show();
-      } else {
-        $('#card-check').hide();
-      }
+    $(document).ready(function() {
+        $('#payment-type').change(function() {
+            if ($(this).val() == 2 || $(this).val() == 3) {
+                $('#card-check').show();
+            } else {
+                $('#card-check').hide();
+            }
+        });
     });
-  });
 </script>

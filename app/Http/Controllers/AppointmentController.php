@@ -98,26 +98,22 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        $request->validate([
-            'patientId'=>'required',
-            'department'=>'required',
-            'doctor'=>'required',
-            'date'=>'required',
-            'time'=>'required',
-            'phone'=>'required',
-        ]);
 
         $appointment = Appointment::findOrFail($id);
-        $appointment->patientId = $request->patientId;
-        $appointment->department = $request->department;
-        $appointment->doctor = $request->doctor;
+        // $appointment->patientId = $request->patientId;
+        // $appointment->department = $request->department;
+        // $appointment->doctor = $request->doctor;
+        $cdate = $appointment->date;
         $appointment->date = $request->date;
         $appointment->time = $request->time;
         $appointment->phone = $request->phone;
         $appointment->problem = $request->problem;
-        $token=Appointment::where('date',$request->date)->count();
-        $appointment->token = $token+1;
+        if($cdate == $request->date){
+            $appointment->token = $appointment->token;
+        }else{
+            $token=Appointment::where('date',$request->date)->count();
+            $appointment->token = $token+1;
+        }
         $appointment->status = $request->status;
         $appointment->save();
         Session::flash('success','successfully store done!');

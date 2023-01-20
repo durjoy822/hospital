@@ -78,7 +78,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/payment',[PaymentController::class,'index'])->name('payment.index');
         Route::get('/payment/create',[PaymentController::class,'create'])->name('payment.create');
         Route::post('/payment/store',[PaymentController::class,'store'])->name('payment.store');
-        Route::get('/invoice',[PaymentController::class,'invoice'])->name('admin.invoice');
+        Route::get('/invoice/{id}',[PaymentController::class,'invoice'])->name('admin.invoice');
         Route::get('/payment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
     });
 });

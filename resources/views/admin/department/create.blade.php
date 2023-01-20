@@ -29,7 +29,7 @@
                 <h3 class="widget-title">Add Department</h3>
                 <form action="{{route('department.store')}}" method="post" enctype="multipart/form-data">@csrf
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="DepartmentName">Department Name</label>
                             <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Department name" id="DepartmentName">
                             @error('name')
@@ -41,20 +41,6 @@
                         </div>
                     </div>
                 </form>
-                <!-- Alerts-->
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Successfully Done!</strong> Please Check in doctors list
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <!-- /Alerts-->
             </div>
         </div>
         <!-- /Widget Item -->

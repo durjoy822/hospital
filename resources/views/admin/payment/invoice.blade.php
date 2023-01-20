@@ -1,47 +1,48 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="row no-margin-padding">
-    <div class="col-md-6">
-        <h3 class="block-title">Payment Invoice</h3>
+    <div class="row no-margin-padding">
+        <div class="col-md-6">
+            <h3 class="block-title">Payment Invoice</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('admin.dashboard') }}">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Payments</li>
+                <li class="breadcrumb-item active">Payment Invoice</li>
+            </ol>
+        </div>
     </div>
-    <div class="col-md-6">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{route('admin.dashboard')}}">
-                    <span class="ti-home"></span>
-                </a>
-            </li>
-            <li class="breadcrumb-item">Payments</li>
-            <li class="breadcrumb-item active">Payment Invoice</li>
-        </ol>
-    </div>
-</div>
-<!-- /Breadcrumb -->
-<!-- Main Content -->
-<div class="container-fluid">
-    <div class="row">
+    <!-- /Breadcrumb -->
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow pb-3">
                     <!-- Invoice Head -->
                     <div class="row ">
                         <div class="col-sm-6 mb-5">
-                            <img src="{{asset('assets/admin/images/logo-dark.png')}}" alt="logo hospital" class="img-thumbnail">
-                            <br>    
-                            <br>                                     
-                            <span>Street Address</span>
+                            <img src="{{ asset('assets/admin/images/logo-dark.png') }}" alt="logo hospital"
+                                class="img-thumbnail">
                             <br>
-                            <span>[City, ST ZIP Code]</span>
                             <br>
-                            <span class="pr-2">Phone: +00 123456</span>
-                            <span>Fax: 432 1231 3456</span>
+                            <span>Bazirmur</span>
+                            <br>
+                            <span>[Narsingdi, 1600]</span>
+                            <br>
+                            <span class="pr-2">Phone: +00 80236534</span>
+                            <span>Fax: 124 1631 3726</span>
                         </div>
                         <div class="col-sm-6 text-md-right mb-5">
                             <h3>INVOICE</h3>
                             <br>
                             <br>
-                            <span>Invoice # [123]</span>
+                            <span>Invoice # [00{{ $payment->id }}]</span>
                             <br>
-                            <span>Date: Nov 16, 2018</span>
+                            <span>Date: {{ $payment->discharge }}</span>
                         </div>
                     </div>
                     <!-- /Invoice Head -->
@@ -49,26 +50,40 @@
                     <div class="row">
                         <div class="col-sm-6 mb-5">
                             <h6 class="proclinic-text-color">PATIENT DETAILS:</h6>
-                            <span><strong>Name:</strong> Daniel</span>
+                            @php $pname = \App\Models\Patient::where('id',$payment->pid)->first(); @endphp
+                            <span><strong>Name:</strong> {{ $pname->patient_name }}</span>
                             <br>
-                            <span><strong>Age:</strong> 20</span>
+                            <span><strong>Age:</strong> {{ $pname->age }}</span>
                             <br>
-                            <span><strong>Address: </strong>60-21/100, Smith street</span>
+                            <span>Narsingdi, Bangladesh</span>
                             <br>
-                            <span>Banglore, India</span>
-                            <br>
-                            <span><strong>Phone:</strong> +91 12345 67890</span>
+                            <span><strong>Phone:</strong> {{ $pname->phone }}</span>
                         </div>
-                        <div class="col-sm-6 mb-5">
-                            <span><strong>Patient ID:</strong> PI675</span>
+                        <div class="col-sm-6 mb-5 text-md-right">
+                            <span><strong>Patient ID:</strong> {{ $pname->id }}</span>
                             <br>
-                            <span><strong>Total Days:</strong> 10</span>
+                            @php
+                                $date1 = \Carbon\Carbon::parse($payment->discharge);
+                                $date2 = \Carbon\Carbon::parse($payment->admit);
+                                $diffInDays = $date1->diffInDays($date2);
+                            @endphp
+                            <span><strong>Total Days:</strong> {{ $diffInDays }} days</span>
                             <br>
-                            <span><strong>Payment Type:</strong> Credit Card</span>
+                            <span><strong>Payment Type:</strong>
+                                @if ($payment->type == 1)
+                                    Cash
+                                @elseif ($payment->type == 2)
+                                    Cheque
+                                @else
+                                    Card
+                                @endif
+                            </span>
                             <br>
-                            <span>1234 5678 9012 3456</span>
-                            <br>
-                            <span>Paypal</span>
+                            <span>
+                                @if ($payment->type_info)
+                                    {{ $payment->type_info }}
+                                @endif
+                            </span>
                         </div>
                         <div class="col-sm-12 mb-2">
                             <strong class="proclinic-text-color">Services:</strong>
@@ -76,7 +91,7 @@
                         <div class="col-sm-12">
                             <table class="table table-bordered table-striped table-invioce">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-md-center">
                                         <th scope="col">#</th>
                                         <th scope="col">Service</th>
                                         <th scope="col">Unit Cost</th>
@@ -85,20 +100,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Chest X-ray</td>
-                                        <td>$ 120</td>
-                                        <td>10</td>
-                                        <td>$ 108</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Injury Operation</td>
-                                        <td>$ 1000</td>
-                                        <td>20</td>
-                                        <td>$ 800</td>
-                                    </tr>
+                                    @foreach ($paymentServices as $key => $service)
+                                        <tr class="text-md-center">
+                                            <th scope="row">{{ $key + 1 }}</th>
+                                            <td>{{ $service->service }}</td>
+                                            <td>{{ $service->cost }}</td>
+                                            <td>{{ $payment->discount }}</td>
+                                            <td>{{ round($service->cost - $service->cost * ($payment->discount / 100)) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>
@@ -108,23 +119,19 @@
                                 <tbody>
                                     <tr>
                                         <td>Total</td>
-                                        <td>$ 1200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <td>$ 50</td>
+                                        <td>{{ $payment->ammount }}</td>
                                     </tr>
 
                                     <tr>
                                         <td>Discount</td>
-                                        <td>$ 212</td>
+                                        <td>{{ $payment->ammount - $payment->paid }}</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <strong>GRAND TOTAL</strong>
                                         </td>
                                         <td>
-                                            <strong>$ 1038</strong>
+                                            <strong>{{ $payment->paid }}</strong>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -134,18 +141,20 @@
                         <div class="col-sm-12">
                             <div class="border p-4">
                                 <strong>Note:</strong>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur id illo incidunt, iste libero quisquam? A aut cumque
-                                fuga fugit iusto libero officia optio quasi, quisquam saepe voluptate voluptatibus voluptatum.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur id illo incidunt,
+                                iste libero quisquam? A aut cumque
+                                fuga fugit iusto libero officia optio quasi, quisquam saepe voluptate voluptatibus
+                                voluptatum.
                                 <br>
                                 <br>
                                 <strong class="f12">Signature</strong>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                        <nav aria-label="Page navigation example">
+                            <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center export-pagination mt-3 mb-0">
                                     <li class="page-item">
-                                        <a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
+                                        <a class="page-link" href="#"><span class="ti-printer"></span> print</a>
                                     </li>
                                     <li class="page-item">
                                         <a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
@@ -154,10 +163,10 @@
                             </nav>
                         </div>
                     </div>
-                    
+
                     <!-- /Invoice Content -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

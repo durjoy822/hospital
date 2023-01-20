@@ -84,15 +84,15 @@
                             <div class="form-group col-md-6">
                                 <label for="time-slot">Time Slot</label>
                                 <select class="form-control" id="time-slot" name="time">
-                                    <option value="10AM-11AM">10AM-11AM</option>
-                                    <option value="11AM-12pm">11AM-12pm</option>
-                                    <option value="12PM-01PM">12PM-01PM</option>
-                                    <option value="2PM-3PM">2PM-3PM</option>
-                                    <option value="3PM-4PM">3PM-4PM</option>
-                                    <option value="4PM-5PM">4PM-5PM</option>
-                                    <option value="6PM-7PM">6PM-7PM</option>
-                                    <option value="7PM-8PM">7PM-8PM</option>
-                                    <option value="8PM-9PM">8PM-9PM</option>
+                                    <option value="1">10AM-11AM</option>
+                                    <option value="2">11AM-12pm</option>
+                                    <option value="3">12PM-01PM</option>
+                                    <option value="4">2PM-3PM</option>
+                                    <option value="5">3PM-4PM</option>
+                                    <option value="6">4PM-5PM</option>
+                                    <option value="7">6PM-7PM</option>
+                                    <option value="8">7PM-8PM</option>
+                                    <option value="9">8PM-9PM</option>
                                 </select>
                                 @error('time')
                                     <div class="alert alert-danger ">{{ $message }}</div>

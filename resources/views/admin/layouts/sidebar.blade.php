@@ -58,9 +58,6 @@
                 <li>
                     <a href="{{route('payment.index')}}">All Payments</a>
                 </li>
-                <li>
-                    <a href="{{route('admin.invoice')}}">Payment Invoice</a>
-                </li>
             </ul>
         </li>
         <li>
