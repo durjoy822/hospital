@@ -2,17 +2,17 @@
 @section('content')
     <div class="row no-margin-padding">
         <div class="col-md-6">
-            <h3 class="block-title">Departments</h3>
+            <h3 class="block-title">Payments</h3>
         </div>
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{route('admin.dashboard')}}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
-                <li class="breadcrumb-item">Departments</li>
-                <li class="breadcrumb-item active">All Departments</li>
+                <li class="breadcrumb-item">Payments</li>
+                <li class="breadcrumb-item active">All Payments</li>
             </ol>
         </div>
     </div>
@@ -41,16 +41,9 @@
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3 class="widget-title">Departments List</h3>
-                        </div>
-                        <div class="col-md-4 widget-title">
-                            <a href="{{route('department.create')}}" class="btn btn-primary btn-sm mb-0" style="float: right;">New Department</a>
-                        </div>
-                    </div>
+                    <h3 class="widget-title">Payments List</h3>
                     <div class="table-responsive mb-3">
-                        <table id="tableId" class="table table-bordered table-striped table-responsive overflow-scroll justify-content-center">
+                        <table id="tableId" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th class="no-sort">
@@ -58,31 +51,41 @@
                                             <input class="custom-control-input" type="checkbox" id="select-all">
                                             <label class="custom-control-label" for="select-all"></label>
                                         </div>
-                                    <th>Department Name</th>
-                                    <th>Action</th>
+                                    </th>
+                                    <th>Patient Name</th>
+                                    <th>Doctor Name</th>
+                                    <th>Service Name</th>
+                                    <th>Charges</th>
+                                    <th>Discount <small>(%)</small></th>
+                                    <th>Paid Ammount</th>
+                                    <th>Status</th>
+                                    <td>Action</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($departments as $department)
+                                @foreach ($payments as $payment)
                                     <tr>
-                                        <td class="no-sort">
+                                        <td>
                                             <div class="custom-control custom-checkbox">
                                                 <input class="custom-control-input" type="checkbox" id="1">
                                                 <label class="custom-control-label" for="1"></label>
                                             </div>
                                         </td>
-                                        <td><a href="{{ route('department.show', $department->id) }}">{{ $department->name }}</a></td>
-
+                                        <td>{{ $payment->patient_name }}</td>
+                                        @php $dname = \App\Models\Doctor::where('id',$payment->doctor)->first(); @endphp
+                                        <td><a href="{{ route('doctor.show', $dname->id) }}">{{ $dname->name }}</a></td>
+                                        @php $info = \App\Models\PaymentService::where('payment_id',$payment->id)->get();@endphp
                                         <td>
-                                            <a href="{{ route('department.edit', $department->id)}}"><button
-                                                    class="btn btn-primary btn-sm"><span class="ti-pencil-alt"></span>
-                                                    EDIT</button></a>
-                                            <form action="{{ route('department.destroy', $department->id) }}" method="post"
-                                                style="display: inline">@csrf @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"><span
-                                                        class="ti-trash"></span> DELETE</button>
-                                            </form>
+                                            @foreach ($info as $i)
+                                                {{ $i->service }},
+                                            @endforeach
                                         </td>
+                                        <td>{{ $payment->ammount }}</td>
+                                        <td>{{ $payment->discount }}</td>
+                                        <td>{{ $payment->paid }}</td>
+                                        <td>{{ $payment->status }}</td>
+                                        <td><a href="{{route('admin.invoice')}}" class="btn btn-primary"><span class="ti-file"></span>
+                                                View</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -53,13 +53,13 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-payment">
                 <li>
-                    <a href="add-payment.html">Add Payment</a>
+                    <a href="{{route('payment.create')}}">Add Payment</a>
                 </li>
                 <li>
-                    <a href="payments.html">All Payments</a>
+                    <a href="{{route('payment.index')}}">All Payments</a>
                 </li>
                 <li>
-                    <a href="about-payment.html">Payment Invoice</a>
+                    <a href="{{route('admin.invoice')}}">Payment Invoice</a>
                 </li>
             </ul>
         </li>
