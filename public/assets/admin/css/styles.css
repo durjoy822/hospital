@@ -297,6 +297,7 @@ div[class*="col-"] div[class*="col-"]{
 }
 .table .custom-control.custom-checkbox{
 	padding-left: 0;
+	padding-right: 5px;
 }
 table.table tbody td, table.table thead th{
 	font-size: 14px;

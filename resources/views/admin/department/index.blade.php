@@ -65,7 +65,7 @@
                             <tbody>
                                 @foreach ($departments as $department)
                                     <tr>
-                                        <td>
+                                        <td class="no-sort">
                                             <div class="custom-control custom-checkbox">
                                                 <input class="custom-control-input" type="checkbox" id="1">
                                                 <label class="custom-control-label" for="1"></label>

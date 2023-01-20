@@ -9,6 +9,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -55,7 +56,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/register',[AdminController::class,'registerForm'])->name('admin.register');
         Route::post('/new',[AdminAuthController::class,'newAdmin'])->name('admin.new');
         Route::get('/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
-
         Route::get('/patient',[PatientController::class,'patientIndex'])->name('admin.patient');
         Route::get('/patient_add',[PatientController::class,'patientAdd'])->name('admin.patientAdd');
         Route::post('/patient_save',[PatientController::class,'patientSave'])->name('admin.patientSave');
@@ -63,26 +63,22 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/patient_update',[PatientController::class,'patientUpdate'])->name('admin.patientUpdate');
         Route::post('/patient_delete',[PatientController::class,'patientDelete'])->name('admin.patientDelete');
         Route::get('/patient/details/{id}',[PatientController::class,'singlePatient'])->name('patient.details');
-
-
-    //    doctor
         Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
-
-    //room
         Route::get('/room',[RoomController::class,'roomIndex'])->name('admin.room');
         Route::get('/room/add',[RoomController::class,'roomAdd'])->name('admin.roomAdd');
         Route::post('/room_save',[RoomController::class,'roomSave'])->name('admin.roomSave');
         Route::get('/room/edit/{id}',[RoomController::class,'roomEdit'])->name('admin.roomEdit');
         Route::post('/room/update',[RoomController::class,'roomUpdate'])->name('admin.roomUpdate');
         Route::post('/room/delete',[RoomController::class,'roomDelete'])->name('admin.roomDelete');
-
-//    department
         Route::resource('/department', DepartmentController::class);
-//   doctor
-        Route::resource('/doctor', DoctorController::class);
         Route::get('/status/{id}',[DoctorController::class,'status'])->name('doctor.status');
         Route::resource('/appointment', AppointmentController::class);
         Route::get('/appointment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
+        Route::get('/payment',[PaymentController::class,'index'])->name('payment.index');
+        Route::get('/payment/create',[PaymentController::class,'create'])->name('payment.create');
+        Route::post('/payment/store',[PaymentController::class,'store'])->name('payment.store');
+        Route::get('/invoice',[PaymentController::class,'invoice'])->name('admin.invoice');
+        Route::get('/payment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
     });
 });
