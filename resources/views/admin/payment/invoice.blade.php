@@ -25,7 +25,7 @@
                     <!-- Invoice Head -->
                     <div class="row ">
                         <div class="col-sm-6 mb-5">
-                            <img src="images/logo-dark.png" alt="logo hospital" class="img-thumbnail">
+                            <img src="{{asset('assets/admin/images/logo-dark.png')}}" alt="logo hospital" class="img-thumbnail">
                             <br>    
                             <br>                                     
                             <span>Street Address</span>

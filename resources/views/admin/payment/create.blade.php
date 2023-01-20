@@ -98,9 +98,16 @@
                                     <option selected value="1">Cash</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-3" id="card-check" style="display: none">
                                 <label for="card-check">Card/Check No</label>
-                                <input type="text" placeholder="Card/Check No" class="form-control" id="card-check" name="type_info">
+                                <input type="text" placeholder="Card/Check No" class="form-control" name="type_info">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="payment-type">Payment status</label>
+                                <select class="form-control" id="payment-type" name="status">
+                                    <option value="Paid">Paid</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
                             </div>
                             <div class="form-check col-md-12 mb-2">
                                 <div class="text-left">
@@ -115,20 +122,6 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Alerts-->
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Successfully Done!</strong> Payment added
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <!-- /Alerts-->
                 </div>
             </div>
             <!-- /Widget Item -->

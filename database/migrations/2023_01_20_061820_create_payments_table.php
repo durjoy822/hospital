@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('type_info')->nullable();
             $table->string('paid')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

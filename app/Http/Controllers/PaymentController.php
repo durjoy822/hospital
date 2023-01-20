@@ -13,7 +13,8 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('admin.payment.index');
+        $payments = Payment::get();
+        return view('admin.payment.index',compact('payments'));
     }
     public function create()
     {
@@ -47,7 +48,9 @@ class PaymentController extends Controller
         $percentageValue = round($ammount * ($request->discount / 100));
         $paid = round($ammount - $percentageValue);
         $payment->paid = $paid;
+        $payment->status = $request->status;
         $payment->save();
+        Session::flash('success','Payment successfully recorded!');
         return redirect()->route('payment.create');
     }
     public function invoice()
