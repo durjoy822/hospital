@@ -42,16 +42,18 @@
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
                     <h3 class="widget-title">Edit Appointment</h3>
-                    <form action="{{ route('appointment.update') }}"method="POST">@csrf
+                    <form action="{{route('appointment.update',$appointment->id) }}"method="POST">
+                        @csrf
+                        @method('put')
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="patient-name">Patient ID</label>
-                                <input type="text" value="P654T" class="form-control" placeholder="Patient ID"
+                                <input type="text" value="{{$appointment->patientId}}"  name="patientId" class="form-control" placeholder="Patient ID"
                                     id="patient-id">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="department">Department</label>
-                                <select class="form-control" id="department">
+                                <select class="form-control" name="department" id="department">
                                     @foreach ($speciallist as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -59,37 +61,37 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="doctorName">Doctor Name</label>
-                                <select class="form-control" id="doctorName" name="doctor">
+                                <select class="form-control" name="doctor" id="doctorName" name="doctor">
                                     <option disabled selected>Select your Doctor</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="appointment-date">Appointment Date</label>
-                                <input type="date" value="2018-11-12" placeholder="Appointment Date" class="form-control"
+                                <input type="date"  name="date" value="{{$appointment->date}}" placeholder="Appointment Date" class="form-control"
                                     id="appointment-date">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="time-slot">Time Slot</label>
-                                <select class="form-control" id="time-slot">
-                                    <option>10AM-11AM</option>
-                                    <option>11AM-12pm</option>
-                                    <option>12PM-01PM</option>
-                                    <option>2PM-3PM</option>
-                                    <option>3PM-4PM</option>
-                                    <option selected>4PM-5PM</option>
-                                    <option>6PM-7PM</option>
-                                    <option>7PM-8PM</option>
-                                    <option>8PM-9PM</option>
+                                <select class="form-control" name="time" value="{{$appointment->time}}" id="time-slot">
+                                    <option {{$appointment->time=='10AM-11AM'?'selected':''}} value="10AM-11AM">10AM-11AM</option>
+                                    <option {{$appointment->time=='11AM-12pm'?'selected':''}} value="11AM-12pm">11AM-12pm</option>
+                                    <option {{$appointment->time=='12AM-01AM'?'selected':''}} value="12PM-01PM">12PM-01PM</option>
+                                    <option {{$appointment->time=='2AM-3AM'?'selected':''}} value="2PM-3PM">2PM-3PM</option>
+                                    <option {{$appointment->time=='3AM-4AM'?'selected':''}} value="3PM-4PM">3PM-4PM</option>
+                                    <option {{$appointment->time=='4AM-5AM'?'selected':''}} value="4PM-5PM">4PM-5PM</option>
+                                    <option {{$appointment->time=='6AM-7AM'?'selected':''}} value="6PM-7PM">6PM-7PM</option>
+                                    <option {{$appointment->time=='7AM-8AM'?'selected':''}} value="7PM-8PM">7PM-8PM</option>
+                                    <option {{$appointment->time=='8AM-9AM'?'selected':''}} value="8PM-9PM">8PM-9PM</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="token-number">Token Number <small>(Auto Generated)</small></label>
-                                <input type="text" value="58" placeholder="Token Number" class="form-control"
+                                <input type="text" name="token" value="{{$appointment->token}}" placeholder="Token Number" class="form-control"
                                     id="token-number">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="problem">Problem</label>
-                                <textarea placeholder="Problem" class="form-control" id="problem" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur convallis egestas aliquet. Nunc ullamcorper massa in magna pulvinar, a eleifend felis condimentum.</textarea>
+                                <textarea placeholder="Problem" name="problem" class="form-control" id="problem" rows="3">{{$appointment->problem}}</textarea>
                             </div>
 
                             <div class="form-check col-md-12 mb-2">
