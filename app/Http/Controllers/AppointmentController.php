@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Patient;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Appointment;
 use Session;
+use Illuminate\Support\Facades\Mail;
+
 
 class AppointmentController extends Controller
 {
@@ -130,7 +133,7 @@ class AppointmentController extends Controller
     {
         Appointment::destroy($id);
         Session::flash('success','Data destroy done!');
-        return back();
+        return redirect()->back();
     }
     public function findDoctor($id=null)
     {

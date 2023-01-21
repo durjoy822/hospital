@@ -24,13 +24,14 @@ class PatientController extends Controller
             'age'           => 'required',
             'phone'          => 'required|min:11|max:11',
             'date'           => 'required',
-
+            'email' =>'required',
         ],
         [
             'patient_name.required'=>'please input your name!',
             'age.required'=>'write your age!',
             'phone.required'=>'phone is required!',
             'phone.min'=>'input minimum 11 number!',
+            'email.required' => 'Email is required',
         ]
 
         );
@@ -39,6 +40,7 @@ class PatientController extends Controller
         $this->patient->patient_name=$request->patient_name;
         $this->patient->age=$request->age;
         $this->patient->phone=$request->phone;
+        $this->email->status=$request->email;
         $this->patient->date=$request->date;
         $this->patient->status=$request->status;
         $this->patient->save();
@@ -77,6 +79,7 @@ class PatientController extends Controller
         $this->patient->patient_name=$request->patient_name;
         $this->patient->age=$request->age;
         $this->patient->phone=$request->phone;
+        $this->patient->email=$request->email;
         $this->patient->date=$request->date;
         $this->patient->status=$request->status;
         $this->patient->save();

@@ -62,6 +62,14 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="email" placeholder="Email" value="{{ $patients->email }}" name="email"
+                                    class="form-control" id="email">
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="dob"> Visit Date</label>
                                 <input type="date" placeholder="Visited date" value="{{ $patients->date }}"
                                     name="date" class="form-control" id="dob">

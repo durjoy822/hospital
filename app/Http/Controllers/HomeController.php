@@ -10,14 +10,6 @@ class HomeController extends Controller
     {
         return view ('home.appointment');
     }
-    public function doctor()
-    {
-        return view('home.doctor');
-    }
-    public function doctorDetails()
-    {
-        return view('home.doctorDetails');
-    }
     public function departments()
     {
         return view ('home.department');

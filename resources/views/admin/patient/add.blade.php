@@ -61,6 +61,14 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="phone">Email</label>
+                                <input type="email" placeholder="Email" name="email" value="{{ old('email') }}"
+                                    class="form-control" id="email">
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="dob"> Visit Date</label>
                                 <input type="date" placeholder="Visited date" name="date" value="{{ old('date') }}"
                                     class="form-control" id="dob">
