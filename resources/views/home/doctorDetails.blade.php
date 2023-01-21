@@ -6,12 +6,9 @@
                 <!-- Content Side -->
                 <div class="content-side col-lg-8 col-md-12 col-sm-12 order-2">
                     <div class="docter-detail">
-                        <h3 class="name">Dr. Morila Wood</h3>
-                        <span class="designation">MBBS (Sydney), FRACS (Paediatric Surgery)</span>
-                        <div class="text">After graduating from West Virginia University Medical School, Dr. Emily Haden
-                            completed a two-year fellowship in sports medicine at Akron Children’s Hospital. During his
-                            training at Akron, Dr. Emily Haden Alex was team physician for the University of Akron and Walsh
-                            University.</div>
+                        <h3 class="name">{{ $doctor->name }}</h3>
+                        <span class="designation">{{ $doctor->education }}</span>
+                        <div class="text">{{ $doctor->details }}</div>
                         <ul class="doctor-info-list">
                             <li>
                                 <strong>Speciality</strong>
@@ -19,35 +16,46 @@
                             </li>
                             <li>
                                 <strong>Education</strong>
-                                <p>Doctor of Medicine, University of Texas, USA (1990) Medical Orientation Program, St.
-                                    Louis University (St. Louis, Missouri 1996)</p>
+                                <p>{{ $doctor->education }}.</p>
                             </li>
                             <li>
                                 <strong>Experience</strong>
-                                <p>25 years of Experience in Medicine <br> Vice President and Chief Medical Officer, Kessler
-                                    Institute for Rehabilitation <br>Medical Corporation Professor, Institute Of Coast
-                                    Private Hospital Campus</p>
+                                <p>{{ $doctor->experience }}</p>
                             </li>
                             <li>
                                 <strong>Address</strong>
-                                <p>Suite 27, Medical Centre, The Sunshine Coast Private Hospital, QLD 4556</p>
+                                <p>{{ $doctor->address }}</p>
                             </li>
                             <li>
                                 <strong>Timing</strong>
-                                <p>Monday - Friday 08:00 - 20:00 <br> Saturday&nbsp; 09:00 - 18:00 <br> Sunday &nbsp; &nbsp;
-                                    09:00 - 18:00</p>
+                                @php $d=json_decode($doctor->working_days); @endphp
+                                <p>
+                                    @foreach ($d as $day)
+                                        @if ($day == 1)
+                                            Saturday,
+                                        @elseif($day == 2)
+                                            Sunday,
+                                        @elseif($day == 3)
+                                            Monday,
+                                        @elseif($day == 4)
+                                            Tuesday,
+                                        @elseif($day == 5)
+                                            Wednesday,
+                                        @elseif($day == 6)
+                                            Thrusday,
+                                        @elseif($day == 7)
+                                            Friday.
+                                        @endif
+                                    @endforeach
+                                </p>
                             </li>
                             <li>
                                 <strong>Phone</strong>
-                                <p><a href="#">+1-23-345-6789</a></p>
+                                <p>{{ $doctor->phone }}</p>
                             </li>
                             <li>
                                 <strong>Email</strong>
-                                <p><a href="#">myemail@yourdomain.com</a></p>
-                            </li>
-                            <li>
-                                <strong>Website</strong>
-                                <p><a href="#">www.yourdomain.com</a></p>
+                                <p>{{ $doctor->email }}</p>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +101,7 @@
                         <!-- Team Block -->
                         <div class="team-block wow fadeInUp">
                             <div class="inner-box">
-                                <figure class="image"><img src="{{asset('assets/home/images/resource/team-1.jpg')}}" alt=""></figure>
+                                <figure class="image"><img src="{{ asset($doctor->photo) }}" alt=""></figure>
                                 <ul class="social-links">
                                     <li><a href="#"><span class="fab fa-facebook"></span></a></li>
                                     <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
@@ -114,9 +122,26 @@
                                         Vestibulum bib volutpat accumsan non laoreet nulla luctus.</div>
                                 </div>
                                 <ul class="timing-list-two">
-                                    <li>Monday - Friday <span>08:00 - 20:00</span></li>
-                                    <li>Saturday <span>09:00 - 18:00</span></li>
-                                    <li>Sunday <span>09:00 - 18:00</span></li>
+                                    @foreach ($d as $day)
+                                        <li>
+                                            @if ($day == 1)
+                                                Saturday
+                                            @elseif($day == 2)
+                                                Sunday
+                                            @elseif($day == 3)
+                                                Monday
+                                            @elseif($day == 4)
+                                                Tuesday
+                                            @elseif($day == 5)
+                                                Wednesday
+                                            @elseif($day == 6)
+                                                Thrusday
+                                            @elseif($day == 7)
+                                                Friday
+                                            @endif
+                                            <span>10:00 - 20:00</span>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -132,9 +157,10 @@
         <div class="auto-container">
             <div class="row">
                 <!-- Team Block -->
+                @foreach($doctors as $list)
                 <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="inner-box">
-                        <figure class="image"><img src="{{asset('assets/home/images/resource/team-1.jpg')}}" alt=""></figure>
+                        <figure class="image"><img src="{{asset($list->photo)}}" alt="{{$list->name}}" style="height:480px"></figure>
                         <ul class="social-links">
                             <li><a href="#"><span class="fab fa-facebook"></span></a></li>
                             <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
@@ -142,62 +168,13 @@
                             <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
                         </ul>
                         <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
+                            <h4 class="name"><a href="{{route('doctor.details',$list->id)}}">{{$list->name}}</a></h4>
+                            @php $department = DB::table('departments')->find($list->specialization); @endphp
+                            <span class="designation">@if(isset($department)){{$department->name}} @else Specialization not found @endif</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{asset('assets/home/images/resource/team-2.jpg')}}" alt=""></figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{asset('assets/home/images/resource/team-3.jpg')}}" alt=""></figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{asset('assets/home/images/resource/team-4.jpg')}}" alt=""></figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -22,7 +22,7 @@ use App\Http\Controllers\DoctorHomeController;
 Route::get('/', function () {return view('home.index');})->name('home');
 Route::get('/appointment',[HomeController::class,'appointment'])->name('appointment');
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
-Route::get('/doctor-details',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
+Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
 Route::get('/single-department',[HomeController::class,'singleDepartment'])->name('single.department');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');

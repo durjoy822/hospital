@@ -59,7 +59,6 @@
                                     <span>Doctors</span>
                                     <ul>
                                         <li><a href="{{route('doctor')}}">Doctors</a></li>
-                                        <li><a href="{{route('doctor.details')}}">Doctor Detail</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
