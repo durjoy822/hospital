@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/admin.php';
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorHomeController;
+use App\Http\Controllers\BlogController;
 
 
 /*
@@ -39,3 +40,4 @@ Route::get('/price-table',[HomeController::class,'priceTable'])->name('price.tab
 Route::get('/coming-soon',[HomeController::class,'comingSoon'])->name('coming.soon');
 Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
+Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');

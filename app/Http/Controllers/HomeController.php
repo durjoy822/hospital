@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,8 @@ class HomeController extends Controller
     }
     public function blog()
     {
-        return view ('home.blog');
+        $blogs = Blog::latest()->paginate(5);
+        return view ('home.blog',compact('blogs'));
     }
     public function product()
     {

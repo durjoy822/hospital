@@ -10,6 +10,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\BlogController;
 
 
 // Admin routes starts from here:
@@ -46,5 +47,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/invoice/{id}',[PaymentController::class,'invoice'])->name('admin.invoice');
         Route::get('/payment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
         Route::get('/send/app/mail/{id}',[MailController::class,'sendMail'])->name('send.appo.mail');
+        Route::get('/blog',[BlogController::class,'index'])->name('admin.blog');
+        Route::get('/blog/create',[BlogController::class,'create'])->name('blog.create');
+        Route::post('/blog/store',[BlogController::class,'store'])->name('blog.store');
+        Route::get('/blog/edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+        Route::post('/blog/update/{id}',[BlogController::class,'update'])->name('blog.update');
+        Route::get('/blog/destroy/{id}',[BlogController::class,'distroy'])->name('blog.destroy');
     });
 });
