@@ -34,4 +34,29 @@ class CartController extends Controller
             return redirect()->route('login');
         }
     }
+    public function postCart(Request $request)
+    {
+        if (Auth::check()) {
+            $id = $request->product->id;
+            $cartInfo = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->get();
+            if (count($cartInfo) > 0) {
+                $myItem =Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->first();
+                $myItem->quantity = $myItem->quantity + $request->quantity;
+                $myItem->save();
+                Session::flash('success', 'Medicine cart update successfully');
+                return redirect()->route('product');
+            } else {
+                $cart = new Cart();
+                $cart->user_id = Auth::user()->id;
+                $cart->product_id = $id;
+                $cart->quantity = $request->quantity;
+                $cart->price = Medicine::findOrFail($id)->price;
+                $cart->save();
+                Session::flash('success', 'Medicine carted successfully');
+                return redirect()->route('product');
+            }
+        }else{
+            return redirect()->route('login');
+        }
+    }
 }
