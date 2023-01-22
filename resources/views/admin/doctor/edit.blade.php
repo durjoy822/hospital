@@ -370,9 +370,6 @@
                             <div class="form-group col-md-6">
                                 <label for="file">File</label>
                                 <input type="file" name="photo" class="form-control" id="file">
-                                {{--                                @error('photo') --}}
-                                {{--                                <div class="alert alert-danger">{{ $message }}</div> --}}
-                                {{--                                @enderror --}}
                                 old photo:
                                 <img class="img-fluid" style="width: 70px;" src="{{ asset($doctor->photo) }}">
                             </div>

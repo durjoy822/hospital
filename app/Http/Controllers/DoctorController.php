@@ -183,7 +183,7 @@ class DoctorController extends Controller
      */
     public function destroy($id){
         Doctor::destroy($id);
-        return back();
+        return redirect()->back();
     }
 
 

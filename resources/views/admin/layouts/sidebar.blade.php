@@ -1,10 +1,11 @@
 <nav id="sidebar" class="proclinic-bg">
     <div class="sidebar-header">
-        <a href="{{route('admin.dashboard')}}"><img src="{{asset('assets/admin/images/logo.png')}}" class="logo" alt="logo"></a>
+        <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/admin/images/logo.png') }}" class="logo"
+                alt="logo"></a>
     </div>
     <ul class="list-unstyled components">
         <li class="">
-            <a href="{{route('admin.dashboard')}}">
+            <a href="{{ route('admin.dashboard') }}">
                 <span class="ti-home"></span> Dashboard
             </a>
         </li>
@@ -14,10 +15,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-patients">
                 <li>
-                    <a href="{{route('admin.patient')}}">All Patients</a>
+                    <a href="{{ route('admin.patient') }}">All Patients</a>
                 </li>
                 <li>
-                    <a href="{{route('admin.patientAdd')}}">Add Patient</a>
+                    <a href="{{ route('admin.patientAdd') }}">Add Patient</a>
                 </li>
             </ul>
         </li>
@@ -27,10 +28,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-doctors">
                 <li>
-                    <a href="{{route('doctor.create')}}">Add Doctor</a>
+                    <a href="{{ route('doctor.create') }}">Add Doctor</a>
                 </li>
                 <li>
-                    <a href="{{route('doctor.index')}}">All Doctors</a>
+                    <a href="{{ route('doctor.index') }}">All Doctors</a>
                 </li>
             </ul>
         </li>
@@ -40,10 +41,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-appointment">
                 <li>
-                    <a href="{{route('appointment.create')}}">Add Appointment</a>
+                    <a href="{{ route('appointment.create') }}">Add Appointment</a>
                 </li>
                 <li>
-                    <a href="{{route('appointment.index')}}">All Appointments</a>
+                    <a href="{{ route('appointment.index') }}">All Appointments</a>
                 </li>
             </ul>
         </li>
@@ -53,10 +54,10 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-payment">
                 <li>
-                    <a href="{{route('payment.create')}}">Add Payment</a>
+                    <a href="{{ route('payment.create') }}">Add Payment</a>
                 </li>
                 <li>
-                    <a href="{{route('payment.index')}}">All Payments</a>
+                    <a href="{{ route('payment.index') }}">All Payments</a>
                 </li>
             </ul>
         </li>
@@ -66,16 +67,21 @@
             </a>
             <ul class="collapse list-unstyled" id="nav-rooms">
                 <li>
-                    <a href="{{route('admin.roomAdd')}}">Add Room Allotment</a>
+                    <a href="{{ route('admin.roomAdd') }}">Add Room Allotment</a>
                 </li>
                 <li>
-                    <a href="{{route('admin.room')}}">All Rooms</a>
+                    <a href="{{ route('admin.room') }}">All Rooms</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="{{route('department.index')}}">
+            <a href="{{ route('department.index') }}">
                 <span class="ti-layout-menu-v"></span> Department
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('medicine.index') }}">
+                <span class="ti-heart-broken"></span> Medicine
             </a>
         </li>
         <li>
@@ -83,6 +89,9 @@
                 <span class="ti-file"></span> Other Pages
             </a>
             <ul class="collapse list-unstyled" id="nav-pages">
+                <li>
+                    <a href="{{route('admin.blog')}}">Blog </a>
+                </li>
                 <li>
                     <a href="login.html">Login </a>
                 </li>
@@ -113,9 +122,11 @@
     <div class="nav-help animated fadeIn">
         <h5><span class="ti-comments"></span> Need Help</h5>
         <h6>
-            <span class="ti-mobile"></span> +8801616657585</h6>
+            <span class="ti-mobile"></span> +8801616657585
+        </h6>
         <h6>
-            <span class="ti-email"></span> adeveloper.info</h6>
-        <p class="copyright-text">Copy rights &copy; {{date('Y')}}</p>
+            <span class="ti-email"></span> adeveloper.info
+        </h6>
+        <p class="copyright-text">Copy rights &copy; {{ date('Y') }}</p>
     </div>
 </nav>

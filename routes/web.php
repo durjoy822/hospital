@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/admin.php';
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorHomeController;
-
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +25,10 @@ use App\Http\Controllers\DoctorHomeController;
 Route::get('/', function () {return view('home.index');})->name('home');
 Route::get('/appointment',[HomeController::class,'appointment'])->name('appointment');
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
-Route::get('/doctor-details',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
+Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
 Route::get('/single-department/{slug}',[HomeController::class,'singleDepartment'])->name('single.department');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
-Route::get('/medicine',[HomeController::class,'product'])->name('product');
-Route::get('/medicine/single',[HomeController::class,'singleProduct'])->name('single.product');
-Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/login',[HomeController::class,'login'])->name('login');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
@@ -39,3 +39,12 @@ Route::get('/price-table',[HomeController::class,'priceTable'])->name('price.tab
 Route::get('/coming-soon',[HomeController::class,'comingSoon'])->name('coming.soon');
 Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
+Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
+Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
+Route::get('/shop',[MedicineController::class,'home'])->name('product');
+Route::get('/cart/{id}',[CartController::class,'cart'])->name('cart');
+
+
+Route::post('/register',[UserAuthController::class,'store'])->name('user.register');
+Route::post('/login/check',[UserAuthController::class,'login'])->name('user.login');
+Route::get('/logout',[UserAuthController::class,'logout'])->name('user.logout');

@@ -10,6 +10,8 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\MedicineController;
 
 
 // Admin routes starts from here:
@@ -46,5 +48,17 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/invoice/{id}',[PaymentController::class,'invoice'])->name('admin.invoice');
         Route::get('/payment/my-doctor/{id}',[AppointmentController::class,'findDoctor']);
         Route::get('/send/app/mail/{id}',[MailController::class,'sendMail'])->name('send.appo.mail');
+        Route::get('/blog',[BlogController::class,'index'])->name('admin.blog');
+        Route::get('/blog/create',[BlogController::class,'create'])->name('blog.create');
+        Route::post('/blog/store',[BlogController::class,'store'])->name('blog.store');
+        Route::get('/blog/edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+        Route::post('/blog/update/{id}',[BlogController::class,'update'])->name('blog.update');
+        Route::get('/blog/destroy/{id}',[BlogController::class,'distroy'])->name('blog.destroy');
+        Route::get('/medicine',[MedicineController::class,'index'])->name('medicine.index');
+        Route::get('/medicine/create',[MedicineController::class,'create'])->name('medicine.create');
+        Route::post('/medicine/store',[MedicineController::class,'store'])->name('medicine.store');
+        Route::get('/medicine/edit/{id}',[MedicineController::class,'edit'])->name('medicine.edit');
+        Route::post('/medicine/update/{id}',[MedicineController::class,'update'])->name('medicine.update');
+        Route::get('/medicine/delete/{id}',[MedicineController::class,'delete'])->name('medicine.delete');
     });
 });

@@ -49,7 +49,7 @@ class PatientController extends Controller
             return redirect(route('admin.patient'));
         }else{
             Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.'); 
-            return  back();
+            return redirect()->back();
         }
 
     }
