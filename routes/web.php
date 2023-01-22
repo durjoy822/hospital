@@ -27,7 +27,7 @@ Route::get('/appointment',[HomeController::class,'appointment'])->name('appointm
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
-Route::get('/single-department',[HomeController::class,'singleDepartment'])->name('single.department');
+Route::get('/single-department/{slug}',[HomeController::class,'singleDepartment'])->name('single.department');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/login',[HomeController::class,'login'])->name('login');
