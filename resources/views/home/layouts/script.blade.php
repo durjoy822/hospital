@@ -11,3 +11,10 @@
 <script src="{{asset('assets/home/js/script.js')}}"></script>
 <!-- Color Setting -->
 <script src="{{asset('assets/home/js/color-settings.js')}}"></script>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 2000);
+</script>

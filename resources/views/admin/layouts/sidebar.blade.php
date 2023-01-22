@@ -80,6 +80,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('medicine.index') }}">
+                <span class="ti-heart-broken"></span> Medicine
+            </a>
+        </li>
+        <li>
             <a href="#nav-pages" data-toggle="collapse" aria-expanded="false">
                 <span class="ti-file"></span> Other Pages
             </a>

@@ -7,7 +7,7 @@
             <ul class="page-breadcrumb">
                 <li><a href="index.html">Home</a></li>
                 <li>Shop</li>
-            </ul> 
+            </ul>
         </div>
     </div>
 </section>
@@ -35,11 +35,12 @@
                     </div>
 
                     <div class="row">
-                        <!-- Shop Item --> 
+                        @foreach ($drugs as $drug )
+                        <!-- Shop Item -->
                         <div class="shop-item col-lg-4 col-md-6 col-sm-12">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/1.jpg')}}" alt=""></a></figure>
+                                    <figure class="image"><a href="{{route('medicine.show',$drug->id)}}"><img src="{{asset($drug->picture)}}" alt=""></a></figure>
                                     <span class="onsale">Sale</span>
                                 </div>
                                 <div class="lower-content">
@@ -50,259 +51,17 @@
                                         <span class="fa fa-star"></span>
                                         <span class="fa fa-star light"></span>
                                     </div>
-                                    <h4 class="name"><a href="shop-single.html">Hand Sanitizer</a></h4>
-                                    <div class="price"> $12.00 <del>$14.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
+                                    <h4 class="name"><a href="{{route('medicine.show',$drug->id)}}">{{$drug->name}}</a></h4>
+                                    <div class="price">{{$drug->price}}</div>
+                                    <a href="{{route('cart',$drug->id)}}" class="theme-btn add-to-cart">Add to cart</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/2.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Liquid Sanitizer</a></h4>
-                                    <div class="price"> $14.00 <del>$17.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/3.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Sanitizer Gel</a></h4>
-                                    <div class="price">$25.00 <del>$15.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/4.jpg')}}" alt=""></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Vitamin D3</a></h4>
-                                    <div class="price"> $16.88</div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/5.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Vitamin B2</a></h4>
-                                    <div class="price"> $14.00 <del>$17.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/6.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Vitamin C+</a></h4>
-                                    <div class="price">$25.00 <del>$15.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/7.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Dental Instruments</a></h4>
-                                    <div class="price"> $16.88</div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/8.jpg')}}" alt=""></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">First Aid Kit</a></h4>
-                                    <div class="price"> $14.00 <del>$17.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/9.jpg')}}" alt=""></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Classic Stethoscope</a></h4>
-                                    <div class="price">$25.00 <del>$15.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/10.jpg')}}" alt=""></a></figure>
-                                    <span class="onsale">-17%</span>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Zinc Tablet</a></h4>
-                                    <div class="price"> $16.88</div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/11.jpg')}}" alt=""></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Iron Tablet</a></h4>
-                                    <div class="price"> $14.00 <del>$17.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shop Item --> 
-                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="shop-single.html"><img src="{{asset('assets/home/images/resource/products/12.jpg')}}" alt=""></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <h4 class="name"><a href="shop-single.html">Folic Acid</a></h4>
-                                    <div class="price">$25.00 <del>$15.00</del></div>
-                                    <a href="shopping-cart.html" class="theme-btn add-to-cart"> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <!--Styled Pagination-->
-                    <ul class="styled-pagination">
-                        <li><a href="#" class="arrow"><span class="flaticon-left"></span></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#" class="active">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#" class="arrow"><span class="flaticon-right"></span></a></li>
-                    </ul>                
+                    {{ $drugs->links('home.layouts.defaultPagination') }}
                     <!--End Styled Pagination-->
                 </div>
             </div>

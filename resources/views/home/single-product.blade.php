@@ -1,20 +1,7 @@
 @extends('home.layouts.master')
 @section('content')
-<section class="page-title" style="background-image: url(assets/home/images/background/8.jpg);">
-    <div class="auto-container">
-        <div class="title-outer">
-            <h1>Shop Single</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Shop</li>
-            </ul> 
-        </div>
-    </div>
-</section>
-<!--End Page Title-->
-
  <!-- Sidebar Page Container -->
- <div class="sidebar-page-container">
+ <div class="sidebar-page-container pt-0">
     <div class="auto-container">
         <div class="row clearfix">
             <!--Content Side-->
@@ -25,11 +12,11 @@
                         <div class="basic-details">
                             <div class="row clearfix">
                                 <div class="image-column col-md-6 col-sm-12">
-                                    <figure class="image-box"><a href="{{asset('assets/home/images/resource/products/product-sinlge.jpg')}}" class="lightbox-image" title="Image Caption Here"><img src="{{asset('assets/home/images/resource/products/product-sinlge.jpg')}}" alt=""></a></figure>
+                                    <figure class="image-box"><a href="{{asset($drug->picture)}}" class="lightbox-image" title="Image Caption Here"><img src="{{asset($drug->picture)}}" alt=""></a></figure>
                                 </div>
                                 <div class="info-column col-md-6 col-sm-12">
                                     <div class="details-header">
-                                        <h4>Hand Sanitizer</h4>
+                                        <h4>{{$drug->name}}</h4>
                                         <div class="rating">
                                             <span class="fa fa-star"></span>
                                             <span class="fa fa-star"></span>
@@ -38,33 +25,33 @@
                                             <span class="fa fa-star"></span>
                                         </div>
                                         <a class="reviews" href="#">( 3 Customer Reviews )</a>
-                                        <div class="item-price">$25.00 <del>$30</del></div>
+                                        <div class="item-price">{{$drug->price}}</div>
                                     </div>
 
-                                    <div class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going.</div>
+                                    <div class="text">{{$drug->details}}</div>
                                     <div class="other-options clearfix">
-                                        {{-- <div class="item-quantity"><input class="quantity-spinner" type="text" value="2" name="quantity"></div> --}}
+                                        <div class="item-quantity"><input type="text" value="2" name="quantity"></div>
                                         <button type="button" class="theme-btn btn-style-one add-to-cart"><span class="btn-title">Add To Cart</span></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!--Basic Details-->
-                        
+
                         <!--Product Info Tabs-->
                         <div class="product-info-tabs">
                             <!--Product Tabs-->
                             <div class="prod-tabs tabs-box">
-                            
+
                                 <!--Tab Btns-->
                                 <ul class="tab-btns tab-buttons clearfix">
                                     <li data-tab="#prod-details" class="tab-btn">Descripton</li>
                                     <li data-tab="#prod-reviews" class="tab-btn active-btn">Review (3)</li>
                                 </ul>
-                                
+
                                 <!--Tabs Container-->
                                 <div class="tabs-content">
-                                    
+
                                     <!--Tab-->
                                     <div class="tab" id="prod-details">
                                         <div class="content">
@@ -73,7 +60,7 @@
                                             <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. sunt in culpa qui officia deserunt mollit</p>
                                         </div>
                                     </div>
-                                    
+
                                     <!--Tab-->
                                     <div class="tab active-tab" id="prod-reviews">
                                         <h2 class="title">3 Reviews For Patient Ninja</h2>
@@ -87,7 +74,7 @@
                                                         <div class="comment-info">
                                                             <div class="name">Steven Rich</div>
                                                             <div class="date">May 29, 2020</div>
-                                                        </div> 
+                                                        </div>
                                                         <div class="rating">
                                                             <span class="fa fa-star"></span>
                                                             <span class="fa fa-star"></span>
@@ -99,7 +86,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <!--Comment Box-->
                                             <div class="comment-box reply-comment">
                                                 <div class="comment">
@@ -120,7 +107,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <!--Comment Box-->
                                             <div class="comment-box">
                                                 <div class="comment">
@@ -142,9 +129,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <!-- Comment Form -->
-                                        <div class="shop-comment-form"> 
+                                        <div class="shop-comment-form">
                                             <h2>Add a Review</h2>
                                             <div class="mail-text"><span class="theme_color">Your email address will not be published.</span> Required fields are marked*</div>
                                             <div class="rating-box">
@@ -179,9 +166,9 @@
                                                 <div class="form-group">
                                                     <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="btn-title">SUBMIT</span></button>
                                                 </div>
-                                            </form>  
+                                            </form>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
