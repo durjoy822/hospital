@@ -41,7 +41,7 @@ Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
 Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
-Route::get('/medicine',[MedicineController::class,'home'])->name('product');
+Route::get('/shop',[MedicineController::class,'home'])->name('product');
 Route::get('/cart/{id}',[CartController::class,'cart'])->name('cart');
 
 

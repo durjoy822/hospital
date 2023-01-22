@@ -76,12 +76,13 @@
                                 <ul>
                                     <li><a href="{{ route('product') }}">Medicine</a></li>
                                     <li><a href="{{ route('checkout') }}">Checkout</a></li>
-                                    <li><a href="{{ route('login') }}">Login</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('contact') }}">Contact</a></li>
                             @if (Auth::check())
                                 <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                            @else
+                                <li><a href="{{ route('login') }}">Login</a></li>
                             @endif
                         </ul>
                     </nav>
@@ -143,8 +144,7 @@
         <div class="search-inner">
             <form method="post" action="blog-showcase.html">
                 <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search..."
-                        required="">
+                    <input type="search" name="search-field" value="" placeholder="Search..." required="">
                     <button type="submit"><i class="flaticon-magnifying-glass"></i></button>
                 </div>
             </form>

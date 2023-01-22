@@ -25,7 +25,7 @@
                                             <span class="fa fa-star"></span>
                                         </div>
                                         <a class="reviews" href="#">( 3 Customer Reviews )</a>
-                                        <div class="item-price">{{$drug->price}}</div>
+                                        <div class="item-price">{{$drug->price}} TK</div>
                                     </div>
 
                                     <div class="text">{{$drug->details}}</div>
