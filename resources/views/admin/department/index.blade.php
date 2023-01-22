@@ -59,6 +59,8 @@
                                             <label class="custom-control-label" for="select-all"></label>
                                         </div>
                                     <th>Department Name</th>
+                                    <th>Details</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -72,7 +74,10 @@
                                             </div>
                                         </td>
                                         <td><a href="{{ route('department.show', $department->id) }}">{{ $department->name }}</a></td>
-
+                                        <td>{{substr($department->details ,0,100)}}</td>
+                                        <td>
+                                            <img src="{{asset($department->image)}}" width="100px" class="img-fluid">
+                                        </td>
                                         <td>
                                             <a href="{{ route('department.edit', $department->id)}}"><button
                                                     class="btn btn-primary btn-sm"><span class="ti-pencil-alt"></span>

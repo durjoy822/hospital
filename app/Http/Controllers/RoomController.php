@@ -95,21 +95,4 @@ class RoomController extends Controller
     }
 
 
-
-
-
-
-//    public function roomStatus($id)
-//    {
-//        $this->room = Room::find($id);
-//        if ($this->room->status == 1) {
-//            $this->room->status=2;
-//        } elseif ($this->room->status == 2) {
-//            $this->room->status=3;
-//        } else {
-//            $this->room->status=1;
-//        }
-//        return back();
-//
-//    }
 }

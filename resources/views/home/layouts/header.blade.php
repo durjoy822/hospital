@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader"></div>
-    
+
     <!-- Main Header-->
     <header class="main-header header-style-one">
 
@@ -26,10 +26,10 @@
             </div>
         </div>
         <!-- End Header Top -->
-        
+
         <!-- Header Lower -->
         <div class="header-lower">
-            <div class="auto-container">    
+            <div class="auto-container">
                 <!-- Main box -->
                 <div class="main-box">
                     <div class="logo-box">
@@ -65,14 +65,7 @@
                                 <li class="dropdown">
                                     <span>Departments</span>
                                     <ul>
-                                        <li><a href="{{route('departments')}}">Departments</a></li>
-                                        <li><a href="{{route('single.department')}}">Cardiology</a></li>
-                                        <li><a href="{{route('single.department')}}">Neurology</a></li>
-                                        <li><a href="{{route('single.department')}}">Urology</a></li>
-                                        <li><a href="{{route('single.department')}}">Gynecological</a></li>
-                                        <li><a href="{{route('single.department')}}">Pediatrical</a></li>
-                                        <li><a href="{{route('single.department')}}">Laboratory</a></li>
-                                        <li><a href="{{route('single.department')}}">Department Detail</a></li>
+                                        <li><a href="{{route('departments')}}">All Departments</a></li>
                                     </ul>
                                 </li>
 
@@ -103,13 +96,13 @@
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
-            <div class="auto-container">            
+            <div class="auto-container">
 
                 <div class="main-box">
                     <div class="logo-box">
                         <div class="logo"><a href="{{route('home')}}"><img src="{{asset('assets/home/images/logo.png')}}" alt="" title=""></a></div>
                     </div>
-                    
+
                     <!--Keep This Empty / Menu will come through Javascript-->
                 </div>
             </div>
@@ -140,7 +133,7 @@
         <div class="search-popup">
             <span class="search-back-drop"></span>
             <button class="close-search"><span class="fa fa-times"></span></button>
-            
+
             <div class="search-inner">
                 <form method="post" action="blog-showcase.html">
                     <div class="form-group">

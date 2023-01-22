@@ -37,8 +37,11 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $dep = new Department;
         $dep->name = $request->name;
+        $dep->details = $request->details;
+        $dep->image = $this->saveImage($request);
         $dep->save();
         if($dep->id){
             Session::flash('success','successfully store done!');
@@ -47,6 +50,14 @@ class DepartmentController extends Controller
             Session::flash('warning','Holy guacamole! You should check in on some of those fields below.');
             return back();
         }
+    }
+        public function saveImage($request){
+            $image=$request->file('image');
+            $imageName=rand().'.'.$image->extension();
+            $dir='adminAsset/depImage/image/';
+            $imgUrl=$dir.$imageName;
+            $image->move($dir,$imageName);
+            return $imgUrl;
     }
 
     /**
@@ -85,6 +96,13 @@ class DepartmentController extends Controller
     {
         $dep = Department::find($id);
         $dep->name = $request->name;
+        $dep->details = $request->details;
+        if($request->file('image')){
+            if($dep->image !=null ){
+                unlink($dep->image );
+            }
+            $dep->image =    $this->saveImage($request);
+        }
         $dep->save();
         if($dep->id){
             Session::flash('success',' updated successfully!');

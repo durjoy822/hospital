@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Department;
 
 class HomeController extends Controller
 {
@@ -12,11 +13,17 @@ class HomeController extends Controller
     }
     public function departments()
     {
-        return view ('home.department');
+        $this->dep=Department::inRandomOrder()->take(6)->paginate(6);
+        return view ('home.department',[
+            'dep'=>$this->dep,
+        ]);
     }
-    public function singleDepartment()
+    public function singleDepartment($slug)
     {
-        return view ('home.single-department');
+        $this->singleDep=Department::where('name',$slug)->first();
+        return view ('home.single-department',[
+            'singleDep'=>$this->singleDep,
+        ]);
     }
     public function blog()
     {

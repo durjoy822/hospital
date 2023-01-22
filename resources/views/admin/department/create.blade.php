@@ -31,10 +31,18 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="DepartmentName">Department Name</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Department name" id="DepartmentName">
+                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Department name" id="DepartmentName">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+
+                            <label for="details">Details</label>
+                            <textarea name="details" value="{{ old('details') }}" class="form-control" placeholder="Inter your  Details" rows="5" cols="5"></textarea>
+                            @error('details')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <label for="details">Image</label>
+                            <input type="file" name="image"  class="form-control">
                         </div>
                         <div class="form-group col-md-6 mb-3">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
