@@ -53,7 +53,7 @@
                                     </div>
                                     <h4 class="name"><a href="{{route('medicine.show',$drug->id)}}">{{$drug->name}}</a></h4>
                                     <div class="price">{{$drug->price}}</div>
-                                    <a href="{{route('cart',$drug->id)}}" class="theme-btn add-to-cart">Add to cart</a>
+                                    <a href="{{route('bag',$drug->id)}}" class="theme-btn add-to-cart">Add to cart</a>
                                 </div>
                             </div>
                         </div>

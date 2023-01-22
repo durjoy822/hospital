@@ -41,13 +41,7 @@
 
              <!--Styled Pagination-->
 
-            <ul class="styled-pagination">
-                <li><a href="#" class="arrow"><span class="flaticon-left"></span></a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#" class="active">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#" class="arrow"><span class="flaticon-right"></span></a></li>
-            </ul>
+             {{ $dep->links('home.layouts.defaultPagination') }}
             <!--End Styled Pagination-->
         </div>
     </div>

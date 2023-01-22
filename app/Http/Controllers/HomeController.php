@@ -32,14 +32,6 @@ class HomeController extends Controller
         $blogs = Blog::latest()->paginate(5);
         return view ('home.blog',compact('blogs'));
     }
-    public function singleProduct()
-    {
-        return view('home.single-product');
-    }
-    public function cart()
-    {
-        return view('home.cart');
-    }
     public function login()
     {
         return view('home.login');

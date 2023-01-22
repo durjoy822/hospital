@@ -31,4 +31,9 @@
         let inputField = document.getElementById("inputField");
         inputField.value = parseInt(inputField.value) + 1;
     }
+
+    function submitForm() {
+        var form = document.getElementById("myForm");
+        form.submit();
+    }
 </script>

@@ -7,6 +7,7 @@ use App\Http\Controllers\DoctorHomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 
 /*
@@ -27,9 +28,8 @@ Route::get('/appointment',[HomeController::class,'appointment'])->name('appointm
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
-Route::get('/single-department/{slug}',[HomeController::class,'singleDepartment'])->name('single.department');
+Route::get('/department/{slug}',[HomeController::class,'singleDepartment'])->name('single.department');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
-Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/login',[HomeController::class,'login'])->name('login');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/about-us',[HomeController::class,'aboutUs'])->name('about.us');
@@ -42,9 +42,13 @@ Route::get('/terms',[HomeController::class,'terms'])->name('terms');
 Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
 Route::get('/shop',[MedicineController::class,'home'])->name('product');
-Route::get('/cart/{id}',[CartController::class,'cart'])->name('cart');
-
-
 Route::post('/register',[UserAuthController::class,'store'])->name('user.register');
 Route::post('/login/check',[UserAuthController::class,'login'])->name('user.login');
+
+Route::get('/bag/{id}',[CartController::class,'bag'])->name('bag');
+Route::get('/cart',[CartController::class,'cart'])->name('cart');
+Route::post('/post/cart/',[CartController::class,'postCart'])->name('post.cart');
+Route::get('/cart/delete/{id}',[CartController::class,'cartDelete'])->name('cart.delete');
 Route::get('/logout',[UserAuthController::class,'logout'])->name('user.logout');
+Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+Route::post('/place-order',[OrderController::class,'saveShipping'])->name('place.order');
