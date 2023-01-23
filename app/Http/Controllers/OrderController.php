@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderProcessed;
+use App\Mail\Orders;
 use App\Models\Cart;
 use App\Models\Medicine;
 use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\ShippingAddress;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -63,7 +67,7 @@ class OrderController extends Controller
                 $myItem->quantity = $medicine->quantity;
                 $myItem->total_price = $medicine->quantity * $myItem->price;
                 $myItem->save();
-                $message = 'Sorry, There are '.$medicine->quantity. ' items of '.$medicine->name.' are available in our stock';
+                $message = 'Sorry, There are ' . $medicine->quantity . ' items of ' . $medicine->name . ' are available in our stock';
                 Session::flash('success', $message);
                 return redirect()->route('cart');
             }
@@ -93,6 +97,17 @@ class OrderController extends Controller
 
             Cart::findOrFail($cart->id)->delete();
         }
+        $data = [];
+        $data['order_id'] = $order->id;
+        $data['delivery_cost'] = $order->delivery_cost;
+        $data['total_price'] = $order->total_price;
+        $data['street'] = $request->street;
+        $data['city'] = $request->city;
+        $data['state'] = $request->state;
+        $data['postal_code'] = $request->postal_code;
+        $data['country'] = $request->country;
+        $data['delevery_date'] = Carbon::createFromFormat('Y-m-d H:i:s', $order->created_at)->tomorrow();
+        event(new OrderProcessed($data));
         Session::flash('success', 'Order placed successfully. Soon you will get a copy of the order invoice in your mail');
         return redirect()->route('home');
     }
