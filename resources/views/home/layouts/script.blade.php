@@ -16,7 +16,7 @@
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();
         });
-    }, 2000);
+    }, 3000);
 
     function decrement(event) {
         event.preventDefault();
@@ -36,4 +36,27 @@
         var form = document.getElementById("myForm");
         form.submit();
     }
+    // Store original values in variables
+    var name = $('input[name="name"]').val();
+    var phone_number = $('input[name="phone_number"]').val();
+    var street = $('input[name="street"]').val();
+    var city = $('input[name="city"]').val();
+    var state = $('input[name="state"]').val();
+    var postal_code = $('input[name="postal_code"]').val();
+    var is_default = $('select[name="is_default"]').val();
+
+    $('#new-shipping').click(function() {
+        $('.toggle-input').val('');
+        $('select[name="is_default"]').val('1');
+    });
+
+    $('#default-shipping').click(function() {
+        $('input[name="name"]').val(name);
+        $('input[name="phone_number"]').val(phone_number);
+        $('input[name="street"]').val(street);
+        $('input[name="city"]').val(city);
+        $('input[name="state"]').val(state);
+        $('input[name="postal_code"]').val(postal_code);
+        $('select[name="is_default"]').val(is_default);
+    });
 </script>

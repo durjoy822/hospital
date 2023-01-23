@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Medicine;
+use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -76,7 +77,8 @@ class CartController extends Controller
     }
     public function checkout()
     {
+        $info = ShippingAddress::where('user_id',Auth::user()->id)->where('is_default',0)->first();
         $bags = Cart::where('user_id',Auth::user()->id)->get();
-        return view ('home.checkout',compact('bags'));
+        return view ('home.checkout',compact('bags','info'));
     }
 }

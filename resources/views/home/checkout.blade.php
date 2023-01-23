@@ -12,80 +12,188 @@
                             <div class="inner-column">
                                 <div class="sec-title">
                                     <h3>Shipping Details</h3>
+                                    @if (isset($info))
+                                    <div class="row">
+                                        <div class="col-md-6"><input type="radio" name="shipping" id="default-shipping"
+                                                value="default" checked>
+                                            <label for="default-shipping">Default Shipping</label>
+                                        </div>
+                                        <div class="col-md-6"><input type="radio" name="shipping" id="new-shipping"
+                                                value="new">
+                                            <label for="new-shipping">New Shipping</label>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
 
-                                <div class="row clearfix">
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <div class="field-label">Name <sup>*</sup></div>
-                                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Name">
-                                        @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                @if (isset($info))
+                                    <div class="row clearfix">
 
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <div class="field-label">Phone</div>
-                                        <input type="text" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone">
-                                        @error('phone_number')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Name <sup>*</sup></div>
+                                            <input type="text" name="name" value="{{ old('name') ?? $info->name }}"
+                                                placeholder="Name" class="toggle-input">
+                                            @error('name')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-12 col-sm-12">
-                                        <div class="field-label">Country</div>
-                                        <select name="country">
-                                            <option value="Bangladesh">Bangladesh</option>
-                                        </select>
-                                        @error('country')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Phone</div>
+                                            <input type="text" name="phone_number"
+                                                value="{{ old('phone_number') ?? $info->phone_number }}" placeholder="Phone"
+                                                class="toggle-input">
+                                            @error('phone_number')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-12 col-sm-12">
-                                        <div class="field-label">Address</div>
-                                        <input type="text" name="street" value="{{ old('street') }}" placeholder="Street address">
-                                        @error('street')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-12 col-sm-12">
-                                        <div class="field-label">Town/City</div>
-                                        <input type="text" name="city" value="{{ old('city') }}" placeholder="">
-                                        @error('city')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Country</div>
+                                            <select name="country">
+                                                <option value="Bangladesh">Bangladesh</option>
+                                            </select>
+                                            @error('country')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <div class="field-label">State</div>
-                                        <input type="text" name="state" value="{{ old('state') }}" placeholder="">
-                                        @error('state')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Address</div>
+                                            <input type="text" name="street"
+                                                value="{{ old('street') ?? $info->street }}" placeholder="Street address"
+                                                class="toggle-input">
+                                            @error('street')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Town/City</div>
+                                            <input type="text" name="city" value="{{ old('city') ?? $info->city }}"
+                                                placeholder="City" class="toggle-input">
+                                            @error('city')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                    <!--Form Group-->
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <div class="field-label">Postcode/ ZIP</div>
-                                        <input type="text" name="postal_code" value="{{ old('postal_code') }}" placeholder="">
-                                        @error('postal_code')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">State</div>
+                                            <input type="text" name="state" value="{{ old('state') ?? $info->state }}"
+                                                placeholder="State" class="toggle-input">
+                                            @error('state')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Postcode/ ZIP</div>
+                                            <input type="text" name="postal_code"
+                                                value="{{ old('postal_code') ?? $info->postal_code }}"
+                                                placeholder="Postal Code" class="toggle-input">
+                                            @error('postal_code')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-12 col-sm-12 ">
+                                            <div class="field-label">Is default Shipping address?</div>
+                                            <select name="is_default" class="toggle-input">
+                                                <option value="1" {{ $info->is_default == '1' ? 'selected' : '' }}>No
+                                                </option>
+                                                <option value="0" {{ $info->is_default == '0' ? 'selected' : '' }}>Yes
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-12 col-sm-12 ">
-                                        <div class="field-label">Is default Shipping address?</div>
-                                        <select name="is_default">
-                                            <option value="0">Yes</option>
-                                            <option value="1">No</option>
-                                        </select>
+                                @else
+                                    <div class="row clearfix">
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Name <sup>*</sup></div>
+                                            <input type="text" name="name" value="{{ old('name') }}"
+                                                placeholder="Name" class="toggle-input">
+                                            @error('name')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Phone</div>
+                                            <input type="text" name="phone_number" value="{{ old('phone_number') }}"
+                                                placeholder="Phone" class="toggle-input">
+                                            @error('phone_number')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Country</div>
+                                            <select name="country">
+                                                <option value="Bangladesh">Bangladesh</option>
+                                            </select>
+                                            @error('country')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Address</div>
+                                            <input type="text" name="street" value="{{ old('street') }}"
+                                                placeholder="Street address" class="toggle-input">
+                                            @error('street')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <div class="field-label">Town/City</div>
+                                            <input type="text" name="city" value="{{ old('city') }}"
+                                                placeholder="City" class="toggle-input">
+                                            @error('city')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">State</div>
+                                            <input type="text" name="state" value="{{ old('state') }}"
+                                                placeholder="State" class="toggle-input">
+                                            @error('state')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!--Form Group-->
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <div class="field-label">Postcode/ ZIP</div>
+                                            <input type="text" name="postal_code" value="{{ old('postal_code') }}"
+                                                placeholder="Postal Code" class="toggle-input">
+                                            @error('postal_code')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-12 col-sm-12 ">
+                                            <div class="field-label">Is default Shipping address?</div>
+                                            <select name="is_default" class="toggle-input">
+                                                <option value="1" selected>No
+                                                </option>
+                                                <option value="0">Yes
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <!--Order Box-->
@@ -138,7 +246,8 @@
                             <li>
                                 <div class="radio-option">
                                     <input type="radio" name="payment-group" id="payment-1">
-                                    <label for="payment-1"><strong>Check Payments</strong><span class="small-text">Make your
+                                    <label for="payment-1"><strong>Check Payments</strong><span class="small-text">Make
+                                            your
                                             payment directly into our bank account. Please use your Order ID as the payment
                                             reference. Your order won’t be shipped until the funds have cleared in our
                                             account.</span></label>
@@ -156,8 +265,8 @@
                     </div>
                 </div>
                 <div class="lower-box">
-                    <button type="button" id="submit-button" onclick="submitForm()" class="theme-btn btn-style-one"><span
-                            class="btn-title">Place Order</span></button>
+                    <button type="button" id="submit-button" onclick="submitForm()"
+                        class="theme-btn btn-style-one"><span class="btn-title">Place Order</span></button>
                 </div>
             </div>
             <!--End Payment Box-->

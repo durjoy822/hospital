@@ -39,7 +39,7 @@
                     </table>
                 </div>
 
-                <div class="cart-options clearfix">
+                {{-- <div class="cart-options clearfix">
                     <div class="pull-left">
                         <div class="apply-coupon clearfix">
                             <div class="form-group clearfix">
@@ -54,38 +54,13 @@
                     <div class="pull-right">
                         <button type="button" class="theme-btn cart-btn">update cart</button>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="row justify-content-between">
                 <div class="column pull-left col-lg-5 col-md-6 col-sm-12">
                     <div class="shipping-block">
-                        <div class="inner-box">
-                            <h3>Shipping To</h3>
-                            <h4>Calculate Shipping</h4>
 
-                            <!-- Shipping Form -->
-                            <div class="shipping-form">
-                                <!--Shipping Form-->
-                                <form method="post" action="contact.html">
-                                    <div class="row clearfix">
-                                        <div class="form-group col-md-6 col-sm-12">
-                                            <input type="text" name="text" placeholder="Pakistan" required>
-                                        </div>
-                                        <div class="form-group col-md-6 col-sm-12">
-                                            <input type="text" name="text" placeholder="Postcode / ZIP" required>
-                                        </div>
-                                        <div class="form-group col-md-12 col-sm-12">
-                                            <input type="text" name="text" placeholder="State / County" required>
-                                        </div>
-                                        <div class="form-group col-md-12 col-sm-12">
-                                            <button class="theme-btn totals-btn" type="submit" name="submit-form">Update
-                                                Totals</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
