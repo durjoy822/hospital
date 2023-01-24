@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Patient;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Appointment;
-use Session;
-use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Session;
 
 class AppointmentController extends Controller
 {

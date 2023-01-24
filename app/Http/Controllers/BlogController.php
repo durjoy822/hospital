@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
 {
@@ -37,7 +37,7 @@ class BlogController extends Controller
         $blog->picture = $this->savePhoto($request);
         $blog->posted_by = FacadesAuth::guard('admin')->user()->name;
         $blog->save();
-        Session::flash('success', 'successfully store done.'); 
+        Session::flash('success', 'successfully store done.');
         return redirect()->route('admin.blog');
     }
     public function savePhoto($request){
@@ -82,13 +82,13 @@ class BlogController extends Controller
         }
         $blog->posted_by = FacadesAuth::guard('admin')->user()->name;
         $blog->save();
-        Session::flash('success', 'successfully update done.'); 
+        Session::flash('success', 'successfully update done.');
         return redirect()->route('admin.blog');
     }
     public function distroy($id)
     {
         Blog::findOrFail($id)->delete();
-        Session::flash('success', 'Post deleted'); 
+        Session::flash('success', 'Post deleted');
         return redirect()->back();
     }
 }
