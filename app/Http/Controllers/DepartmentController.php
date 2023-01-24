@@ -121,7 +121,13 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        Department::destroy($id);
+        $this->dep=Department::find($id);
+        if($this->dep->image){
+            if(file_exists($this->dep->image)){
+                unlink($this->dep->image);
+            }
+        }
+        $this->dep->delete();
         if($id){
             Session::flash('success','successfully Deleted');
             return redirect(route('department.index'));

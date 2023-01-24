@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Models\Department;
 use App\Models\Blog;
+use App\Models\Carousel;
 
 class HomeController extends Controller
 {
+    public  function Home(){
+        return view('home.index',[
+            'carousels'=>Carousel::all(),
+        ]);
+    }
     public function appointment()
     {
         return view ('home.appointment');
