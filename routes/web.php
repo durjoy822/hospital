@@ -36,6 +36,7 @@ Route::get('/department/{slug}', [HomeController::class, 'singleDepartment'])->n
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+route::post('/contact-us',[HomeController::class,'contactUs'])->name('contact.us');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
@@ -48,6 +49,10 @@ Route::get('/medicine/show/{slug}', [MedicineController::class, 'show'])->name('
 Route::get('/shop', [MedicineController::class, 'home'])->name('product');
 Route::post('/register', [UserAuthController::class, 'store'])->name('user.register');
 Route::post('/login/check', [UserAuthController::class, 'login'])->name('user.login');
+Route::get('/password/forgot',[UserAuthController::class,'showForgotForm'])->name('forgot.password.form');
+Route::post('/password/forgot',[UserAuthController::class,'sendResetLink'])->name('forgot.password.link');
+Route::get('/password/reset/{token}',[UserAuthController::class,'showResetForm'])->name('user.reset.password.form');
+Route::post('/password/reset',[UserAuthController::class,'resetPassword'])->name('user.reset.password');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');

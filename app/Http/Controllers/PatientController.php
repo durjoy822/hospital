@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Patient;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class PatientController extends Controller
 {
@@ -36,27 +36,27 @@ class PatientController extends Controller
 
         );
 
-        $this->patient= new Patient();
-        $this->patient->patient_name=$request->patient_name;
-        $this->patient->age=$request->age;
-        $this->patient->phone=$request->phone;
-        $this->email->status=$request->email;
-        $this->patient->date=$request->date;
-        $this->patient->status=$request->status;
-        $this->patient->save();
-        if($this->patient->id){
-            Session::flash('success', 'successfully store done! Please add payment now!'); 
+        $patient= new Patient();
+        $patient->patient_name=$request->patient_name;
+        $patient->age=$request->age;
+        $patient->phone=$request->phone;
+        $patient->status=$request->email;
+        $patient->date=$request->date;
+        $patient->status=$request->status;
+        $patient->save();
+        if($patient->id){
+            Session::flash('success', 'successfully store done! Please add payment now!');
             return redirect(route('admin.patient'));
         }else{
-            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.'); 
+            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.');
             return redirect()->back();
         }
 
     }
     public function patientEdit($id){
-        $this->patient=Patient::find($id);
+        $patient=Patient::find($id);
         return view('admin.patient.edit',[
-            'patients'=> $this->patient,
+            'patients'=> $patient,
         ]);
     }
     public function patientUpdate(Request $request){
@@ -75,31 +75,31 @@ class PatientController extends Controller
         ]
 
         );
-        $this->patient=Patient::find($request->id);
-        $this->patient->patient_name=$request->patient_name;
-        $this->patient->age=$request->age;
-        $this->patient->phone=$request->phone;
-        $this->patient->email=$request->email;
-        $this->patient->date=$request->date;
-        $this->patient->status=$request->status;
-        $this->patient->save();
-        if($this->patient->id){
-            Session::flash('success', 'successfully updated done! Please add payment now!'); 
+        $patient=Patient::find($request->id);
+        $patient->patient_name=$request->patient_name;
+        $patient->age=$request->age;
+        $patient->phone=$request->phone;
+        $patient->email=$request->email;
+        $patient->date=$request->date;
+        $patient->status=$request->status;
+        $patient->save();
+        if($patient->id){
+            Session::flash('success', 'successfully updated done! Please add payment now!');
             return redirect(route('admin.patient'));
         }else{
-            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.'); 
+            Session::flash('warning', 'Holy guacamole! You should check in on some of those fields below.');
             return back();
         }
 
     }
     public function patientDelete(Request $request){
-        $this->patient=Patient::find($request->id);
-        $this->patient->delete();
-        if($this->patient->id){
-            Session::flash('success', 'successfully Deleted'); 
+        $patient=Patient::find($request->id);
+        $patient->delete();
+        if($patient->id){
+            Session::flash('success', 'successfully Deleted');
             return redirect(route('admin.patient'));
         }else{
-            Session::flash('warning', 'Deleted failed'); 
+            Session::flash('warning', 'Deleted failed');
             return back();
         }
     }

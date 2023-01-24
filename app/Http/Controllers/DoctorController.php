@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Department;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class DoctorController extends Controller
 {
@@ -70,23 +70,23 @@ class DoctorController extends Controller
 
         );
 
-        $this->doctor= new Doctor();
-        $this->doctor->name               =$request->name;
-        $this->doctor->dob                =$request->dob;
-        $this->doctor->specialization     =$request->specialization;
-        $this->doctor->experience         =$request->experience;
-        $this->doctor->age                =$request->age;
-        $this->doctor->phone              =$request->phone;
-        $this->doctor->email              =$request->email;
-        $this->doctor->gender             =$request->gender;
-        $this->doctor->details            =$request->details;
-        $this->doctor->address            =$request->address;
-        $this->doctor->working_days       =json_encode($request->working_days);
-        $this->doctor->fees               =$request->fees;
-        $this->doctor->availability       =$request->availability;
-        $this->doctor->photo              =$this->savePhoto($request);
-        $this->doctor->save();
-        if($this->doctor->id){
+        $doctor= new Doctor();
+        $doctor->name               =$request->name;
+        $doctor->dob                =$request->dob;
+        $doctor->specialization     =$request->specialization;
+        $doctor->experience         =$request->experience;
+        $doctor->age                =$request->age;
+        $doctor->phone              =$request->phone;
+        $doctor->email              =$request->email;
+        $doctor->gender             =$request->gender;
+        $doctor->details            =$request->details;
+        $doctor->address            =$request->address;
+        $doctor->working_days       =json_encode($request->working_days);
+        $doctor->fees               =$request->fees;
+        $doctor->availability       =$request->availability;
+        $doctor->photo              =$this->savePhoto($request);
+        $doctor->save();
+        if($doctor->id){
             Session::flash('success','successfully store done!');
             return redirect(route('doctor.index'));
         }else{
@@ -116,9 +116,9 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $this->doctor=Doctor::find($id);
+        $doctor=Doctor::find($id);
         return view('admin.doctor.doctorDetails',[
-            'doctor'=>$this->doctor,
+            'doctor'=>$doctor,
         ]);
     }
 
@@ -130,9 +130,9 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $this->doctor=Doctor::find($id);
+        $doctor=Doctor::find($id);
         return view('admin.doctor.edit',[
-            'doctor'=>$this->doctor,'speciallist' => Department::get(),
+            'doctor'=>$doctor,'speciallist' => Department::get(),
             ]);
     }
 
@@ -145,28 +145,28 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->doctor=Doctor::find($id);
-        $this->doctor->name               =$request->name;
-        $this->doctor->dob                =$request->dob;
-        $this->doctor->specialization     =$request->specialization;
-        $this->doctor->experience         =$request->experience;
-        $this->doctor->age                =$request->age;
-        $this->doctor->phone              =$request->phone;
-        $this->doctor->email              =$request->email;
-        $this->doctor->gender             =$request->gender;
-        $this->doctor->details            =$request->details;
-        $this->doctor->address            =$request->address;
-        $this->doctor->working_days       =json_encode($request->working_days);
-        $this->doctor->fees               =$request->fees;
-        $this->doctor->availability       =$request->availability;
+        $doctor=Doctor::find($id);
+        $doctor->name               =$request->name;
+        $doctor->dob                =$request->dob;
+        $doctor->specialization     =$request->specialization;
+        $doctor->experience         =$request->experience;
+        $doctor->age                =$request->age;
+        $doctor->phone              =$request->phone;
+        $doctor->email              =$request->email;
+        $doctor->gender             =$request->gender;
+        $doctor->details            =$request->details;
+        $doctor->address            =$request->address;
+        $doctor->working_days       =json_encode($request->working_days);
+        $doctor->fees               =$request->fees;
+        $doctor->availability       =$request->availability;
         if($request->file('photo')){
-            if($this->doctor->photo !=null ){
-                unlink($this->doctor->photo );
+            if($doctor->photo !=null ){
+                unlink($doctor->photo );
             }
-            $this->doctor->photo =    $this->savePhoto($request);
+            $doctor->photo =    $this->savePhoto($request);
         }
-        $this->doctor->save();
-        if($this->doctor->id){
+        $doctor->save();
+        if($doctor->id){
             Session::flash('success','Information store successfully');
             return redirect(route('doctor.index'));
         }else{
@@ -189,13 +189,13 @@ class DoctorController extends Controller
 
 //    status function
     public function status($id){
-        $this->doctor=Doctor::find($id);
-        if($this->doctor->availability==1){
-            $this->doctor->availability=0;
+        $doctor=Doctor::find($id);
+        if($doctor->availability==1){
+            $doctor->availability=0;
         }else{
-            $this->doctor->availability=1;
+            $doctor->availability=1;
         }
-        $this->doctor->save();
+        $doctor->save();
         return back();
     }
 }

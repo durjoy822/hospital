@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderProcessed;
-use App\Mail\Orders;
 use App\Models\Cart;
 use App\Models\Medicine;
 use App\Models\Order;
@@ -12,7 +11,6 @@ use App\Models\ShippingAddress;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller

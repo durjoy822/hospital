@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contract;
 use Illuminate\Http\Request;
 
 use App\Models\Department;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -15,16 +18,16 @@ class HomeController extends Controller
     }
     public function departments()
     {
-        $this->dep=Department::inRandomOrder()->take(6)->paginate(6);
+        $dep=Department::inRandomOrder()->take(6)->paginate(6);
         return view ('home.department',[
-            'dep'=>$this->dep,
+            'dep'=>$dep,
         ]);
     }
     public function singleDepartment($slug)
     {
-        $this->singleDep=Department::where('name',$slug)->first();
+        $singleDep=Department::where('name',$slug)->first();
         return view ('home.single-department',[
-            'singleDep'=>$this->singleDep,
+            'singleDep'=>$singleDep,
         ]);
     }
     public function blog()
@@ -39,6 +42,32 @@ class HomeController extends Controller
     public function contact()
     {
         return view('home.contact');
+    }
+    public function contactUs(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required',
+            'phone'    => 'required',
+            'email'    => 'required',
+            'message'  => 'required',
+        ],
+        [
+            'name.required'=>'please input your name!',
+            'phone.required'=>'phone is required!',
+            'message.required'=>'Message is required',
+            'email.required' => 'Email is required',
+        ]
+
+        );
+        $data = array();
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['email'] = $request->email;
+        $data['message'] = $request->message;
+        Mail::to('hospital@adeveloper.info')->send(new Contract($data));
+        Session::flash('success', 'Your message has been sent to our operator team, Our team will call you soon');
+        return redirect()->route('contact');
+
     }
     public function aboutUs()
     {

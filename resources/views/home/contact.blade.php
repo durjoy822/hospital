@@ -56,7 +56,7 @@
             <!-- Form box -->
             <div class="form-box">
                 <div class="contact-form">
-                    <form action="#" method="post" id="email-form">
+                    <form action="{{route('contact.us')}}" method="post" id="email-form">@csrf
                         <div class="row">
                             <div class="form-group col-lg-12">
                                 <div class="response"></div>
@@ -64,28 +64,39 @@
 
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="username" class="username" placeholder="Full Name *">
+                                    <input type="text" name="name" class="username" placeholder="Full Name *" value="{{ old('name') }}">
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" name="email" class="email" placeholder="Email Address *">
+                                    <input type="email" name="email" class="email" placeholder="Email Address *" value="{{ old('email') }}">
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="username" class="username" placeholder="Your Phone">
+                                    <input type="text" name="phone" class="username" placeholder="Your Phone" value="{{ old('phone') }}">
+                                    @error('phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <textarea name="contact_message" class="message" placeholder="Massage"></textarea>
+                                    <textarea class="message" name="message" placeholder="Massage">{{ old('message') }}</textarea>
+                                    @error('message')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 </div>
-
                             </div>
 
                             <div class="form-group col-lg-12 text-center pt-3">
-                                <button class="theme-btn btn-style-one" type="button" id="submit"
-                                    name="submit-form"><span class="btn-title">Send Message</span></button>
+                                <button class="theme-btn btn-style-one" type="submit" id="submit"
+                                    ><span class="btn-title">Send Message</span></button>
                             </div>
                         </div>
                     </form>
