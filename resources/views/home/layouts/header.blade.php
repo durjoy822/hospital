@@ -57,27 +57,10 @@
                                     <li><a href="{{ route('terms') }}">Terms and Condition</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <span>Doctors</span>
-                                <ul>
-                                    <li><a href="{{ route('doctor') }}">Doctors</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <span>Departments</span>
-                                <ul>
-                                    <li><a href="{{ route('departments') }}">Departments</a></li>
-                                </ul>
-                            </li>
-
+                            <li><a href="{{ route('doctor') }}">Doctors</a></li>
+                            <li><a href="{{ route('departments') }}">Departments</a></li>
                             <li><a href="{{ route('blog') }}">Blog</a></li>
-                            <li class="dropdown">
-                                <span>Shop</span>
-                                <ul>
-                                    <li><a href="{{ route('product') }}">Medicine</a></li>
-                                    <li><a href="{{ route('checkout') }}">Checkout</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route('product') }}">Medicine</a></li>
                             <li><a href="{{ route('contact') }}">Contact</a></li>
                             @if (Auth::check())
                                 <li><a href="{{ route('user.logout') }}">Logout</a></li>

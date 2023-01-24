@@ -109,7 +109,7 @@ class MedicineController extends Controller
     }
     public function home()
     {
-        $drugs = Medicine::latest()->paginate(12);
+        $drugs = Medicine::where('quantity', '>', 0)->latest()->paginate(12);
         return view('home.product',compact('drugs'));
     }
     public function show($id =null)

@@ -6,37 +6,25 @@
                 <div class="column col-lg-6 col-md-6 col-sm-12">
                     <!-- Login Form -->
                     <div class="login-form">
-                        <h2>Login</h2>
+                        <h2>Forgot Password</h2>
                         <!--Login Form-->
-                        <form method="post" action="{{route('user.login')}}">@csrf
+                        <form method="post" action="{{ route('forgot.password.link') }}">@csrf
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"  required>
+                                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                                    required>
                                 @if ($errors->has('email'))
                                     <span class="error text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
 
                             <div class="form-group">
-                                <label>Enter Your Password</label>
-                                <input type="password" name="password" placeholder="Password" required>
-                                @if ($errors->has('password'))
-                                    <span class="error text-danger">{{ $errors->first('password') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <input type="checkbox" name="remember_me" id="account-option-1">&nbsp; <label
-                                    for="account-option-1">Remember me</label>
-                            </div>
-
-                            <div class="form-group">
                                 <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span
-                                        class="btn-title">LOGIN</span></button>
+                                        class="btn-title">Send Reset Password Link</span></button>
                             </div>
 
                             <div class="form-group pass">
-                                <a href="{{route('forgot.password.form')}}" class="psw">Lost your password?</a>
+                                <a href="{{ route('login') }}" class="psw">Remember your password?</a>
                             </div>
                         </form>
                     </div>

@@ -32,17 +32,16 @@
 
                                         <div class="text">{{ $drug->details }}</div>
                                         <div class="other-options clearfix">
-                                            <form action="">
+                                            <form action="{{route('post.cart')}}" method="POST">@csrf
                                                 <div class="item-quantity">
-                                                    {{-- <input type="text" value="2" name="quantity"> --}}
                                                     <div class="row">
-                                                        <button class="col-4 btn btn-secondary btn-sm" onclick="decrement(event)">-</button>
-                                                        <input type="text" class="col-4" id="inputField" value="1">
-                                                        <button class="col-4 btn btn-secondary btn-sm " onclick="increment(event)">+</button>
+                                                        <button class="col-3 btn btn-secondary btn-sm" onclick="decrement(event)">-</button>
+                                                        <input type="text" class="col-6 text-center" id="inputField" value="1" name="quantity">
+                                                        <button class="col-3 btn btn-secondary btn-sm " onclick="increment(event)">+</button>
                                                     </div>
                                                     <input type="hidden" name="product_id" value="{{ $drug->id }}">
                                                 </div>
-                                                <button type="button" class="theme-btn btn-style-one add-to-cart"><span
+                                                <button type="submit" class="theme-btn btn-style-one add-to-cart"><span
                                                         class="btn-title">Add To Cart</span></button>
                                             </form>
                                         </div>

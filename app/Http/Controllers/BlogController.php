@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
 {

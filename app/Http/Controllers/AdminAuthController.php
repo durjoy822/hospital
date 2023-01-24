@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Hash;
 use Auth;
 
@@ -31,16 +31,16 @@ class AdminAuthController extends Controller
         $admin->password=Hash::make($request->password);
         $admin->save();
         Auth::guard('admin')->login($admin);
-        Session::flash('success', 'New admin registered successfully!'); 
+        Session::flash('success', 'New admin registered successfully!');
         return redirect()->route('admin.dashboard');
     }
     public function authCheck(Request $request)
     {
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->has('remember'))) {
-            Session::flash('success', 'Login Success!'); 
+            Session::flash('success', 'Login Success!');
             return redirect()->route('admin.dashboard');
         }
-        Session::flash('warning', 'OPS! You provided wrong information'); 
+        Session::flash('warning', 'OPS! You provided wrong information');
         return redirect()->back();
     }
     public function logout()
