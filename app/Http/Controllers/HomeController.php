@@ -14,10 +14,9 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    public  function Home(){
-        return view('home.index',[
-            'carousels'=>Carousel::all(),
-        ]);
+    public  function home(){
+        $carousels = Carousel::get();
+        return view('home.index',compact('carousels'));
     }
     public function appointment()
     {

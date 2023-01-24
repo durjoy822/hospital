@@ -27,8 +27,7 @@ use App\Http\Controllers\ServiceController;
 
 
 // Frontend route starts from here :
-//Route::get('/', function () {return view('home.index');})->name('home');
-Route::get('/',[HomeController::class,'Home'])->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/appointment',[HomeController::class,'appointment'])->name('appointment');
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
@@ -68,9 +67,6 @@ Route::post('/service_store',[ServiceController::class,'serviceStore'])->name('s
 Route::get('/service_edit/{id}',[ServiceController::class,'serviceEdit'])->name('service.edit');
 Route::post('/service_update',[ServiceController::class,'serviceUpdate'])->name('service.update');
 Route::post('/service_delete',[ServiceController::class,'serviceDelete'])->name('service.delete');
-Route::get('/', function () {
-    return view('home.index');
-})->name('home');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 Route::get('/doctor', [DoctorHomeController::class, 'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}', [DoctorHomeController::class, 'doctorDetails'])->name('doctor.details');
