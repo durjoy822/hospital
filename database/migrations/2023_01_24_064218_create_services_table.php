@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('details');
             $table->string('icon');
+            $table->integer('section')->default(0);
             $table->timestamps();
         });
     }
