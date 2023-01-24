@@ -87,7 +87,13 @@ class BlogController extends Controller
     }
     public function distroy($id)
     {
-        Blog::findOrFail($id)->delete();
+        $blog=Blog::find($id);
+        if($blog->picture){
+            if(file_exists($blog->picture)){
+                unlink($blog->picture);
+            }
+        }
+        $blog->delete();
         Session::flash('success', 'Post deleted');
         return redirect()->back();
     }

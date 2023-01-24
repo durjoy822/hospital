@@ -93,6 +93,12 @@
                     <a href="{{route('admin.blog')}}">Blog </a>
                 </li>
                 <li>
+                    <a href="{{route('carousel.index')}}">Carousel </a>
+                </li>
+                <li>
+                    <a href="{{route('service.index')}}">Services </a>
+                </li>
+                <li>
                     <a href="login.html">Login </a>
                 </li>
                 <li>

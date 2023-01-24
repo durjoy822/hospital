@@ -182,7 +182,13 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        Doctor::destroy($id);
+        $this->doc=Doctor::find($id);
+        if($this->doc->photo){
+           if(file_exists($this->doc->photo)){
+               unlink($this->doc->photo);
+           }
+        }
+        $this->doc->delete();
         return redirect()->back();
     }
 
