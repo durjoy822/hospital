@@ -63,7 +63,14 @@
                             <li><a href="{{ route('product') }}">Medicine</a></li>
                             <li><a href="{{ route('contact') }}">Contact</a></li>
                             @if (Auth::check())
-                                <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                                <li class="dropdown">
+                                    <span>Settings</span>
+                                    <ul>
+                                        <li><a href="{{ route('user.profile', str_replace(" ", "-", auth::user()->name)) }}">Profile</a></li>
+                                        <li><a href="{{ route('user.orders') }}">Order</a></li>
+                                        <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
                             @else
                                 <li><a href="{{ route('login') }}">Login</a></li>
                             @endif

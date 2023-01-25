@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,4 +102,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart/delete/{id}', [CartController::class, 'cartDelete'])->name('cart.delete');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
     Route::post('/place-order', [OrderController::class, 'saveShipping'])->name('place.order');
+    Route::get('/profile/{slug}',[UserDashboardController::class,'dashboard'])->name('user.profile');
+    Route::get('/orders',[OrderController::class,'userOrder'])->name('user.orders');
+    Route::get('/orders/show/{id}',[OrderController::class,'show'])->name('order.show');
+    Route::post('/update/user',[UserAuthController::class,'updateUserInfo'])->name('update.user');
+    Route::post('/review',[OrderController::class,'review'])->name('review');
 });

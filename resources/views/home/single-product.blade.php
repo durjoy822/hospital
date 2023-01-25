@@ -1,6 +1,7 @@
 @extends('home.layouts.master')
 @section('content')
     <!-- Sidebar Page Container -->
+    @php $reviews = \App\Models\Review::where('product_id',$drug->id)->where('status',1)->get(); @endphp
     <div class="sidebar-page-container pt-0">
         <div class="auto-container">
             <div class="row clearfix">
@@ -26,18 +27,21 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                             </div>
-                                            <a class="reviews" href="#">( 3 Customer Reviews )</a>
+                                            <a class="reviews" href="#">( {{count($reviews)}} Customer Reviews )</a>
                                             <div class="item-price">{{ $drug->price }} TK</div>
                                         </div>
 
                                         <div class="text">{{ $drug->details }}</div>
                                         <div class="other-options clearfix">
-                                            <form action="{{route('post.cart')}}" method="POST">@csrf
+                                            <form action="{{ route('post.cart') }}" method="POST">@csrf
                                                 <div class="item-quantity">
                                                     <div class="row">
-                                                        <button class="col-3 btn btn-secondary btn-sm" onclick="decrement(event)">-</button>
-                                                        <input type="text" class="col-6 text-center" id="inputField" value="1" name="quantity">
-                                                        <button class="col-3 btn btn-secondary btn-sm " onclick="increment(event)">+</button>
+                                                        <button class="col-3 btn btn-secondary btn-sm"
+                                                            onclick="decrement(event)">-</button>
+                                                        <input type="text" class="col-6 text-center" id="inputField"
+                                                            value="1" name="quantity">
+                                                        <button class="col-3 btn btn-secondary btn-sm "
+                                                            onclick="increment(event)">+</button>
                                                     </div>
                                                     <input type="hidden" name="product_id" value="{{ $drug->id }}">
                                                 </div>
@@ -54,11 +58,10 @@
                             <div class="product-info-tabs">
                                 <!--Product Tabs-->
                                 <div class="prod-tabs tabs-box">
-
                                     <!--Tab Btns-->
                                     <ul class="tab-btns tab-buttons clearfix">
                                         <li data-tab="#prod-details" class="tab-btn">Descripton</li>
-                                        <li data-tab="#prod-reviews" class="tab-btn active-btn">Review (3)</li>
+                                        <li data-tab="#prod-reviews" class="tab-btn active-btn">Review ({{ count($reviews) }})</li>
                                     </ul>
 
                                     <!--Tabs Container-->
@@ -68,152 +71,69 @@
                                         <div class="tab" id="prod-details">
                                             <div class="content">
                                                 <h3>Product Descripton</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                    velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                                    deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                                    ex ea commodo consequat. sunt in culpa qui officia deserunt mollit</p>
+                                                <p>{{$drug->details}}</p>
                                             </div>
                                         </div>
 
                                         <!--Tab-->
                                         <div class="tab active-tab" id="prod-reviews">
-                                            <h2 class="title">3 Reviews For Patient Ninja</h2>
+                                            <h2 class="title">{{ count($reviews) }} Reviews For {{ $drug->name }}</h2>
                                             <!--Reviews Container-->
                                             <div class="comments-area style-two">
                                                 <!--Comment Box-->
-                                                <div class="comment-box">
-                                                    <div class="comment">
-                                                        <div class="author-thumb"><img
-                                                                src="{{ asset('assets/home/images/resource/avatar-1.jpg') }}"
-                                                                alt=""></div>
-                                                        <div class="comment-inner">
-                                                            <div class="comment-info">
-                                                                <div class="name">Steven Rich</div>
-                                                                <div class="date">May 29, 2020</div>
+                                                @foreach ($reviews as $review)
+                                                    <div class="comment-box">
+                                                        <div class="comment">
+                                                            @php $user= \App\Models\User::find($review->user_id);  @endphp
+                                                            @php $userInfo= \App\Models\UserInfo::where('user_id',$review->user_id)->first();  @endphp
+                                                            <div class="author-thumb"><img
+                                                                    src="{{ asset($userInfo->photo) }}"
+                                                                    alt=""></div>
+                                                            <div class="comment-inner">
+                                                                <div class="comment-info">
+                                                                    <div class="name">{{$user->name}}</div>
+                                                                    <div class="date">{{ $review->created_at }}</div>
+                                                                </div>
+                                                                @if ($review->rating == 1)
+                                                                    <div class="rating">
+                                                                        <span class="fa fa-star light"></span>
+                                                                    </div>
+                                                                @endif
+                                                                @if ($review->rating == 2)
+                                                                    <div class="rating">
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star light"></span>
+                                                                    </div>
+                                                                @endif
+                                                                @if ($review->rating == 3)
+                                                                    <div class="rating">
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star light"></span>
+                                                                    </div>
+                                                                @endif
+                                                                @if ($review->rating == 4)
+                                                                    <div class="rating">
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star light"></span>
+                                                                    </div>
+                                                                @endif
+                                                                @if ($review->rating == 5)
+                                                                    <div class="rating">
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star light"></span>
+                                                                    </div>
+                                                                @endif
+                                                                <div class="text">{{$review->review}}</div>
                                                             </div>
-                                                            <div class="rating">
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star light"></span>
-                                                            </div>
-                                                            <div class="text">Lorem Ipsum is simply dummy text of the
-                                                                printing and typesetting industry. Lorem Ipsum has been the
-                                                                industry.</div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <!--Comment Box-->
-                                                <div class="comment-box reply-comment">
-                                                    <div class="comment">
-                                                        <div class="author-thumb"><img
-                                                                src="{{ asset('assets/home/images/resource/avatar-2.jpg') }}"
-                                                                alt=""></div>
-                                                        <div class="comment-inner">
-                                                            <div class="comment-info">
-                                                                <div class="name">Cobus Besten</div>
-                                                                <div class="date">June 01, 2020</div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                            </div>
-                                                            <div class="text">Lorem Ipsum is simply dummy text of the
-                                                                printing </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Comment Box-->
-                                                <div class="comment-box">
-                                                    <div class="comment">
-                                                        <div class="author-thumb"><img
-                                                                src="{{ asset('assets/home/images/resource/avatar-3.jpg') }}"
-                                                                alt=""></div>
-                                                        <div class="comment-inner">
-                                                            <div class="comment-info">
-                                                                <div class="name">Magnus Hichki</div>
-                                                                <div class="date">June 02, 2020</div>
-                                                            </div>
-                                                            <div class="rating">
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                            </div>
-                                                            <div class="text">Contrary to popular belief, Lorem Ipsum is
-                                                                not simply random text. It has roots in a piece of classical
-                                                                Latin literature from 45 BC, making it over 2000 years old.
-                                                                Richard McClintock, </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Comment Form -->
-                                            <div class="shop-comment-form">
-                                                <h2>Add a Review</h2>
-                                                <div class="mail-text"><span class="theme_color">Your email address will
-                                                        not be published.</span> Required fields are marked*</div>
-                                                <div class="rating-box">
-                                                    <div class="text"> Your Rating:</div>
-                                                    <div class="rating">
-                                                        <a href="#"><span class="fa fa-star"></span></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <a href="#"><span class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span></a>
-                                                        <a href="#"></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <a href="#"><span class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <a href="#"><span class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <a href="#"><span class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span><span
-                                                                class="fa fa-star"></span></a>
-                                                    </div>
-                                                </div>
-                                                <form method="post" action="contact.html">
-                                                    <div class="form-group">
-                                                        <textarea name="message" placeholder="Your Review*"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" name="username" placeholder="Name"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" name="number" placeholder="Email"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button class="theme-btn btn-style-one" type="submit"
-                                                            name="submit-form"><span
-                                                                class="btn-title">SUBMIT</span></button>
-                                                    </div>
-                                                </form>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>

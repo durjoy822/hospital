@@ -12,7 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MedicineController;
-
+use App\Http\Controllers\OrderController;
 
 // Admin routes starts from here:
 Route::group(['prefix'=>'admin'],function(){
@@ -60,5 +60,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/medicine/edit/{id}',[MedicineController::class,'edit'])->name('medicine.edit');
         Route::post('/medicine/update/{id}',[MedicineController::class,'update'])->name('medicine.update');
         Route::get('/medicine/delete/{id}',[MedicineController::class,'delete'])->name('medicine.delete');
+        Route::get('/orders',[OrderController::class,'orders'])->name('orders');
+        Route::post('/orders/update/{id}',[OrderController::class,'update'])->name('order.update');
+        Route::get('/reviews',[OrderController::class,'index'])->name('review.index');
+        Route::post('/review/update/{id}',[OrderController::class,'reviewUpdate'])->name('review.update');
     });
 });

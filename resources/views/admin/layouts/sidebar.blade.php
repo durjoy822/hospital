@@ -85,6 +85,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('orders') }}">
+                <span class="ti-wallet"></span> Orders
+            </a>
+        </li>
+        <li>
             <a href="#nav-pages" data-toggle="collapse" aria-expanded="false">
                 <span class="ti-file"></span> Other Pages
             </a>
@@ -97,6 +102,9 @@
                 </li>
                 <li>
                     <a href="{{route('service.index')}}">Services </a>
+                </li>
+                <li>
+                    <a href="{{route('review.index')}}">Review </a>
                 </li>
                 <li>
                     <a href="login.html">Login </a>

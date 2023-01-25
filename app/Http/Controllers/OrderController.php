@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Medicine;
 use App\Models\Order;
 use App\Models\OrderInfo;
+use App\Models\Review;
 use App\Models\ShippingAddress;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -108,5 +109,69 @@ class OrderController extends Controller
         event(new OrderProcessed($data));
         Session::flash('success', 'Order placed successfully. Soon you will get a copy of the order invoice in your mail');
         return redirect()->route('home');
+    }
+    public function orders()
+    {
+        $orders = Order::get();
+        return view('admin.order.index', compact('orders'));
+    }
+    public function userOrder()
+    {
+        $orders = Order::where('user_id', Auth::user()->id)->get();
+        return view('home.orders', compact('orders'));
+    }
+    public function show($id = null)
+    {
+        $order = Order::findOrFail($id);
+        $infos = OrderInfo::where('order_id', $order->id)->get();
+        $ship = ShippingAddress::findorFail($order->shipping_id);
+        return view('home.orderInfo', compact('order', 'infos', 'ship'));
+    }
+    public function update(Request $request, $id = null)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+        Session::flash('success', 'Order Status updated Successfully');
+        return redirect()->route('orders');
+    }
+    public function review(Request $request)
+    {
+        $count =  Review::where('order_id', $request->order_id)->where('product_id', $request->product_id)->get();
+        if (count($count) > 0) {
+            $review =  Review::where('order_id', $request->order_id)->where('product_id', $request->product_id)->first();
+            $review->order_id = $request->order_id;
+            $review->product_id = $request->product_id;
+            $review->user_id = Auth::user()->id;
+            $review->review = $request->review;
+            $review->rating = $request->rating;
+            $review->status = 0;
+            $review->save();
+            Session::flash('success', 'Review update Successfully');
+            return redirect()->route('order.show', $request->order_id);
+        } else {
+            $review = new Review();
+            $review->order_id = $request->order_id;
+            $review->product_id = $request->product_id;
+            $review->user_id = Auth::user()->id;
+            $review->review = $request->review;
+            $review->rating = $request->rating;
+            $review->save();
+            Session::flash('success', 'Review store Successfully');
+            return redirect()->route('order.show', $request->order_id);
+        }
+    }
+    public function index()
+    {
+        $reviews = Review::get();
+        return view ('admin.review.index',compact('reviews'));
+    }
+    public function reviewUpdate(Request $request, $id=null)
+    {
+        $review = Review::findOrFail($id);
+        $review->status = $request->status;
+        $review->save();
+        Session::flash('success', 'Review status updated');
+        return redirect()->route('review.index');
     }
 }

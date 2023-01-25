@@ -25,12 +25,12 @@
                 </div>
             @endforeach
             <!-- Slide Item -->
-            {{--        <div class="slide-item" style="background-image: url(assets/home/images/main-slider/2.jpg);"> --}}
+                   {{-- <div class="slide-item" style="background-image: url(assets/home/images/main-slider/2.jpg);"> --}}
             {{--            <div class="auto-container"> --}}
             {{--                <div class="content-outer"> --}}
             {{--                    <div class="content-box"> --}}
             {{--                        <span class="title">Welcome to our Medical Care Center</span> --}}
-            {{--                        <h2>We take care our <br>patients health</h2> --}}
+                                   {{-- <h2>We take care our <br>patients health</h2> --}}
             {{--                        <div class="text">I realized that becoming a doctor, I can only help a small community. <br>But --}}
             {{--                            by becoming a doctor, I can help my whole country. </div> --}}
             {{--                        <div class="btn-box"> --}}
