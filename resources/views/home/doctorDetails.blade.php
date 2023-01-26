@@ -31,19 +31,19 @@
                                 @php $d=json_decode($doctor->working_days); @endphp
                                 <p>
                                     @foreach ($d as $day)
-                                        @if ($day == 1)
+                                        @if ($day == 5)
                                             Saturday,
-                                        @elseif($day == 2)
-                                            Sunday,
-                                        @elseif($day == 3)
-                                            Monday,
-                                        @elseif($day == 4)
-                                            Tuesday,
-                                        @elseif($day == 5)
-                                            Wednesday,
                                         @elseif($day == 6)
+                                            Sunday,
+                                        @elseif($day == 0)
+                                            Monday,
+                                        @elseif($day == 1)
+                                            Tuesday,
+                                        @elseif($day == 2)
+                                            Wednesday,
+                                        @elseif($day == 3)
                                             Thrusday,
-                                        @elseif($day == 7)
+                                        @elseif($day == 4)
                                             Friday.
                                         @endif
                                     @endforeach
@@ -157,23 +157,31 @@
         <div class="auto-container">
             <div class="row">
                 <!-- Team Block -->
-                @foreach($doctors as $list)
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{asset($list->photo)}}" alt="{{$list->name}}" style="height:480px"></figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="{{route('doctor.details',$list->id)}}">{{$list->name}}</a></h4>
-                            @php $department = DB::table('departments')->find($list->specialization); @endphp
-                            <span class="designation">@if(isset($department)){{$department->name}} @else Specialization not found @endif</span>
+                @foreach ($doctors as $list)
+                    <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
+                        <div class="inner-box">
+                            <figure class="image"><img src="{{ asset($list->photo) }}" alt="{{ $list->name }}"
+                                    style="height:480px"></figure>
+                            <ul class="social-links">
+                                <li><a href="#"><span class="fab fa-facebook"></span></a></li>
+                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
+                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
+                            </ul>
+                            <div class="info-box">
+                                <h4 class="name"><a
+                                        href="{{ route('doctor.details', $list->id) }}">{{ $list->name }}</a></h4>
+                                @php $department = DB::table('departments')->find($list->specialization); @endphp
+                                <span class="designation">
+                                    @if (isset($department))
+                                        {{ $department->name }}
+                                    @else
+                                        Specialization not found
+                                    @endif
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

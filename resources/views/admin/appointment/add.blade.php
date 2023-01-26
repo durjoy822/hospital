@@ -60,7 +60,7 @@
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('dob')
+                                @error('department')
                                     <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -125,7 +125,7 @@
                                     <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
- 
+
                             <div class="form-check col-md-12 mb-2">
                                 <div class="text-left">
                                     <div class="custom-control custom-checkbox">
@@ -145,5 +145,5 @@
         </div>
     </div>
 
-    
+
 @endsection

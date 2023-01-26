@@ -88,19 +88,19 @@
                                         @php $d=json_decode($doctor->working_days); @endphp
                                         <td>
                                             @foreach ($d as $day)
-                                                @if ($day == 1)
+                                                @if ($day == 5)
                                                     Saturday
-                                                @elseif($day == 2)
-                                                    Sunday
-                                                @elseif($day == 3)
-                                                    Monday
-                                                @elseif($day == 4)
-                                                    Tuesday
-                                                @elseif($day == 5)
-                                                    Wednesday
                                                 @elseif($day == 6)
+                                                    Sunday
+                                                @elseif($day == 0)
+                                                    Monday
+                                                @elseif($day == 1)
+                                                    Tuesday
+                                                @elseif($day == 2)
+                                                    Wednesday
+                                                @elseif($day == 3)
                                                     Thrusday
-                                                @elseif($day == 7)
+                                                @elseif($day == 4)
                                                     Friday
                                                 @endif
                                             @endforeach

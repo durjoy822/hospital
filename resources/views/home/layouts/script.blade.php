@@ -60,3 +60,4 @@
         $('select[name="is_default"]').val(is_default);
     });
 </script>
+

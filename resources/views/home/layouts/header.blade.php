@@ -66,7 +66,9 @@
                                 <li class="dropdown">
                                     <span>Settings</span>
                                     <ul>
-                                        <li><a href="{{ route('user.profile', str_replace(" ", "-", auth::user()->name)) }}">Profile</a></li>
+                                        <li><a
+                                                href="{{ route('user.profile', str_replace(' ', '-', auth::user()->name)) }}">Profile</a>
+                                        </li>
                                         <li><a href="{{ route('user.orders') }}">Order</a></li>
                                         <li><a href="{{ route('user.logout') }}">Logout</a></li>
                                     </ul>
@@ -80,8 +82,12 @@
 
                     <div class="outer-box">
                         <button class="search-btn"><span class="fa fa-search"></span></button>
-                        <a href="{{ route('appointment') }}" id="appointment-btn" class="theme-btn btn-style-one"><span
-                                class="btn-title">Appointment</span></a>
+                        @if (Auth::check())
+                            <button type="button" data-toggle="modal" data-target="#appointmentModal"
+                                class="theme-btn btn-style-one"><span class="btn-title">Appointment</span></button>
+                        @else
+                        <a href="{{route('appointment')}}" class="theme-btn btn-style-one">Appointment</a>
+                        @endif
                     </div>
                 </div>
             </div>

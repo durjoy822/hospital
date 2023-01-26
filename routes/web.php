@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
 
 /*
@@ -29,7 +30,6 @@ use App\Http\Controllers\UserDashboardController;
 
 // Frontend route starts from here :
 Route::get('/',[HomeController::class,'home'])->name('home');
-Route::get('/appointment',[HomeController::class,'appointment'])->name('appointment');
 Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
@@ -96,6 +96,7 @@ Route::post('/password/reset',[UserAuthController::class,'resetPassword'])->name
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
+    Route::get('/appointment',[HomeController::class,'appointment'])->name('appointment');
     Route::get('/bag/{id}', [CartController::class, 'bag'])->name('bag');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::post('/post/cart/', [CartController::class, 'postCart'])->name('post.cart');
@@ -107,4 +108,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/show/{id}',[OrderController::class,'show'])->name('order.show');
     Route::post('/update/user',[UserAuthController::class,'updateUserInfo'])->name('update.user');
     Route::post('/review',[OrderController::class,'review'])->name('review');
+    Route::post('user/appointment',[UserAppointmentController::class,'userAppointment'])->name('user.appointment');
 });
