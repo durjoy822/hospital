@@ -28,8 +28,9 @@
                     </div>
                     <div class="widget-right">
                         <h4 class="wiget-title">Patients</h4>
-                        <span class="numeric color-red">348</span>
-                        <p class="inc-dec mb-0"><span class="ti-angle-up"></span> +20% Increased</p>
+                        @php $patientCount = \App\Models\Patient::count(); @endphp
+                        <span class="numeric color-red">{{ $patientCount }}</span>
+                        {{-- <p class="inc-dec mb-0"><span class="ti-angle-up"></span> +20% Increased</p> --}}
                     </div>
                 </div>
             </div>
@@ -42,8 +43,9 @@
                     </div>
                     <div class="widget-right">
                         <h4 class="wiget-title">Appointments</h4>
-                        <span class="numeric color-green">1585</span>
-                        <p class="inc-dec mb-0"><span class="ti-angle-down"></span> -15% Decreased</p>
+                        @php $appointment = \App\Models\Appointment::get(); @endphp
+                        <span class="numeric color-green">{{ count($appointment) }}</span>
+                        {{-- <p class="inc-dec mb-0"><span class="ti-angle-down"></span> -15% Decreased</p> --}}
                     </div>
                 </div>
             </div>
@@ -56,8 +58,9 @@
                     </div>
                     <div class="widget-right">
                         <h4 class="wiget-title">Total Revenue</h4>
-                        <span class="numeric color-yellow">$7300</span>
-                        <p class="inc-dec mb-0"><span class="ti-angle-up"></span> +10% Increased</p>
+                        @php $payment = \App\Models\Payment::sum('paid'); @endphp
+                        <span class="numeric color-yellow">{{ $payment }}</span>
+                        {{-- <p class="inc-dec mb-0"><span class="ti-angle-up"></span> +10% Increased</p> --}}
                     </div>
                 </div>
             </div>
@@ -101,66 +104,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Rajesh</td>
-                                    <td>Manoj Kumar</td>
-                                    <td>Dental</td>
-                                    <td>12-10-2018</td>
-                                    <td>12:10PM</td>
-                                    <td>
-                                        <span class="badge badge-success">Completed</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Riya</td>
-                                    <td>Daniel </td>
-                                    <td>Ortho</td>
-                                    <td>12-10-2018</td>
-                                    <td>1:10PM</td>
-                                    <td>
-                                        <span class="badge badge-warning">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Siri</td>
-                                    <td>Daniel </td>
-                                    <td>Ortho</td>
-                                    <td>12-10-2018</td>
-                                    <td>1:30PM</td>
-                                    <td>
-                                        <span class="badge badge-danger">Cancelled</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rajesh</td>
-                                    <td>Manoj Kumar</td>
-                                    <td>Dental</td>
-                                    <td>12-10-2018</td>
-                                    <td>12:10PM</td>
-                                    <td>
-                                        <span class="badge badge-success">Completed</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Riya</td>
-                                    <td>Daniel </td>
-                                    <td>Ortho</td>
-                                    <td>12-10-2018</td>
-                                    <td>1:10PM</td>
-                                    <td>
-                                        <span class="badge badge-warning">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Siri</td>
-                                    <td>Daniel </td>
-                                    <td>Ortho</td>
-                                    <td>12-10-2018</td>
-                                    <td>1:30PM</td>
-                                    <td>
-                                        <span class="badge badge-danger">Cancelled</span>
-                                    </td>
-                                </tr>
+                                @foreach ($appointments as $appointment)
+                                    <tr>
+                                        @php $patient = \App\Models\Patient::find($appointment->patientId) @endphp
+                                        <td>{{ $patient->patient_name }}</td>
+                                        @php $doctor = \App\Models\Doctor::find($appointment->doctor) @endphp
+                                        <td>{{ $doctor->name }}</td>
+                                        @php $department = \App\Models\Department::find($doctor->specialization) @endphp
+                                        <td>{{ $department->name }}</td>
+                                        <td>{{ $appointment->date }}</td>
+                                        <td>@if ($appointment->time == 1)
+                                            10AM-11AM
+                                            @elseif ($appointment->time == 1)11AM - 12pm
+                                            @elseif ($appointment->time == 2)12PM - 01PM
+                                            @elseif ($appointment->time == 3)01PM - 02PM
+                                            @elseif ($appointment->time == 4)02PM - 03PM
+                                            @elseif ($appointment->time == 5)03PM - 04PM
+                                            @elseif ($appointment->time == 6)04PM - 05PM
+                                            @elseif ($appointment->time == 7)06PM - 07PM
+                                            @elseif ($appointment->time == 8)07PM - 08PM
+                                            @elseif ($appointment->time == 9)08PM - 09PM
+                                        @endif</td>
+                                        <td>
+                                            @if ($appointment->status == 'Active')
+                                                <span class="badge badge-info">{{ $appointment->status }}</span>
+                                            @elseif ($appointment->status == 'Visited')
+                                                <span class="badge badge-success">{{ $appointment->status }}</span>
+                                            @else
+                                                <span class="badge badge-danger">{{ $appointment->status }}</span>
+                                            @endif
+
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -192,34 +168,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Rajesh</td>
-                                    <td>Dental</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Riya</td>
-                                    <td>Ortho</td>
-                                    <td>
-                                        <span class="badge badge-warning">On Leave</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Siri</td>
-                                    <td>Skin</td>
-                                    <td>
-                                        <span class="badge badge-danger">Not Available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rajesh</td>
-                                    <td>Dental</td>
-                                    <td>
-                                        <span class="badge badge-success">Available</span>
-                                    </td>
-                                </tr>
+                                @foreach ($doctors as $doctor)
+                                    <tr>
+                                        <td>{{ $doctor->name }}</td>
+                                        @php $department = \App\Models\Department::find($doctor->specialization) @endphp
+                                        <td>{{ $department->name }}</td>
+                                        <td>
+                                            @if ($doctor->availability == 0)
+                                                <span class="badge badge-danger">Not Available</span>
+                                            @else
+                                                <span class="badge badge-success">Available</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -229,4 +191,5 @@
             <!-- /Widget Item -->
         </div>
     </div>
+    @include('admin.layouts.dashboardScript')
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
-use Session;
+use Illuminate\Support\Facades\Session ;
 
 class DepartmentController extends Controller
 {
@@ -15,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::latest()->all();
+        $departments = Department::latest()->get();
         return view('admin.department.index',compact('departments'));
     }
 
@@ -121,13 +121,13 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $this->dep=Department::find($id);
-        if($this->dep->image){
-            if(file_exists($this->dep->image)){
-                unlink($this->dep->image);
+        $dep=Department::find($id);
+        if($dep->image){
+            if(file_exists($dep->image)){
+                unlink($dep->image);
             }
         }
-        $this->dep->delete();
+        $dep->delete();
         if($id){
             Session::flash('success','successfully Deleted');
             return redirect(route('department.index'));

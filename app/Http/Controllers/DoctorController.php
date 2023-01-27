@@ -17,7 +17,7 @@ class DoctorController extends Controller
     public function index()
     {
         return view('admin.doctor.index',[
-            'doctors'=>Doctor::latest()->all(),
+            'doctors'=>Doctor::latest()->get(),
         ]);
     }
 
