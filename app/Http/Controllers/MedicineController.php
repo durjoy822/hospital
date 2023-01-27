@@ -11,7 +11,7 @@ class MedicineController extends Controller
 {
     public function index()
     {
-        $medicine = Medicine::get();
+        $medicine = Medicine::latest()->get();
         return view('admin.medicine.index', compact('medicine'));
     }
     public function create()

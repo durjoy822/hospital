@@ -12,32 +12,48 @@
             </div>
             <div class="modal-body">
                 <div class="contact-form-two">
-                    <form method="post" action="{{route('user.appointment')}}" id="contact-form">@csrf
+                    <form method="post" action="{{ route('user.appointment') }}" id="contact-form">@csrf
                         <div class="row clearfix">
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" placeholder="Your Name" required="">
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="phone">Phone</label>
                                 <input type="text" name="phone" placeholder="Your Phone" required="">
+                                @error('phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" placeholder="Email Address" required="">
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="date">Date</label>
-                                <input type="date" name="date" placeholder="Select Date" required="">
+                                <input type="date" name="date" placeholder="Select Date" required=""
+                                    id="date">
+                                @error('date')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="department">Department</label>
-                                <select name="departments" id="departments" required>
+                                <select name="department" id="department" required>
                                     <option disabled selected>Select a department</option>
                                     @foreach ($department as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('department')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="doctorName">Doctor Name</label>
@@ -62,10 +78,16 @@
                                     <option value="9">8PM-9PM</option>
                                 </select>
                             </div>
+                            @error('time')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                 <label for="message">Message</label>
                                 <textarea name="message" placeholder="Your Message"></textarea>
                             </div>
+                            @error('message')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                 <button type="submit" class="theme-btn btn-style-one">Make an Appointment</button>
                             </div>

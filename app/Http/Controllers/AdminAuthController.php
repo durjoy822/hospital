@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Session;
-use Hash;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class AdminAuthController extends Controller
 {
@@ -28,7 +28,7 @@ class AdminAuthController extends Controller
         $admin=new Admin();
         $admin->name=$request->name;
         $admin->email=$request->email;
-        $admin->password=Hash::make($request->password);
+        $admin->password=FacadesHash::make($request->password);
         $admin->save();
         Auth::guard('admin')->login($admin);
         Session::flash('success', 'New admin registered successfully!');

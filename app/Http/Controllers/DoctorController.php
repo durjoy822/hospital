@@ -17,7 +17,7 @@ class DoctorController extends Controller
     public function index()
     {
         return view('admin.doctor.index',[
-            'doctors'=>Doctor::all(),
+            'doctors'=>Doctor::latest()->all(),
         ]);
     }
 
@@ -40,7 +40,6 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             'name'            => 'required',
             'dob'             => 'required',
@@ -52,8 +51,6 @@ class DoctorController extends Controller
             'gender'          => 'required',
             'details'         => 'required',
             'address'         => 'required',
-            'details'         => 'required',
-//            'working_days'    => 'required',
             'fees'            => 'required',
             'availability'    => 'required',
             'photo'           => 'required',
@@ -66,6 +63,15 @@ class DoctorController extends Controller
                 'phone.required'=>'phone is required!',
                 'phone.min'=>'input minimum 11 number!',
                 'dob.required'=>'Date of birth field required!',
+                'specialization.required'=>'Specialization is required!',
+                'experience.required'=>'Experience is required!',
+                'email.required'=>'Email is required!',
+                'gender.required'=>'Gender is required!',
+                'details.required'=>'Details is required!',
+                'address.required'=>'Address is required!',
+                'fees.required'=>'Fees is required!',
+                'availability.required'=>'Availability is required!',
+                'photo.required'=>'Photo is required!',
             ]
 
         );
@@ -145,6 +151,38 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'            => 'required',
+            'dob'             => 'required',
+            'specialization'  => 'required',
+            'experience'      => 'required',
+            'age'             => 'required',
+            'phone'           => 'required|min:11|max:11',
+            'email'           => 'required',
+            'gender'          => 'required',
+            'details'         => 'required',
+            'address'         => 'required',
+            'fees'            => 'required',
+            'availability'    => 'required',
+        ],
+            [
+                'name.required'=>'please input your name!',
+                'age.required'=>'write your age!',
+                'phone.required'=>'phone is required!',
+                'phone.min'=>'input minimum 11 number!',
+                'dob.required'=>'Date of birth field required!',
+                'specialization.required'=>'Specialization is required!',
+                'experience.required'=>'Experience is required!',
+                'email.required'=>'Email is required!',
+                'gender.required'=>'Gender is required!',
+                'details.required'=>'Details is required!',
+                'address.required'=>'Address is required!',
+                'fees.required'=>'Fees is required!',
+                'availability.required'=>'Availability is required!',
+                'photo.required'=>'Photo is required!',
+            ]
+
+        );
         $doctor=Doctor::find($id);
         $doctor->name               =$request->name;
         $doctor->dob                =$request->dob;
@@ -182,13 +220,13 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $this->doc=Doctor::find($id);
-        if($this->doc->photo){
-           if(file_exists($this->doc->photo)){
-               unlink($this->doc->photo);
+        $doc=Doctor::find($id);
+        if($doc->photo){
+           if(file_exists($doc->photo)){
+               unlink($doc->photo);
            }
         }
-        $this->doc->delete();
+        $doc->delete();
         return redirect()->back();
     }
 

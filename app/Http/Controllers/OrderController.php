@@ -112,7 +112,7 @@ class OrderController extends Controller
     }
     public function orders()
     {
-        $orders = Order::get();
+        $orders = Order::latest()->get();
         return view('admin.order.index', compact('orders'));
     }
     public function userOrder()
@@ -163,7 +163,7 @@ class OrderController extends Controller
     }
     public function index()
     {
-        $reviews = Review::get();
+        $reviews = Review::latest()->get();
         return view ('admin.review.index',compact('reviews'));
     }
     public function reviewUpdate(Request $request, $id=null)

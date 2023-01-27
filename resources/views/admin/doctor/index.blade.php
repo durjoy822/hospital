@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{route('admin.dashboard')}}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
@@ -81,40 +81,49 @@
                                         <td><a href="{{ route('doctor.show', $doctor->id) }}">{{ $doctor->name }}</a></td>
                                         <td>{{ $doctor->phone }}</td>
                                         @php $spec = \App\Models\Department::find($doctor->specialization); @endphp
-                                        <td>@if(isset($spec)){{ $spec->name }} @else Department need update @endif</td>
+                                        <td>
+                                            @if (isset($spec))
+                                                {{ $spec->name }}
+                                            @else
+                                                Department need update
+                                            @endif
+                                        </td>
                                         <td>{{ $doctor->email }}</td>
                                         <td>{{ $doctor->age }} year</td>
                                         <td style="text-transform:capitalize">{{ $doctor->gender }}</td>
                                         @php $d=json_decode($doctor->working_days); @endphp
                                         <td>
-                                            @foreach ($d as $day)
-                                                @if ($day == 5)
-                                                    Saturday
-                                                @elseif($day == 6)
-                                                    Sunday
-                                                @elseif($day == 0)
-                                                    Monday
-                                                @elseif($day == 1)
-                                                    Tuesday
-                                                @elseif($day == 2)
-                                                    Wednesday
-                                                @elseif($day == 3)
-                                                    Thrusday
-                                                @elseif($day == 4)
-                                                    Friday
-                                                @endif
-                                            @endforeach
+                                            @if (isset($d))
+                                                @foreach ($d as $day)
+                                                    @if ($day == 6)
+                                                        Saturday
+                                                    @elseif($day == 0)
+                                                        Sunday
+                                                    @elseif($day == 1)
+                                                        Monday
+                                                    @elseif($day == 2)
+                                                        Tuesday
+                                                    @elseif($day == 3)
+                                                        Wednesday
+                                                    @elseif($day == 4)
+                                                        Thrusday
+                                                    @elseif($day == 5)
+                                                        Friday
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </td>
                                         <td>{{ $doctor->fees }} tk.</td>
                                         <td>
                                             @if ($doctor->availability == 0)
                                                 <a href="{{ route('doctor.status', ['id' => $doctor->id]) }}"><button
-                                                        class="btn btn-success btn-sm"><span
-                                                            class="fas fa-user-check"></span> Abailable</button></a>
+                                                        class="btn btn-warning btn-sm"><span
+                                                            class="fas fa-user-alt-slash"></span> Unabailable</button>
+                                                </a>
                                             @else
                                                 <a href="{{ route('doctor.status', ['id' => $doctor->id]) }}"><button
-                                                        class="btn btn-warning btn-sm"><span
-                                                            class="fas fa-user-alt-slash"></span> Unabailable</button></a>
+                                                        class="btn btn-success btn-sm"><span
+                                                            class="fas fa-user-check"></span> Abailable</button></a>
                                             @endif
                                         </td>
                                         <td>
@@ -149,11 +158,6 @@
                                 </li>
                             </ul>
                         </nav>
-                        <!-- /Export links-->
-                        <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
-                            DELETE</button>
-                        <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span>
-                            EDIT</button>
                     </div>
                 </div>
             </div>

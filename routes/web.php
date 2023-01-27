@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 require __DIR__ . '/admin.php';
 
 use App\Http\Controllers\HomeController;
@@ -11,8 +11,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
-use App\Http\Controllers\CarouselController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
 
@@ -55,19 +53,7 @@ Route::post('/register',[UserAuthController::class,'store'])->name('user.registe
 Route::post('/login/check',[UserAuthController::class,'login'])->name('user.login');
 Route::get('/logout',[UserAuthController::class,'logout'])->name('user.logout');
 
-Route::get('/carousel',[CarouselController::class,'carousel'])->name('carousel.index');
-Route::get('/carousel_Add',[CarouselController::class,'carouselAdd'])->name('carousel.add');
-Route::post('/carousel_store',[CarouselController::class,'carouselStore'])->name('carousel.store');
-Route::get('/carousel_edit/{id}',[CarouselController::class,'carouselEdit'])->name('carousel.edit');
-Route::post('/carousel_update',[CarouselController::class,'carouselUpdate'])->name('carousel.update');
-Route::post('/carousel_delete',[CarouselController::class,'carouselDelete'])->name('carousel.delete');
 
-Route::get('/service',[ServiceController::class,'service'])->name('service.index');
-Route::get('/service_add',[ServiceController::class,'serviceAdd'])->name('service.add');
-Route::post('/service_store',[ServiceController::class,'serviceStore'])->name('service.store');
-Route::get('/service_edit/{id}',[ServiceController::class,'serviceEdit'])->name('service.edit');
-Route::post('/service_update',[ServiceController::class,'serviceUpdate'])->name('service.update');
-Route::post('/service_delete',[ServiceController::class,'serviceDelete'])->name('service.delete');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 Route::get('/doctor', [DoctorHomeController::class, 'doctor'])->name('doctor');
 Route::get('/doctor-details/{id}', [DoctorHomeController::class, 'doctorDetails'])->name('doctor.details');
@@ -109,4 +95,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update/user',[UserAuthController::class,'updateUserInfo'])->name('update.user');
     Route::post('/review',[OrderController::class,'review'])->name('review');
     Route::post('user/appointment',[UserAppointmentController::class,'userAppointment'])->name('user.appointment');
+    Route::get('/find-my-doctor/{id}/{date}',[UserAppointmentController::class,'findUserDoctor']);
 });

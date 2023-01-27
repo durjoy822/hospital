@@ -34,8 +34,6 @@
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $doctor->name }}</h4>
                                     <p class="card-text">{{ $doctor->details }}</p>
-                                    {{--                                <button type="button" class="btn btn-success mb-2"><span class="ti-pencil-alt"></span> Edit --}}
-                                    {{--                                    Doctor</button> --}}
                                     <a href="{{ route('doctor.edit', $doctor->id) }}"><button
                                             class="btn btn-success mb-2"><span class="ti-pencil-alt"></span> Edit
                                             Doctor</button></a>
@@ -86,23 +84,25 @@
                                             <td><strong>Working Day</strong></td>
                                             @php $d=json_decode($doctor->working_days); @endphp
                                             <td>
-                                                @foreach ($d as $day)
-                                                    @if ($day == 5)
-                                                        Saturday,
-                                                    @elseif($day == 6)
-                                                        Sunday,
-                                                    @elseif($day == 0)
-                                                        Monday,
-                                                    @elseif($day == 1)
-                                                        Tuesday,
-                                                    @elseif($day == 2)
-                                                        Wednesday,
-                                                    @elseif($day == 3)
-                                                        Thrusday,
-                                                    @elseif($day == 4)
-                                                        Friday.
-                                                    @endif
-                                                @endforeach
+                                                @if (isset($d))
+                                                    @foreach ($d as $day)
+                                                        @if ($day == 6)
+                                                            Saturday
+                                                        @elseif($day == 0)
+                                                            Sunday
+                                                        @elseif($day == 1)
+                                                            Monday
+                                                        @elseif($day == 2)
+                                                            Tuesday
+                                                        @elseif($day == 3)
+                                                            Wednesday
+                                                        @elseif($day == 4)
+                                                            Thrusday
+                                                        @elseif($day == 5)
+                                                            Friday
+                                                        @endif
+                                                    @endforeach
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>

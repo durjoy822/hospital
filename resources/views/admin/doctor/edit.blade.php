@@ -129,230 +129,227 @@
                             <div class="form-group col-md-6 ">
                                 <label for="address">Working Days</label><br>
                                 @if (!isset($d[0]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5">
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6">
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6">
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0">
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0">
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1">
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1">
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2">
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2">
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3">
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3">
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4">
                                     <label for="thu"> Thursday</label>
 
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4">
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5">
                                     <label for="fri"> Friday</label>
                                 @endif
                                 @if (isset($d[0]) && !isset($d[1]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3) checked @endif>
-                                    <label for="thu"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4) checked @endif>
-                                    <label for="fri"> Friday</label>
+                                    <label for="thu"> Thursday</label>
                                     <input type="checkbox" id="fri" name="working_days[]" value="5"
                                         @if ($d[0] == 5) checked @endif>
-                                    <label for="thu"> Friday</label>
+                                    <label for="fri"> Friday</label>
                                 @endif
 
                                 @if (isset($d[1]) && !isset($d[2]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3) checked @endif>
-                                    <label for="thu"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4 || $d[1] == 4) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
 
                                 @if (isset($d[2]) && !isset($d[3]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0 || $d[2] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3) checked @endif>
-                                    <label for="thu"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
 
                                 @if (isset($d[3]) && !isset($d[4]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0 || $d[2] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1 || $d[3] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3) checked @endif>
-                                    <label for="thu"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
 
                                 @if (isset($d[4]) && !isset($d[5]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0 || $d[2] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1 || $d[3] == 1 || $d[4] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3) checked @endif>
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
+                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4) checked @endif>
                                     <label for="thu"> Thursday</label>
                                     <input type="checkbox" id="fri" name="working_days[]" value="4"
-                                        @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4) checked @endif>
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
 
                                 @if (isset($d[5]) && !isset($d[6]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0 || $d[2] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1 || $d[3] == 1 || $d[4] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2 || $d[5] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3 || $d[5] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3 || $d[5] == 3) checked @endif>
-                                    <label for="thu"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4 || $d[5] == 4) checked @endif>
+                                    <label for="thu"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5 || $d[5] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
 
                                 @if (isset($d[6]))
-                                    <input type="checkbox" id="sat" name="working_days[]" value="5"
-                                        @if ($d[0] == 5) checked @endif>
+                                    <input type="checkbox" id="sat" name="working_days[]" value="6"
+                                        @if ($d[0] == 6) checked @endif>
                                     <label for="sat"> Saturday</label>
 
-                                    <input type="checkbox" id="sun" name="working_days[]" value="6"
-                                        @if ($d[0] == 6 || $d[1] == 6) checked @endif>
+                                    <input type="checkbox" id="sun" name="working_days[]" value="0"
+                                        @if ($d[0] == 0 || $d[1] == 0) checked @endif>
                                     <label for="sun"> Sunday</label>
 
-                                    <input type="checkbox" id="mon" name="working_days[]" value="0"
-                                        @if ($d[0] == 0 || $d[1] == 0 || $d[2] == 0) checked @endif>
+                                    <input type="checkbox" id="mon" name="working_days[]" value="1"
+                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1) checked @endif>
                                     <label for="mon"> Monday</label>
 
-                                    <input type="checkbox" id="tue" name="working_days[]" value="1"
-                                        @if ($d[0] == 1 || $d[1] == 1 || $d[2] == 1 || $d[3] == 1 || $d[4] == 1) checked @endif>
+                                    <input type="checkbox" id="tue" name="working_days[]" value="2"
+                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2) checked @endif>
                                     <label for="tue"> Tuesday</label>
 
-                                    <input type="checkbox" id="wed" name="working_days[]" value="2"
-                                        @if ($d[0] == 2 || $d[1] == 2 || $d[2] == 2 || $d[3] == 2 || $d[4] == 2 || $d[5] == 2) checked @endif>
+                                    <input type="checkbox" id="wed" name="working_days[]" value="3"
+                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3 || $d[5] == 3) checked @endif>
                                     <label for="wed"> Wednesday</label>
 
-                                    <input type="checkbox" id="thu" name="working_days[]" value="3"
-                                        @if ($d[0] == 3 || $d[1] == 3 || $d[2] == 3 || $d[3] == 3 || $d[4] == 3 || $d[5] == 3 || $d[6] == 3) checked @endif>
-                                    <label for="fri"> Thursday</label>
-                                    <input type="checkbox" id="fri" name="working_days[]" value="4"
+                                    <input type="checkbox" id="thu" name="working_days[]" value="4"
                                         @if ($d[0] == 4 || $d[1] == 4 || $d[2] == 4 || $d[3] == 4 || $d[4] == 4 || $d[5] == 4 || $d[6] == 4) checked @endif>
+                                    <label for="fri"> Thursday</label>
+                                    <input type="checkbox" id="fri" name="working_days[]" value="5"
+                                        @if ($d[0] == 5 || $d[1] == 5 || $d[2] == 5 || $d[3] == 5 || $d[4] == 5 || $d[5] == 5 || $d[6] == 5) checked @endif>
                                     <label for="thu"> Friday</label>
                                 @endif
                                 @error('working_days')

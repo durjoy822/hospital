@@ -51,12 +51,18 @@
                         </thead>
                         <tbody>
                             @foreach ($infos as $key => $info)
-                                @php $product = \App\Models\Medicine::find($info->product_id)->first(); @endphp
+                                @php $product = \App\Models\Medicine::find($info->product_id); @endphp
                                 <tr>
                                     <td class="center">{{ $key + 1 }}</td>
-                                    <td class="left strong"><a href="{{route('medicine.show', $product->id)}}"><img src="{{ asset($product->picture) }}"
-                                        alt="{{ $product->name }}" style="height: 80px"></a></td>
-                                    <td class="left">{{ $product->name }}</td>
+                                    @if (!isset($product))
+                                        <td> Image</td>
+                                        <td>Product name</td>
+                                    @else
+                                        <td class="left strong"><a href="{{ route('medicine.show', $product->id) }}"><img
+                                                    src="{{ asset($product->picture) }}" alt="{{ $product->name }}"
+                                                    style="height: 80px"></a></td>
+                                        <td class="left">{{ $product->name }}</td>
+                                    @endif
                                     @php
                                         $status = \App\Models\Review::where('order_id', $order->id)
                                             ->where('product_id', $info->product_id)
@@ -65,24 +71,64 @@
                                             ->where('product_id', $info->product_id)
                                             ->first();
                                     @endphp
-                                    <td>
-                                        @if ($status > 0)
-                                            @if ($review->status == 0)
-                                                Pending
-                                            @else
-                                                Approved
-                                            @endif
+
+                                    @if ($status > 0)
+                                        @if ($review->status == 0)
+                                            <td>Pending</td>
                                         @else
-                                            @if ($order->status == 'Deliverd')
-                                                <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                                    data-target="#reviewModal{{ $product->id }}">Review</button>
-                                            @endif
+                                            <td> Approved</td>
                                         @endif
-                                    </td>
+                                    @else
+                                        @if ($order->status == 'Deliverd')
+                                            <td> <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                                    data-target="#reviewModal{{ $product->id }}">Review</button></td>
+                                        @endif
+                                    @endif
+
                                     <td class="right">{{ $info->price }} TK</td>
                                     <td class="center">{{ $info->quantity }}</td>
                                     <td class="right text-center">{{ $info->total_price }} TK</td>
                                 </tr>
+                                {{-- modal area --}}
+                                <div class="modal fade" id="reviewModal{{ $product->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" style="z-index: 20000 !important;" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">{{ $product->name }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <form action="{{ route('review') }}" method="post">@csrf
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <div class="form-group">
+                                                        <label for="reviewText">Leave a review</label>
+                                                        <textarea class="form-control" id="reviewText" rows="3" name="review"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="reviewRating">Rating</label>
+                                                        <select class="form-control" id="reviewRating" name="rating">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5" selected>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -126,47 +172,5 @@
         </div>
     </div>
 
-    <!-- Review Modal 1 -->
-    @foreach ($infos as $key => $info)
-        @php $product = \App\Models\Medicine::find($info->product_id)->first(); @endphp
-        <div class="modal fade" id="reviewModal{{ $product->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" style="z-index: 20000 !important;" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ $product->name }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
-                    <form action="{{ route('review') }}" method="post">@csrf
-                        <div class="modal-body">
-                            <input type="hidden" name="order_id" value="{{ $order->id }}">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <div class="form-group">
-                                <label for="reviewText">Leave a review</label>
-                                <textarea class="form-control" id="reviewText" rows="3" name="review"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="reviewRating">Rating</label>
-                                <select class="form-control" id="reviewRating" name="rating">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5" selected>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit Review</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    @endforeach
 @endsection

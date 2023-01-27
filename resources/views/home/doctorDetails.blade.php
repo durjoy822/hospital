@@ -30,23 +30,25 @@
                                 <strong>Timing</strong>
                                 @php $d=json_decode($doctor->working_days); @endphp
                                 <p>
-                                    @foreach ($d as $day)
-                                        @if ($day == 5)
-                                            Saturday,
-                                        @elseif($day == 6)
-                                            Sunday,
-                                        @elseif($day == 0)
-                                            Monday,
-                                        @elseif($day == 1)
-                                            Tuesday,
-                                        @elseif($day == 2)
-                                            Wednesday,
-                                        @elseif($day == 3)
-                                            Thrusday,
-                                        @elseif($day == 4)
-                                            Friday.
-                                        @endif
-                                    @endforeach
+                                    @if (isset($d))
+                                        @foreach ($d as $day)
+                                            @if ($day == 6)
+                                                Saturday
+                                            @elseif($day == 0)
+                                                Sunday
+                                            @elseif($day == 1)
+                                                Monday
+                                            @elseif($day == 2)
+                                                Tuesday
+                                            @elseif($day == 3)
+                                                Wednesday
+                                            @elseif($day == 4)
+                                                Thrusday
+                                            @elseif($day == 5)
+                                                Friday
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </p>
                             </li>
                             <li>
@@ -122,6 +124,8 @@
                                         Vestibulum bib volutpat accumsan non laoreet nulla luctus.</div>
                                 </div>
                                 <ul class="timing-list-two">
+                                    @if (isset($d))
+
                                     @foreach ($d as $day)
                                         <li>
                                             @if ($day == 1)
@@ -142,6 +146,8 @@
                                             <span>10:00 - 20:00</span>
                                         </li>
                                     @endforeach
+
+                                    @endif
                                 </ul>
                             </div>
                         </div>

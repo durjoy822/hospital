@@ -15,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::latest()->all();
         return view('admin.department.index',compact('departments'));
     }
 
