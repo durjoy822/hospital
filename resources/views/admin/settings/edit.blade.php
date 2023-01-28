@@ -2,17 +2,17 @@
 @section('content')
     <div class="row no-margin-padding">
         <div class="col-md-6">
-            <h3 class="block-title">Edit Appointment</h3>
+            <h3 class="block-title">Add Settings</h3>
         </div>
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{route('admin.dashboard')}}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
-                <li class="breadcrumb-item">Appointments</li>
-                <li class="breadcrumb-item active">Edit Appointment</li>
+                <li class="breadcrumb-item">Settings </li>
+                <li class="breadcrumb-item active">Add Settings</li>
             </ol>
         </div>
     </div>
@@ -41,72 +41,112 @@
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
-                    <h3 class="widget-title">Edit Appointment</h3>
-                    <form action="{{ route('appointment.update', $appointment->id) }}"method="POST">
-                        @csrf
-                        @method('put')
+                    <h3 class="widget-title">Add Settings</h3>
+                    <form action="{{ route('setting.update') }}"method="POST" enctype="multipart/form-data">@csrf
+                        <input type="hidden" name="id" value="{{$setting->id}}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="patient-name">Patient Name</label>
-                                @php $patient = DB::table('patients')->find($appointment->patientId); @endphp
-                                <input type="text" value="@if(isset($patient)){{ $patient->patient_name }} @endif" name="patientId"
-                                    class="form-control" placeholder="Patient info missmatched" id="patient-id" disabled>
+                                <label for="details">Details</label>
+                                <textarea placeholder="Input details" class="form-control" name="details"  id="details" cols="3" rows="3" >{{$setting->details}}</textarea>
+                                @error('details')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="department">Department</label>
-                                @php $department = DB::table('departments')->find($appointment->department); @endphp
-                                <input type="text" value="@if(isset($department)){{ $department->name }} @endif" placeholder="Department data miss matched"
-                                    class="form-control" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="doctorName">Doctor Name</label>
-                                @php $doctor = DB::table('departments')->find($appointment->doctor); @endphp
-                                <input type="text" value="@if(isset($doctor)){{ $doctor->name }} @endif"
-                                    class="form-control" placeholder="Doctor data missmatched" id="patient-id" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="appointment-date">Appointment Date</label>
-                                <input type="date" name="date" value="{{ $appointment->date }}"
-                                    placeholder="Appointment Date" class="form-control" id="appointment-date">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="time-slot">Time Slot</label>
-                                <select class="form-control" name="time" value="{{ $appointment->time }}" id="time-slot">
-                                    <option {{ $appointment->time == '1' ? 'selected' : '' }} value="1">10AM-11AM</option>
-                                    <option {{ $appointment->time == '2' ? 'selected' : '' }} value="2">11AM-12pm</option>
-                                    <option {{ $appointment->time == '3' ? 'selected' : '' }} value="3">12PM-01PM</option>
-                                    <option {{ $appointment->time == '4' ? 'selected' : '' }} value="4">2PM-3PM</option>
-                                    <option {{ $appointment->time == '5' ? 'selected' : '' }} value="5">3PM-4PM</option>
-                                    <option {{ $appointment->time == '6' ? 'selected' : '' }} value="6">4PM-5PM</option>
-                                    <option {{ $appointment->time == '7' ? 'selected' : '' }} value="7">6PM-7PM</option>
-                                    <option {{ $appointment->time == '8' ? 'selected' : '' }} value="8">7PM-8PM</option>
-                                    <option {{ $appointment->time == '9' ? 'selected' : '' }} value="9">8PM-9PM</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="patient-name">Contact No</label>
-                                <input type="text" class="form-control" placeholder="Phone" id="patient-id"
-                                    name='phone' value="{{$appointment->phone}}">
-                                @error('phone')
-                                    <div class="alert alert-danger ">{{ $message }}</div>
+                            <div class="form-group col-md-6" >
+                                <label for="appointment-date">Time</label>
+                                <input type="time" class="form-control" value="{{$setting->time}}" id="time" name="time">
+                                @error('time')
+                                <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="status">Status</label>
-                                <select class="form-control" id="status" name="status">
-                                        <option value="Active">Active</option>
-                                        <option value="Visited">Visited</option>
-                                        <option value="Cancled">Cancled</option>
-                                </select>
-                                @error('status')
-                                    <div class="alert alert-danger ">{{ $message }}</div>
+                                <label for="address">Address</label>
+                                <textarea placeholder='address' class="form-control" name="address"  id="address" cols="3" rows="3" >{{$setting->address}}" </textarea>
+                                @error('address')
+                                <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="problem">Problem</label>
-                                <textarea placeholder="Problem" name="problem" class="form-control" id="problem" rows="3">{{ $appointment->problem }}</textarea>
+                                <label for="patient-name">City</label>
+                                <input type="text" class="form-control" value="{{$setting->city}}"  placeholder="City" id="city" name='city'>
+                                @error('city')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" value="{{$setting->country}}"  placeholder="country" id="country" name='country'>
+                                @error('country')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link1">link_1</label>
+                                <input type="text" class="form-control" value="{{$setting->link_one}}"  placeholder="link_1" id="link1" name='link_one'>
+                                @error('link_1')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link2">link_2</label>
+                                <input type="text" class="form-control" value="{{$setting->link_two}}"  placeholder="link_2" id="link2" name='link_two'>
+                                @error('link_2')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link1">link_3</label>
+                                <input type="text" class="form-control" value="{{$setting->link_three}}"  placeholder="link_3" id="link3" name='link_three'>
+                                @error('link_3')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link1">link_4</label>
+                                <input type="text" class="form-control" value="{{$setting->link_four}}"  placeholder="link_4" id="link4" name='link_four'>
+                                @error('link_4')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link1">link_5</label>
+                                <input type="text" class="form-control" placeholder="link_5" value="{{$setting->link_five}}"  id="link5" name='link_five'>
+                                @error('link_5')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" value="{{$setting->phone}}"  placeholder="phone" id="phone"
+                                       name='phone'>
+                                @error('phone')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" value="{{$setting->email}}"  placeholder="Email" id="email" name='email'>
+                                @error('email')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="copy_r8">copyright</label>
+                                <input type="text" class="form-control" value="{{$setting->copyright}}"  placeholder="Copyright" id="copy_r8" name='copy_r8'>
+                                @error('copy_r8')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="logo">Logo</label>
+                                <input type="file" class="form-control"  id="logo"
+                                       name='logo'>
+                                Old Logo: <img src="{{asset($setting->logo)}}" class="img-fluid" style="width: 70px">
+                                @error('logo')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="form-check col-md-12 mb-2">
                                 <div class="text-left">
                                     <div class="custom-control custom-checkbox">
@@ -116,7 +156,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                                <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -125,4 +165,6 @@
             <!-- /Widget Item -->
         </div>
     </div>
+
+
 @endsection

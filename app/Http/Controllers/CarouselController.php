@@ -35,7 +35,6 @@ class CarouselController extends Controller
      if ($request->image) {
          $caro->image = $this->saveImage($request);
      }
-
      $caro->save();
      if ($caro->id){
          Session::flash('success','successfully store done.');

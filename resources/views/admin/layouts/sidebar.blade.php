@@ -110,6 +110,9 @@
                     <a href="{{route('review.index')}}">Review </a>
                 </li>
                 <li>
+                    <a href="{{route('setting.index')}}">Setting </a>
+                </li>
+                <li>
                     <a href="login.html">Login </a>
                 </li>
                 <li>

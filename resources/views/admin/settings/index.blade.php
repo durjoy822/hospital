@@ -2,7 +2,7 @@
 @section('content')
     <div class="row no-margin-padding">
         <div class="col-md-6">
-            <h3 class="block-title">Appointments</h3>
+            <h3 class="block-title">Setting </h3>
         </div>
         <div class="col-md-6">
             <ol class="breadcrumb">
@@ -11,8 +11,8 @@
                         <span class="ti-home"></span>
                     </a>
                 </li>
-                <li class="breadcrumb-item">Appointments</li>
-                <li class="breadcrumb-item active">Appointments List</li>
+                <li class="breadcrumb-item">Settings</li>
+                <li class="breadcrumb-item active">Setting List</li>
             </ol>
         </div>
     </div>
@@ -41,7 +41,8 @@
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
-                    <h3 class="widget-title">Appointments List</h3>
+                    <span class="widget-title h3">Setting List</span>
+                    <a href="{{route('setting.add')}}"><span class=" btn btn-primary float-right">Add Setting</span></a>
                     <div class="table-responsive mb-3">
                         <table id="tableId" class="table table-bordered table-striped">
                             <thead>
@@ -52,40 +53,55 @@
                                             <label class="custom-control-label" for="select-all"></label>
                                         </div>
                                     </th>
-                                    <th>ID</th>
-                                    <th>Patient Name</th>
-                                    <th>Token Number</th>
-                                    <th>Doctor Name</th>
-                                    <th>Problem</th>
-                                    <th>Status</th>
+                                    <th>SL</th>
+                                    <th>logo</th>
+                                    <th>Details</th>
+                                    <th>time</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>Country</th>
+                                    <th>Link_1</th>
+                                    <th>Link_2</th>
+                                    <th>Link_3</th>
+                                    <th>Link_4</th>
+                                    <th>Link_5</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Copyright</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($appointments as $appointment)
+                                @foreach ($settings as $setting)
                                     <tr>
                                         <td>
                                             <div class="custom-control custom-checkbox">
                                                 <input class="custom-control-input" type="checkbox"
-                                                    id="{{ $appointment->id }}">
+                                                    id="">
                                                 <label class="custom-control-label" for="1"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $appointment->id }}</td>
-										@php $pname = \App\Models\Patient::where('id',$appointment->patientId)->first(); @endphp
-                                        <td><a href="{{route('patient.details',[$pname->id])}}">{{ $pname->patient_name }}<a/></td>
-                                        <td>{{ $appointment->token }}</td>
-                                        @php $dname = \App\Models\Doctor::where('id',$appointment->doctor)->first(); @endphp
-                                        <td><a href="{{ route('doctor.show', $dname->id) }}">{{ $dname->name }}</a></td>
-                                        <td>{{ $appointment->problem }}</td>
+                                        <td>{{$setting->id}}</td>
                                         <td>
-                                            <span class="badge badge-success">{{ $appointment->status }}</span>
+                                            <img src="{{asset($setting->logo)}}" class="img-fluid" style="width: 100px">
                                         </td>
+                                        <td>{{$setting->details}}</td>
+                                        <td>{{$setting->time}}</td>
+                                        <td>{{$setting->address}}</td>
+                                        <td>{{$setting->city}}</td>
+                                        <td>{{$setting->country}}</td>
+                                        <td>{{$setting->link_one}}</td>
+                                        <td>{{$setting->link_two}}</td>
+                                        <td>{{$setting->link_three}}</td>
+                                        <td>{{$setting->link_four}}</td>
+                                        <td>{{$setting->link_five}}</td>
+                                        <td>{{$setting->phone}}</td>
+                                        <td>{{$setting->email}}</td>
+                                        <td>{{$setting->copyright}}</td>
                                         <td>
-                                            <a href="{{ route('appointment.edit', $appointment->id) }}"
-                                                class="btn btn-primary"><span class="ti-pencil-alt"></span> EDIT</a>
-                                            <form action="{{ route('appointment.destroy', $appointment->id) }}" method="post"
-                                                style="display: inline">@csrf @method('DELETE')
+                                            <a href="{{route('setting.edit',['id'=>$setting->id])}}" class="btn btn-primary"><span class="ti-pencil-alt"></span> EDIT</a>
+                                            <form action="{{route('setting.delete')}}" method="post" style="display: inline">@csrf
+                                                <input type="hidden" value="{{$setting->id}}" name="id">
                                                 <button type="submit" class="btn btn-danger"><span class="ti-trash"></span>
                                                     DELETE</button>
                                             </form>
