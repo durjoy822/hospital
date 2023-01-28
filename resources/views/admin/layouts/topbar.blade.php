@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="responsive-logo">
-            <a href="{{route('admin.dashboard')}}"><img src="images/logo-dark.png" class="logo" alt="logo"></a>
+            <a href="{{route('admin.dashboard')}}"><img src="{{ asset('assets/admin/images/logo-dark.png')}}" class="logo" alt="logo"></a>
         </div>
         <ul class="nav">
             <li class="nav-item">
@@ -66,6 +66,6 @@
                 </div>
             </li>
         </ul>
-    
+
     </div>
 </nav>

@@ -12,7 +12,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                     <input type="text" name="username" placeholder="Your Name" required="">
                 </div>
-                
+
                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                     <input type="text" name="phone" placeholder="Your Phone" required="">
                 </div>
@@ -55,11 +55,11 @@
                         <option value="12:00AM - 02:00AM" data-value="Laboratory">12:00AM - 02:00AM</option>
                     </select>
                 </div>
-                
+
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                     <textarea name="message" placeholder="Message" required=""></textarea>
                 </div>
-                
+
                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                     <button class="theme-btn btn-style-three small" type="submit" name="submit-form"><span class="btn-title">Submit Now</span></button>
                 </div>

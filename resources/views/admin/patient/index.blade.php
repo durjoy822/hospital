@@ -57,8 +57,6 @@
 									<th>Patient Name</th>
 									<th>Age</th>
 									<th>Phone</th>
-									<th>last Visit</th>
-									<th>Status</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -76,17 +74,6 @@
 									<td><a href="{{route('patient.details',[$patient->id])}}">{{$patient->patient_name}}</a></td>
 									<td>{{$patient->age}}</td>
 									<td>{{$patient->phone}}</td>
-									<td>{{$patient->date}}</td>
-									<td>
-										<span>
-											@if($patient->status==1)
-											<span class="badge badge-warning">Completed</span>
-											@elseif($patient->status==2)
-											<span class="badge badge-success">Pending</span>
-											@else
-											<span class="badge badge-danger">Cancelled</span>
-											@endif
-									</td>
 									<td>
 										<a href="{{route('admin.patientEdit',['id'=>$patient->id])}}"><button class="btn btn-primary"><span class="ti-pencil-alt"></span> EDIT</button></a>
 
@@ -118,7 +105,7 @@
 							</ul>
 						</nav>
 						<!-- /Export links-->
-						
+
 					</div>
 				</div>
 			</div>

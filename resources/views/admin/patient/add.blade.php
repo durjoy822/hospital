@@ -68,22 +68,6 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="dob"> Visit Date</label>
-                                <input type="date" placeholder="Visited date" name="date" value="{{ old('date') }}"
-                                    class="form-control" id="dob">
-                                @error('date')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="status">Status</label>
-                            <select class="form-control" name="status" id="status">
-                                <option value="1">Completed</option>
-                                <option value="2" selected>pending</option>
-                                <option value="0">Cancelled</option>
-                            </select>
                         </div>
                         <div class="form-check col-md-12 mb-2">
                             <div class="text-left">

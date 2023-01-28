@@ -60,3 +60,37 @@
         $('select[name="is_default"]').val(is_default);
     });
 </script>
+<script>
+    $(document).ready(function() {
+    $("#date").change(function() {
+        $("#department").val($("#department option:contains('Select a department')").val());
+    });
+});
+
+
+    $(document).ready(function() {
+        $('#department').on('change', function() {
+            let id = $(this).val();
+            var dateValue = $("#date").val();
+            let url = id + '/' + dateValue;
+            $('#doctorName').empty();
+            $('#doctorName').append(`<option value="0" disabled selected>Processing...</option>`);
+            $.ajax({
+                type: 'GET',
+                url: 'find-my-doctor/' + url,
+                success: function(response) {
+                    var response = JSON.parse(response);
+                    $('#doctorName').empty();
+                    $('#doctorName').append(
+                        `<option value="0" disabled selected>Select your Doctor</option>`
+                    );
+                    response.forEach(element => {
+                        $('#doctorName').append(
+                            `<option value="${element['id']}">${element['name']}</option>`
+                        );
+                    });
+                }
+            });
+        });
+    });
+</script>

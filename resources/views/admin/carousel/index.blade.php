@@ -60,7 +60,6 @@
                                 <th>Heading</th>
                                 <th>Title</th>
                                 <th>Details</th>
-                                <th>Icone</th>
                                 <th>Btn1_Name</th>
                                 <th>Btn1_Link</th>
                                 <th>Btn2_Name</th>
@@ -88,14 +87,6 @@
                                     <td>@if($item->heading !=null){{substr($item->heading,0,50) }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark text-danger" ></i> no heading</span>  @endif </td>
                                     <td>{{substr($item->title,0,50) }}</td>
                                     <td>{{substr($item->details,0,50) }}</td>
-                                    <td>
-                                        @if($item->icon !=null)
-                                        {{$item->icon}}
-                                        @else
-                                            <span class="text-danger "><i class="fa-solid fa-square-xmark" ></i> no icon</span>
-
-                                        @endif
-                                        </td>
                                     <td> @if($item->btnOne_name !=null){{$item->btnOne_name}}@else<span class="text-danger"><i class="fa-solid fa-square-xmark text-danger" ></i> no Name</span>  @endif</td>
                                     <td>@if($item->btnOne_link !=null){{$item->btnOne_link }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no link </span>@endif </td>
                                     <td>@if($item->btnTwo_name !=null){{$item->btnTwo_name }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no name </span>@endif </td>

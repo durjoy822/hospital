@@ -65,13 +65,6 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="icon">Icons</label>
-                                <input type="text" name="icon" placeholder="Icon" class="form-control" id="icon" >
-                                @error('icon')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
                                 <label for="btn1_name">btnOne_name</label>
                                 <input type="text" name="btnOne_name" placeholder="btn1 Name" class="form-control" id="btn1_name" >
                                 @error('btnOne_name')

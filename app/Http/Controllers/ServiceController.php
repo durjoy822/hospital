@@ -11,7 +11,7 @@ class ServiceController extends Controller
     public function service()
     {
         return view('admin.services.index',[
-            'services'=>Service::all(),
+            'services'=>Service::latest()->all(),
             ]);
     }
 
