@@ -36,6 +36,13 @@
                                 @enderror
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
+                                <label for="phone">Age</label>
+                                <input type="text" name="age" placeholder="Your age" required="">
+                                @error('age')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 form-group">
                                 <label for="date">Date</label>
                                 <input type="date" name="date" placeholder="Select Date" required=""
                                     id="date">

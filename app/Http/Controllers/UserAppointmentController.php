@@ -23,7 +23,7 @@ class UserAppointmentController extends Controller
                 'date'              => 'required',
                 'time'              => 'required',
                 'message'           => 'required',
-
+                'age'               => 'required',
 
             ],
             [
@@ -35,6 +35,7 @@ class UserAppointmentController extends Controller
                 'date.required' => ' Please select a date!',
                 'time.required' => ' Please select a time!',
                 'message.required' => ' Please select a message!',
+                'age.required'     => 'Age is required',
             ]
 
         );
@@ -43,6 +44,7 @@ class UserAppointmentController extends Controller
         $appointment->name = $request->name;
         $appointment->phone = $request->phone;
         $appointment->email = $request->email;
+        $appointment->age = $request->age;
         $appointment->department = $request->department;
         $appointment->doctor = $request->doctor;
         $appointment->date = $request->date;
@@ -58,9 +60,5 @@ class UserAppointmentController extends Controller
     {
         $dayOfWeek = Carbon::parse($date)->dayOfWeek;
         echo json_encode(Doctor::where('specialization', $id)->where('availability',1)->where('working_days', 'like', '%' . $dayOfWeek . '%')->get());
-    }
-    public function userAppointmnet()
-    {
-        $appointment = UserAppointment::latest()->get();
     }
 }

@@ -18,8 +18,9 @@ class AdminController extends Controller
     {
         $cData = [];
         $cData['pending'] = UserAppointment::where('status', 'pending')->count();
-        $cData['visited'] = UserAppointment::where('status', 'visited')->count();
-        $cData['canceled'] = UserAppointment::where('status', 'canceled')->count();
+        $cData['active'] = Appointment::where('status', 'Active')->count();
+        $cData['visited'] = Appointment::where('status', 'Visited')->count();
+        $cData['canceled'] = Appointment::where('status', 'Cancled')->count();
 
         $appData = Patient::get();
 

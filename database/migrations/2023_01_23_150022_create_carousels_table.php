@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('heading')->nullable();
             $table->string('title');
             $table->string('details',2000);
-            $table->string('icon')->nullable();
             $table->string('btnOne_name')->nullable();
             $table->string('btnOne_link')->nullable();
             $table->string('btnTwo_name')->nullable();

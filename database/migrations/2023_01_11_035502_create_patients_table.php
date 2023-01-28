@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('patient_name',25);
             $table->string('age',3);
+            $table->string('email');
             $table->string('phone',11);
-            $table->string('date');
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

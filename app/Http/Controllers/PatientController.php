@@ -21,14 +21,11 @@ class PatientController extends Controller
 
         $request->validate([
             'patient_name'  => 'required',
-            'age'           => 'required',
             'phone'          => 'required|min:11|max:11',
-            'date'           => 'required',
             'email' =>'required',
         ],
         [
             'patient_name.required'=>'please input your name!',
-            'age.required'=>'write your age!',
             'phone.required'=>'phone is required!',
             'phone.min'=>'input minimum 11 number!',
             'email.required' => 'Email is required',
@@ -40,9 +37,7 @@ class PatientController extends Controller
         $patient->patient_name=$request->patient_name;
         $patient->age=$request->age;
         $patient->phone=$request->phone;
-        $patient->status=$request->email;
-        $patient->date=$request->date;
-        $patient->status=$request->status;
+        $patient->email=$request->email;
         $patient->save();
         if($patient->id){
             Session::flash('success', 'successfully store done! Please add payment now!');
@@ -64,8 +59,6 @@ class PatientController extends Controller
             'patient_name'  => 'required',
             'age'           => 'required',
             'phone'           => 'required|min:11|max:11',
-            'date'           => 'required',
-
         ],
         [
             'patient_name.required'=>'please input your name!',
@@ -80,8 +73,6 @@ class PatientController extends Controller
         $patient->age=$request->age;
         $patient->phone=$request->phone;
         $patient->email=$request->email;
-        $patient->date=$request->date;
-        $patient->status=$request->status;
         $patient->save();
         if($patient->id){
             Session::flash('success', 'successfully updated done! Please add payment now!');

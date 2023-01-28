@@ -19,10 +19,11 @@ use App\Http\Controllers\ServiceController;
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', [AdminController::class, 'loginForm'])->name('admin.login');
     Route::post('/auth', [AdminAuthController::class, 'authCheck'])->name('admin.auth');
+    Route::get('/register', [AdminController::class, 'registerForm'])->name('admin.register');
+    Route::post('/new', [AdminAuthController::class, 'newAdmin'])->name('admin.new');
     Route::middleware(admin::class)->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-        Route::get('/register', [AdminController::class, 'registerForm'])->name('admin.register');
-        Route::post('/new', [AdminAuthController::class, 'newAdmin'])->name('admin.new');
+
         Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
         Route::get('/patient', [PatientController::class, 'patientIndex'])->name('admin.patient');
@@ -46,7 +47,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('/appointment', AppointmentController::class);
         Route::get('/appointment/my-doctor/{id}', [AppointmentController::class, 'findDoctor']);
-        Route::get('/user/appointment',[AppointmentController::class,'userAppointmnet'])->name('user.appointment.index');
+        Route::get('/user/appointment', [AppointmentController::class, 'userAppointmnet'])->name('user.appointment.index');
+        Route::get('/confirm/appointmnet/{id}',[AppointmentController::class, 'confirmAppointment'])->name('confirm.appointment');
 
         Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
         Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');

@@ -7,12 +7,12 @@
         <div class="col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{route('admin.dashboard')}}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <span class="ti-home"></span>
                     </a>
                 </li>
                 <li class="breadcrumb-item">Appointments</li>
-                <li class="breadcrumb-item active">Appointments List</li>
+                <li class="breadcrumb-item active">Appointments Request List</li>
             </ol>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <!-- /Breadcrumb -->
     <!-- Main Content -->
     <div class="container-fluid">
-		@if (Session::has('success'))
+        @if (Session::has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>{{ Session::get('success') }}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -41,7 +41,7 @@
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
-                    <h3 class="widget-title">Appointments List</h3>
+                    <h3 class="widget-title">Appointments Request List</h3>
                     <div class="table-responsive mb-3">
                         <table id="tableId" class="table table-bordered table-striped">
                             <thead>
@@ -54,7 +54,9 @@
                                     </th>
                                     <th>ID</th>
                                     <th>Patient Name</th>
-                                    <th>Token Number</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Age</th>
                                     <th>Doctor Name</th>
                                     <th>Problem</th>
                                     <th>Status</th>
@@ -72,23 +74,20 @@
                                             </div>
                                         </td>
                                         <td>{{ $appointment->id }}</td>
-										@php $pname = \App\Models\Patient::where('id',$appointment->patientId)->first(); @endphp
-                                        <td><a href="{{route('patient.details',[$pname->id])}}">{{ $pname->patient_name }}<a/></td>
-                                        <td>{{ $appointment->token }}</td>
+                                        <td>{{ $appointment->name }}</td>
+                                        <td>{{ $appointment->email }}</td>
+                                        <td>{{ $appointment->phone }}</td>
+                                        <td>{{ $appointment->age }}</td>
                                         @php $dname = \App\Models\Doctor::where('id',$appointment->doctor)->first(); @endphp
                                         <td><a href="{{ route('doctor.show', $dname->id) }}">{{ $dname->name }}</a></td>
-                                        <td>{{ $appointment->problem }}</td>
+                                        <td>{{ $appointment->message }}</td>
                                         <td>
                                             <span class="badge badge-success">{{ $appointment->status }}</span>
+
                                         </td>
                                         <td>
-                                            <a href="{{ route('appointment.edit', $appointment->id) }}"
-                                                class="btn btn-primary"><span class="ti-pencil-alt"></span> EDIT</a>
-                                            <form action="{{ route('appointment.destroy', $appointment->id) }}" method="post"
-                                                style="display: inline">@csrf @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"><span class="ti-trash"></span>
-                                                    DELETE</button>
-                                            </form>
+                                            <a href="{{route('confirm.appointment', $appointment->id)}}" class="btn btn-info btn-sm">Confirm Appointment</a>
+                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

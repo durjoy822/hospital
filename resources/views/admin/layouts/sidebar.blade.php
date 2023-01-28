@@ -47,7 +47,7 @@
                     <a href="{{ route('appointment.index') }}">All Appointments</a>
                 </li>
                 <li>
-                    <a href="{{ route('user.appointment.index') }}">All Appointments</a>
+                    <a href="{{ route('user.appointment.index') }}">Appointment Request</a>
                 </li>
             </ul>
         </li>

@@ -49,6 +49,7 @@
     if ($("#donutMorris").length == 1) {
         var $donutData = [
             { label: "Pending", value: data['pending'] },
+            { label: "Active", value: data['active'] },
             { label: "Visited", value: data['visited'] },
             { label: "Cancelled", value: data['canceled'] }
         ];
@@ -58,7 +59,7 @@
             barSize: 0.1,
             labelColor: '#3e5569',
             resize: true, //defaulted to true
-            colors: ['#FFAA2A', '#22c6ab', '#ef6e6e']
+            colors: ['#FFAA2A', '#B24592','#22c6ab', '#ef6e6e']
         });
     }
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carousel;
-use Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class CarouselController extends Controller
 {
@@ -28,7 +28,6 @@ class CarouselController extends Controller
      $caro->heading=$request->heading;
      $caro->title=$request->title;
      $caro->details=$request->details;
-     $caro->icon=$request->icon;
      $caro->btnOne_name=$request->btnOne_name;
      $caro->btnOne_link=$request->btnOne_link;
      $caro->btnTwo_name=$request->btnTwo_name;
@@ -67,7 +66,6 @@ class CarouselController extends Controller
         $caro->heading=$request->heading;
         $caro->title=$request->title;
         $caro->details=$request->details;
-        $caro->icon=$request->icone;
         $caro->btnOne_name=$request->btnOne_name;
         $caro->btnOne_link=$request->btnOne_link;
         $caro->btnTwo_name=$request->btnTwo_name;
