@@ -90,7 +90,7 @@
                                     <td> @if($item->btnOne_name !=null){{$item->btnOne_name}}@else<span class="text-danger"><i class="fa-solid fa-square-xmark text-danger" ></i> no Name</span>  @endif</td>
                                     <td>@if($item->btnOne_link !=null){{$item->btnOne_link }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no link </span>@endif </td>
                                     <td>@if($item->btnTwo_name !=null){{$item->btnTwo_name }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no name </span>@endif </td>
-                                    <td>@if($item->btnTwo_link !=null){{$item->btnOne_link }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no link </span>@endif </td>
+                                    <td>@if($item->btnTwo_link !=null){{$item->btnTwo_link }}@else<span class="text-danger"><i class="fa-solid fa-square-xmark" ></i> no link </span>@endif </td>
                                  <td>
                                         <a href="{{route('carousel.edit',['id'=>$item->id])}}" class="btn btn-small btn-primary"><span class="ti-pencil-alt"></span>Edit</a>
                                         <form action="{{ route('carousel.delete') }}" method="post" style="display: inline">@csrf

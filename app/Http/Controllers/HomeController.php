@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contract;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 use App\Models\Department;
@@ -16,7 +17,9 @@ class HomeController extends Controller
 {
     public  function home(){
         $carousels = Carousel::latest()->get();
-        return view('home.index',compact('carousels'));
+        $upperCarousel   = Service::where('section', 0)->get();
+        $services   = Service::where('section', 1)->get();
+        return view('home.index',compact('carousels','upperCarousel','services'));
     }
     public function appointment()
     {
@@ -81,7 +84,8 @@ class HomeController extends Controller
     }
     public function services()
     {
-        return view ('home.services');
+        $services=Service::where('section',1)->get();
+        return view ('home.services',compact('services'));
     }
     public function gallery()
     {

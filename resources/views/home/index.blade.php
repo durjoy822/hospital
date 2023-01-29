@@ -13,10 +13,10 @@
                                 <h2>{{ $carousel->title }}</h2>
                                 <div class="text">{{ $carousel->details }}</div>
                                 <div class="btn-box">
-                                    <a href="#" class="theme-btn btn-style-one"><span class="btn-title">
+                                    <a href="{{route($carousel->btnOne_link )}}" class="theme-btn btn-style-one"><span class="btn-title">
                                             {{ $carousel->btnOne_name }}
                                         </span></a>
-                                    <a href="departments.html" class="theme-btn btn-style-two"><span
+                                    <a href="{{route($carousel->btnTwo_link )}}" class="theme-btn btn-style-two"><span
                                             class="btn-title">{{ $carousel->btnTwo_name }}</span></a>
                                 </div>
                             </div>
@@ -33,31 +33,15 @@
         <div class="auto-container">
             <div class="row">
                 <!-- Feature Block -->
+                @foreach($upperCarousel as $upperCarousel)
                 <div class="feature-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
-                        <span class="icon flaticon-charity"></span>
-                        <h4><a href="#">Quality & Safety</a></h4>
-                        <p>Our Delmont hospital utilizes state of the art technology and employs a team of true experts.</p>
+                        <span class="{{$upperCarousel->icon}}" ></span>
+                        <h4><a href="#">{{$upperCarousel->title}}</a></h4>
+                        <p>{{$upperCarousel->details}}</p>
                     </div>
                 </div>
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-lifeline"></span>
-                        <h4><a href="#">Leading Technology</a></h4>a
-                        <p>Our Delmont hospital utilizes state of the art technology and employs a team of true experts.</p>
-                    </div>
-                </div>
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-doctor"></span>
-                        <h4><a href="#">Experts by Experience</a></h4>
-                        <p>Our Delmont hospital utilizes state of the art technology and employs a team of true experts.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -123,64 +107,15 @@
 
             <div class="row">
                 <!-- Service Block -->
+                @foreach($services as $service)
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
-                        <span class="icon flaticon-heartbeat"></span>
-                        <h5><a href="#">Health Check</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
+                        <span class="{{$service->icon}}"></span>
+                        <h5><a href="#">{{$service->title}}</a></h5>
+                        <div class="text">{{$service->details}}</div>
                     </div>
                 </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-surgery-room"></span>
-                        <h5><a href="#">Operation Theater</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-pharmacy"></span>
-                        <h5><a href="#">Pharmacy Support</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-transport"></span>
-                        <h5><a href="#">Ambulance Car</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-lab"></span>
-                        <h5><a href="#">Lat Tests</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-first-aid"></span>
-                        <h5><a href="#">Intensive Care</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
