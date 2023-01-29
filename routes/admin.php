@@ -14,6 +14,7 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingsController;
 
 // Admin routes starts from here:
 Route::group(['prefix' => 'admin'], function () {

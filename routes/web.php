@@ -13,7 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
-use App\Http\Controllers\SettingsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,6 @@ Route::get('/services',[HomeController::class,'services'])->name('services');
 Route::get('/gallery',[HomeController::class,'gallery'])->name('gallery');
 Route::get('/price-table',[HomeController::class,'priceTable'])->name('price.table');
 Route::get('/coming-soon',[HomeController::class,'comingSoon'])->name('coming.soon');
-Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
 Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
@@ -66,7 +65,7 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/price-table', [HomeController::class, 'priceTable'])->name('price.table');
 Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.soon');
-Route::get('/error', [HomeController::class, 'error'])->name('error');
+Route::fallback(function () {return view('home.error');});
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}', [MedicineController::class, 'show'])->name('medicine.show');

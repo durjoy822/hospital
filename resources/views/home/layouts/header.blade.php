@@ -53,7 +53,6 @@
                                     <li><a href="{{ route('price.table') }}">Pricing Table</a></li>
                                     <li><a href="{{ route('doctor') }}">UI Elements</a></li>
                                     <li><a href="{{ route('coming.soon') }}">Coming Soon</a></li>
-                                    <li><a href="{{ route('error') }}">Error 404</a></li>
                                     <li><a href="{{ route('terms') }}">Terms and Condition</a></li>
                                 </ul>
                             </li>
