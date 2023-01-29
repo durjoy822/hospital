@@ -4,64 +4,15 @@
         <div class="auto-container">
             <div class="row">
                 <!-- Service Block -->
+                @foreach($services as $service)
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
-                        <span class="icon flaticon-heartbeat"></span>
-                        <h5><a href="#">Health Check</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
+                        <span class="{{$service->icon}}"></span>
+                        <h5><a href="#">{{$service->title}}</a></h5>
+                        <div class="text">{{substr($service->details,0,150)}}</div>
                     </div>
                 </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-surgery-room"></span>
-                        <h5><a href="#">Operation Theater</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-pharmacy"></span>
-                        <h5><a href="#">Pharmacy Support</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-transport"></span>
-                        <h5><a href="#">Ambulance Car</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-lab"></span>
-                        <h5><a href="#">Lat Tests</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <span class="icon flaticon-first-aid"></span>
-                        <h5><a href="#">Intensive Care</a></h5>
-                        <div class="text">We offer extensive medical procedures to outbound & inbound patients what it is
-                            and we are very proud achievement staff.</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

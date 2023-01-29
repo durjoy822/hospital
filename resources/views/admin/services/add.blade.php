@@ -37,6 +37,16 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="title">Section </label>
+                                <select class="form-control" name="section">
+                                    <option value="0">Upper Carousel</option>
+                                    <option value="1">Service</option>
+                                </select>
+                                @error('section')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="icone">Icon </label>
                                 <input type="text" name="icon" value="{{ old('icon') }}" class="form-control" placeholder="service icon" id="icon">
                                 @error('icon')

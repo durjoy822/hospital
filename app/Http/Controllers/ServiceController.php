@@ -28,10 +28,12 @@ class ServiceController extends Controller
                 'title' => 'required',
                 'details' => 'required',
                 'icon' => 'required',
+                'section' => 'required',
             ]);
 
         $service = new Service();
         $service->title = $request->title;
+        $service->section = $request->section;
         $service->details = $request->details;
         $service->icon = $request->icon;
         $service->save();
@@ -56,6 +58,7 @@ class ServiceController extends Controller
 //        dd($request->all());
         $service = Service::find($request->id);
         $service->title = $request->title;
+        $service->section = $request->section;
         $service->details = $request->details;
         $service->icon = $request->icon;
         $service->save();

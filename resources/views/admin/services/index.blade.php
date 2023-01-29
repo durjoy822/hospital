@@ -61,6 +61,7 @@
                                         <label class="custom-control-label" for="select-all"></label>
                                     </div>
                                 <th>SL</th>
+                                <th>Section</th>
                                 <th>Title</th>
                                 <th>Detils</th>
                                 <th>Icon</th>
@@ -77,6 +78,13 @@
                                         </div>
                                     </td>
                                     <td>{{$service->id}}</td>
+                                    <td>
+                                        @if($service->section==1)
+                                            Service
+                                        @else
+                                            Uppercarousel
+                                        @endif
+                                    </td>
                                     <td>{{$service->title}}</td>
                                     <td>{{ substr($service->details,0,50)}}</td>
                                     <td>{{$service->icon}}</td>

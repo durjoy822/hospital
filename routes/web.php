@@ -81,12 +81,6 @@ Route::post('/password/forgot',[UserAuthController::class,'sendResetLink'])->nam
 Route::get('/password/reset/{token}',[UserAuthController::class,'showResetForm'])->name('user.reset.password.form');
 Route::post('/password/reset',[UserAuthController::class,'resetPassword'])->name('user.reset.password');
 
-Route::get('/setting',[SettingsController::class,'setting'])->name('setting.index');
-Route::get('/setting_add',[SettingsController::class,'settingAdd'])->name('setting.add');
-Route::post('/setting_store',[SettingsController::class,'settingStore'])->name('setting.store');
-Route::get('/setting_edit/{id}',[SettingsController::class,'settingEdit'])->name('setting.edit');
-Route::post('/setting_update',[SettingsController::class,'settingUpdate'])->name('setting.update');
-Route::post('/setting_delete',[SettingsController::class,'settingDelete'])->name('setting.delete');
 
 
 Route::middleware(['auth'])->group(function () {

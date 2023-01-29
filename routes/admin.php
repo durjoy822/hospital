@@ -14,6 +14,7 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingsController;
 
 // Admin routes starts from here:
 Route::group(['prefix' => 'admin'], function () {
@@ -88,5 +89,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/service_edit/{id}', [ServiceController::class, 'serviceEdit'])->name('service.edit');
         Route::post('/service_update', [ServiceController::class, 'serviceUpdate'])->name('service.update');
         Route::post('/service_delete', [ServiceController::class, 'serviceDelete'])->name('service.delete');
+
+        Route::get('/setting',[SettingsController::class,'setting'])->name('setting.index');
+        Route::get('/setting_add',[SettingsController::class,'settingAdd'])->name('setting.add');
+        Route::post('/setting_store',[SettingsController::class,'settingStore'])->name('setting.store');
+        Route::get('/setting_edit/{id}',[SettingsController::class,'settingEdit'])->name('setting.edit');
+        Route::post('/setting_update',[SettingsController::class,'settingUpdate'])->name('setting.update');
+        Route::post('/setting_delete',[SettingsController::class,'settingDelete'])->name('setting.delete');
+
     });
 });

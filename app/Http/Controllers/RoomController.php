@@ -10,7 +10,7 @@ class RoomController extends Controller
 {
     public function roomIndex()
     {
-        $room = Room::latest()->all();
+        $room = Room::latest()->get();
         return view('admin.room.allRooms', [
             'rooms' => $room,
         ]);
