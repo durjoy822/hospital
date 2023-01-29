@@ -23,7 +23,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/new', [AdminAuthController::class, 'newAdmin'])->name('admin.new');
     Route::middleware(admin::class)->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
         Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
         Route::get('/patient', [PatientController::class, 'patientIndex'])->name('admin.patient');
@@ -48,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/appointment', AppointmentController::class);
         Route::get('/appointment/my-doctor/{id}', [AppointmentController::class, 'findDoctor']);
         Route::get('/user/appointment', [AppointmentController::class, 'userAppointmnet'])->name('user.appointment.index');
-        Route::get('/confirm/appointmnet/{id}',[AppointmentController::class, 'confirmAppointment'])->name('confirm.appointment');
+        Route::get('/confirm/appointmnet/{id}', [AppointmentController::class, 'confirmAppointment'])->name('confirm.appointment');
 
         Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
         Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
@@ -88,5 +87,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/service_edit/{id}', [ServiceController::class, 'serviceEdit'])->name('service.edit');
         Route::post('/service_update', [ServiceController::class, 'serviceUpdate'])->name('service.update');
         Route::post('/service_delete', [ServiceController::class, 'serviceDelete'])->name('service.delete');
+
+        Route::get('/setting', [SettingsController::class, 'setting'])->name('setting.index');
+        Route::get('/setting_add', [SettingsController::class, 'settingAdd'])->name('setting.add');
+        Route::post('/setting_store', [SettingsController::class, 'settingStore'])->name('setting.store');
+        Route::get('/setting_edit/{id}', [SettingsController::class, 'settingEdit'])->name('setting.edit');
+        Route::post('/setting_update', [SettingsController::class, 'settingUpdate'])->name('setting.update');
+        Route::post('/setting_delete', [SettingsController::class, 'settingDelete'])->name('setting.delete');
     });
 });

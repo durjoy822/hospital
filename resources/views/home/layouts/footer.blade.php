@@ -1,4 +1,5 @@
 <footer class="main-footer">
+    @php $hospitalInfo = \App\Models\Settings::first(); @endphp
     <!--Widgets Section-->
     <div class="widgets-section" style="background-image: url(assets/home/images/background/7.jpg);">
         <div class="auto-container">
@@ -10,21 +11,23 @@
                         <div class="footer-column col-xl-7 col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget about-widget">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{ asset('assets/home/images/logo-2.png') }}"
+                                    <a href="index.html"><img src="{{ asset($hospitalInfo->logo) }}"
                                             alt="" /></a>
                                 </div>
                                 <div class="text">
-                                    <p>Our Clinic has grown to provide a world class facility for the clinic advanced
-                                        restorative. </p>
-                                    <p>We are among the most qualified implant providers in the AUS with over 30 years
-                                        of quality training and experience.</p>
+                                    <p>{{ $hospitalInfo->details }}</p>
                                 </div>
                                 <ul class="social-icon-three">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ URL::to('https://' . $hospitalInfo->link_one) }}"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ URL::to('https://' . $hospitalInfo->link_two) }}"><i
+                                                class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="{{ URL::to('https://' . $hospitalInfo->link_three) }}"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ URL::to('https://' . $hospitalInfo->link_four) }}"><i
+                                                class="fab fa-skype"></i></a></li>
+                                    <li><a href="{{ URL::to('https://' . $hospitalInfo->link_five) }}"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -34,12 +37,16 @@
                             <div class="footer-widget">
                                 <h2 class="widget-title">Departments</h2>
                                 <ul class="user-links">
-                                    <li><a href="#">Surgery & Radiology</a></li>
-                                    <li><a href="#">Family Medicine</a></li>
-                                    <li><a href="#">Women’s Health</a></li>
-                                    <li><a href="#">Optician</a></li>
-                                    <li><a href="#">Pediatrics</a></li>
-                                    <li><a href="#">Dermatology</a></li>
+                                    @php
+                                        $departments = \App\Models\Department::inRandomOrder()
+                                            ->take(6)
+                                            ->get();
+                                    @endphp
+                                    @foreach ($departments as $department)
+                                        <li><a
+                                                href="{{ route('single.department', $department->name) }}">{{ $department->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -56,31 +63,16 @@
                                 <h2 class="widget-title">Latest News</h2>
                                 <!--Footer Column-->
                                 <div class="widget-content">
-                                    <div class="post">
-                                        <div class="thumb"><a href="blog-post-image.html"><img
-                                                    src="{{ asset('assets/home/images/resource/post-thumb-1.jpg') }}"
-                                                    alt=""></a></div>
-                                        <h4><a href="blog-post-image.html">Integrative Medicine <Br>& Cancer
-                                                Treatment.</a></h4>
-                                        <span class="date">July 11, 2020</span>
-                                    </div>
-
-                                    <div class="post">
-                                        <div class="thumb"><a href="blog-post-image.html"><img
-                                                    src="{{ asset('assets/home/images/resource/post-thumb-2.jpg') }}"
-                                                    alt=""></a></div>
-                                        <h4><a href="blog-post-image.html">Achieving Better <br>Health Care Time.</a>
-                                        </h4>
-                                        <span class="date">August 1, 2020</span>
-                                    </div>
-
-                                    <div class="post">
-                                        <div class="thumb"><a href="blog-post-image.html"><img
-                                                    src="{{ asset('assets/home/images/resource/post-thumb-3.jpg') }}"
-                                                    alt=""></a></div>
-                                        <h4><a href="blog-post-image.html">Great Health Care <br>For Patients.</a></h4>
-                                        <span class="date">August 1, 2020</span>
-                                    </div>
+                                    @php $posts = \App\Models\Blog::inRandomOrder()->take(3)->get(); @endphp
+                                    @foreach ($posts as $post)
+                                        <div class="post">
+                                            <div class="thumb"><a href="blog-post-image.html"><img
+                                                        src="{{ asset($post->picture) }}" alt=""></a></div>
+                                            <h4><a href="blog-post-image.html">{{ $post->title }}</a></h4>
+                                            <span
+                                                class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</span>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -95,26 +87,27 @@
                                     <ul class="contact-list">
                                         <li>
                                             <span class="icon flaticon-placeholder"></span>
-                                            <div class="text">2130 Fulton Street San Diego <Br>CA 94117-1080 USA</div>
+                                            <div class="text">{{ $hospitalInfo->address }},
+                                                {{ $hospitalInfo->city }} <br> {{ $hospitalInfo->country }}</div>
                                         </li>
 
                                         <li>
                                             <span class="icon flaticon-call-1"></span>
-                                            <div class="text">Mon to Fri : 08:30 - 18:00</div>
-                                            <a href="tel:+89868679575"><strong>+898 68679 575</strong></a>
+                                            <div class="text">{{ $hospitalInfo->time }}</div>
+                                            <a href="tel:+89868679575"><strong>{{ $hospitalInfo->phone }}</strong></a>
                                         </li>
 
                                         <li>
                                             <span class="icon flaticon-email"></span>
                                             <div class="text">Do you have a Question?<br>
-                                                <a href="mailto:info@gmail.com"><strong>info@gmail.com</strong></a>
+                                                <a
+                                                    href="{{ $hospitalInfo->email }}"><strong>{{ $hospitalInfo->email }}</strong></a>
                                             </div>
                                         </li>
 
                                         <li>
                                             <span class="icon flaticon-back-in-time"></span>
-                                            <div class="text">Mon - Sat 8.00 - 18.00<br>
-                                                <strong>Sunday CLOSED</strong>
+                                            <div class="text">{{ $hospitalInfo->time }}<br>
                                             </div>
                                         </li>
                                     </ul>
@@ -143,7 +136,7 @@
                 </div>
 
                 <div class="copyright-text">
-                    <p>Copyright © 2020 <a href="#">adeveloper.info</a>All Rights Reserved.</p>
+                    <p>{{ $hospitalInfo->copyright }}</p>
                 </div>
             </div>
         </div>
