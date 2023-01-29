@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group col-md-6" >
                                 <label for="appointment-date">Time</label>
-                                <input type="time" class="form-control" value="{{$setting->time}}" id="time" name="time">
+                                <input type="text" class="form-control" value="{{$setting->time}}" id="time" name="time">
                                 @error('time')
                                 <div class="alert alert-danger ">{{ $message }}</div>
                                 @enderror

@@ -18,7 +18,6 @@ class SettingsController extends Controller
         return view('admin.settings.add');
     }
     public function settingStore(Request $request){
-//            dd($request->all());
             $setting= new Settings();
             $setting->details=$request->details;
             $setting->time=$request->time;
@@ -90,7 +89,7 @@ class SettingsController extends Controller
             Session::flash('success','Update successfully');
             return redirect(route('setting.index'));
         }else{
-            Session::flash('warning','successfully Update faild');
+            Session::flash('warning','successfully Update failed');
             return back();
         }
 
@@ -108,7 +107,7 @@ class SettingsController extends Controller
             Session::flash('success','Delete successfully');
             return back();
         }else{
-            Session::flash('warning','Delete faild');
+            Session::flash('warning','Delete failed');
             return back();
         }
     }

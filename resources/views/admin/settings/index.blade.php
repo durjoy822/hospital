@@ -42,7 +42,7 @@
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
                     <span class="widget-title h3">Setting List</span>
-                    <a href="{{route('setting.add')}}"><span class=" btn btn-primary float-right">Add Setting</span></a>
+                    <a href="{{route('setting.add')}}" class="@if (count($settings) > 0) d-none @endif"><span class=" btn btn-primary float-right">Add Setting</span></a>
                     <div class="table-responsive mb-3">
                         <table id="tableId" class="table table-bordered table-striped">
                             <thead>

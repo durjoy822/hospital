@@ -13,7 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
-use App\Http\Controllers\SettingsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +29,7 @@ use App\Http\Controllers\SettingsController;
 
 // Frontend route starts from here :
 Route::get('/',[HomeController::class,'home'])->name('home');
-Route::get('/doctor',[DoctorHomeController::class,'doctor'])->name('doctor');
-Route::get('/doctor-details/{id}',[DoctorHomeController::class,'doctorDetails'])->name('doctor.details');
 Route::get('/departments',[HomeController::class,'departments'])->name('departments');
-Route::get('/single-department/{slug}',[HomeController::class,'singleDepartment'])->name('single.department');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
 Route::get('/login',[HomeController::class,'login'])->name('login');
@@ -42,7 +39,6 @@ Route::get('/services',[HomeController::class,'services'])->name('services');
 Route::get('/gallery',[HomeController::class,'gallery'])->name('gallery');
 Route::get('/price-table',[HomeController::class,'priceTable'])->name('price.table');
 Route::get('/coming-soon',[HomeController::class,'comingSoon'])->name('coming.soon');
-Route::get('/error',[HomeController::class,'error'])->name('error');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
 Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
@@ -69,7 +65,7 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/price-table', [HomeController::class, 'priceTable'])->name('price.table');
 Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.soon');
-Route::get('/error', [HomeController::class, 'error'])->name('error');
+Route::fallback(function () {return view('home.error');});
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}', [MedicineController::class, 'show'])->name('medicine.show');
@@ -80,7 +76,6 @@ Route::get('/password/forgot',[UserAuthController::class,'showForgotForm'])->nam
 Route::post('/password/forgot',[UserAuthController::class,'sendResetLink'])->name('forgot.password.link');
 Route::get('/password/reset/{token}',[UserAuthController::class,'showResetForm'])->name('user.reset.password.form');
 Route::post('/password/reset',[UserAuthController::class,'resetPassword'])->name('user.reset.password');
-
 
 
 Route::middleware(['auth'])->group(function () {

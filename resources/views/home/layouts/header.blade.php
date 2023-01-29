@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader"></div>
-
+@php $hospitalInfo = \App\Models\Settings::first(); @endphp
 <!-- Main Header-->
 <header class="main-header header-style-one">
 
@@ -10,16 +10,16 @@
             <div class="inner-container">
                 <div class="top-left">
                     <ul class="contact-list clearfix">
-                        <li><i class="flaticon-hospital-1"></i>234 Triumph, Los Angeles, California, US </li>
-                        <li><i class="flaticon-back-in-time"></i>Mon - Sat 8.00 - 18.00. Sunday CLOSED</li>
+                        <li><i class="flaticon-hospital-1"></i>{{$hospitalInfo->address.', '. $hospitalInfo->city. ', '. $hospitalInfo->country}} </li>
+                        <li><i class="flaticon-back-in-time"></i>{{$hospitalInfo->time}}</li>
                     </ul>
                 </div>
                 <div class="top-right">
                     <ul class="social-icon-one">
-                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                        <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_one)}}"><span class="fab fa-facebook-f"></span></a></li>
+                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_two)}}"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_three)}}"><span class="fab fa-skype"></span></a></li>
+                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_four)}}"><span class="fab fa-linkedin-in"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="main-box">
                 <div class="logo-box">
                     <div class="logo"><a href="{{ route('home') }}"><img
-                                src="{{ asset('assets/home/images/logo.png') }}" alt="" title=""></a>
+                                src="{{ asset($hospitalInfo->logo) }}" alt="" title=""></a>
                     </div>
                 </div>
 
@@ -53,7 +53,6 @@
                                     <li><a href="{{ route('price.table') }}">Pricing Table</a></li>
                                     <li><a href="{{ route('doctor') }}">UI Elements</a></li>
                                     <li><a href="{{ route('coming.soon') }}">Coming Soon</a></li>
-                                    <li><a href="{{ route('error') }}">Error 404</a></li>
                                     <li><a href="{{ route('terms') }}">Terms and Condition</a></li>
                                 </ul>
                             </li>
@@ -101,7 +100,7 @@
             <div class="main-box">
                 <div class="logo-box">
                     <div class="logo"><a href="{{ route('home') }}"><img
-                                src="{{ asset('assets/home/images/logo.png') }}" alt="" title=""></a>
+                                src="{{ asset($hospitalInfo->logo) }}" alt="" title=""></a>
                     </div>
                 </div>
 
@@ -112,7 +111,7 @@
 
     <!-- Mobile Header -->
     <div class="mobile-header">
-        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('assets/home/images/logo.png') }}"
+        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}"
                     alt="" title=""></a></div>
 
         <!--Nav Box-->

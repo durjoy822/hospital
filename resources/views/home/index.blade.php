@@ -68,7 +68,6 @@
                         <div class="link-box">
                             <figure class="signature"><img src="{{ asset('assets/home/images/resource/signature.png') }}"
                                     alt=""></figure>
-                            <a href="#" class="theme-btn btn-style-one"><span class="btn-title">More About</span></a>
                         </div>
                     </div>
                 </div>
@@ -132,87 +131,31 @@
             </div>
 
             <div class="row">
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{ asset('assets/home/images/resource/team-1.jpg') }}"
-                                alt="">
-                        </figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
+                @php
+                    $doctors = \App\Models\Doctor::inRandomOrder()
+                        ->take(4)
+                        ->get();
+                @endphp
+                @foreach ($doctors as $doctor)
+                    <!-- Team Block -->
+                    <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
+                        <div class="inner-box">
+                            <figure class="image"><img src="{{ asset($doctor->photo) }}" alt=""
+                                    style="height:400px">
+                            </figure>
+                            <div class="info-box">
+                                <h4 class="name"><a
+                                        href="{{ route('doctor.details', $doctor->id) }}">{{ $doctor->name }}</a></h4>
+                                <span class="designation">Senior Dr.</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{ asset('assets/home/images/resource/team-2.jpg') }}"
-                                alt="">
-                        </figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{ asset('assets/home/images/resource/team-3.jpg') }}"
-                                alt="">
-                        </figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <figure class="image"><img src="{{ asset('assets/home/images/resource/team-4.jpg') }}"
-                                alt="">
-                        </figure>
-                        <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                        </ul>
-                        <div class="info-box">
-                            <h4 class="name"><a href="doctor-detail.html">Dr. Morila Wood</a></h4>
-                            <span class="designation">Senior Dr. at Delmont</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                <div class="sec-bottom-text">Don’t hesitate, contact us for better help and services <a
+                        href="{{ route('doctor') }}">Explore
+                        all Dr.
+                        Team</a></div>
             </div>
-
-            <div class="sec-bottom-text">Don’t hesitate, contact us for better help and services <a href="#">Explore
-                    all Dr.
-                    Team</a></div>
-        </div>
     </section>
     <!-- End Team Section -->
 
@@ -226,9 +169,15 @@
                     <div class="inner-column">
                         <span class="title">Need a Doctor for Check-up?</span>
                         <h2>Just Make an Appointment <br>and You’re Done!</h2>
-                        <div class="number">Get Your Quote or Call: <strong>(0080) 123-453-789</strong></div>
-                        <a href="#" class="theme-btn btn-style-three"><span class="btn-title">Get an
-                                Appointment</span></a>
+                        @php $hospitalInfo = \App\Models\Settings::first(); @endphp
+                        <div class="number">Get Your Quote or Call: <strong>{{ $hospitalInfo->phone }}</strong></div>
+                        @if (Auth::check())
+                            <button type="button" data-toggle="modal" data-target="#appointmentModal"
+                                class="theme-btn btn-style-three"><span class="btn-title">Get an
+                                    Appointment</span></button>
+                        @else
+                            <a href="{{ route('appointment') }}" class="theme-btn btn-style-one">Appointment</a>
+                        @endif
                     </div>
                 </div>
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
@@ -253,7 +202,8 @@
                         <div class="count-box">
                             <div class="icon-box"><span class="icon flaticon-team"></span></div>
                             <h4 class="counter-title">Medical Spesialities</h4>
-                            <span class="count-text" data-speed="3000" data-stop="470">0</span>
+                            @php $countDoctor = \App\Models\Medicine::count(); @endphp
+                            <span class="count-text" data-speed="3000" data-stop="{{ $countDoctor }}">0</span>
                         </div>
                     </div>
 
@@ -261,8 +211,9 @@
                     <div class="counter-column col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
                         <div class="count-box">
                             <div class="icon-box"><span class="icon flaticon-hospital"></span></div>
-                            <h4 class="counter-title">Medical Spesialities</h4>
-                            <span class="count-text" data-speed="3000" data-stop="689">0</span>
+                            <h4 class="counter-title">Available Medicine</h4>
+                            @php $countMedicine = \App\Models\Medicine::count(); @endphp
+                            <span class="count-text" data-speed="3000" data-stop="{{ $countMedicine }}">0</span>
                         </div>
                     </div>
 
@@ -270,8 +221,9 @@
                     <div class="counter-column col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="1200ms">
                         <div class="count-box">
                             <div class="icon-box"><span class="icon flaticon-add-friend"></span></div>
+                            @php $countPatient = \App\Models\Patient::count(); @endphp
                             <h4 class="counter-title">Happy Patients</h4>
-                            <span class="count-text" data-speed="3000" data-stop="9036">0</span>
+                            <span class="count-text" data-speed="3000" data-stop="{{ $countPatient }}">0</span>
                         </div>
                     </div>
                 </div>
@@ -411,77 +363,37 @@
             </div>
 
             <div class="row">
-                <!-- News Block -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="blog-post-image.html"><img
-                                        src="{{ asset('assets/home/images/resource/news-1.jpg') }}" alt=""></a>
-                            </figure>
-                            <a href="#" class="date">Sep 19, 2020</a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-post-image.html">What is The Success rate<br> of a root canel?</a></h4>
-                            <div class="text">Nullam mauris vitae tortor sodales efficitur. Quisque orci ante. Proin amet
-                                turpis</div>
-                            <div class="post-info">
-                                <div class="post-author">By Admin Rose</div>
-                                <ul class="post-option">
-                                    <li><a href="#">0 <i class="far fa-heart"></i></a></li>
-                                    <li><a href="#">0 <i class="far fa-comments"></i></a></li>
-                                </ul>
+                @php
+                    $posts = \App\Models\Blog::latest()
+                        ->take(3)
+                        ->get();
+                @endphp
+                @foreach ($posts as $post)
+                    <!-- News Block -->
+                    <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image"><a href="blog-post-image.html"><img
+                                            src="{{ asset($post->picture) }}" alt=""></a>
+                                </figure>
+                                <a href="#" class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</a>
+                            </div>
+                            <div class="lower-content">
+                                <h4><a href="blog-post-image.html">{{ $post->title }}</a></h4>
+                                <div class="text">Nullam mauris vitae tortor sodales efficitur. Quisque orci ante. Proin
+                                    amet
+                                    turpis</div>
+                                <div class="post-info">
+                                    <div class="post-author">{{ $post->posted_by }}</div>
+                                    <ul class="post-option">
+                                        <li><a href="#">0 <i class="far fa-heart"></i></a></li>
+                                        <li><a href="#">0 <i class="far fa-comments"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- News Block -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="blog-post-image.html"><img
-                                        src="{{ asset('assets/home/images/resource/news-2.jpg') }}" alt=""></a>
-                            </figure>
-                            <a href="#" class="date">Sep 19, 2020</a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-post-image.html">How to handle your kids’ <Br>mystery ailments?</a></h4>
-                            <div class="text">Nullam mauris vitae tortor sodales efficitur. Quisque orci ante. Proin amet
-                                turpis</div>
-                            <div class="post-info">
-                                <div class="post-author">By Admin Rose</div>
-                                <ul class="post-option">
-                                    <li><a href="#">0 <i class="far fa-heart"></i></a></li>
-                                    <li><a href="#">0 <i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- News Block -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="blog-post-image.html"><img
-                                        src="{{ asset('assets/home/images/resource/news-3.jpg') }}" alt=""></a>
-                            </figure>
-                            <a href="#" class="date">Sep 19, 2020</a>
-                        </div>
-                        <div class="lower-content">
-                            <h4><a href="blog-post-image.html">How to help the cardiology <br>department</a></h4>
-                            <div class="text">Nullam mauris vitae tortor sodales efficitur. Quisque orci ante. Proin amet
-                                turpis</div>
-                            <div class="post-info">
-                                <div class="post-author">By Admin Rose</div>
-                                <ul class="post-option">
-                                    <li><a href="#">0 <i class="far fa-heart"></i></a></li>
-                                    <li><a href="#">0 <i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
