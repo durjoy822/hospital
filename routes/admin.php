@@ -15,6 +15,7 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\VideoController;
 
 // Admin routes starts from here:
 Route::group(['prefix' => 'admin'], function () {
@@ -95,6 +96,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/setting_edit/{id}',[SettingsController::class,'settingEdit'])->name('setting.edit');
         Route::post('/setting_update',[SettingsController::class,'settingUpdate'])->name('setting.update');
         Route::post('/setting_delete',[SettingsController::class,'settingDelete'])->name('setting.delete');
+
+        Route::get('/video',[VideoController::class,'video'])->name('video.index');
+        Route::get('/video_add',[VideoController::class,'videoAdd'])->name('video.add');
+        Route::post('/video_store',[VideoController::class,'videoStore'])->name('video.store');
+        Route::get('/video_edit/{id}',[VideoController::class,'videoEdit'])->name('video.edit');
+        Route::post('/video_update',[VideoController::class,'videoUpdate'])->name('video.update');
+        Route::post('/video_delete',[VideoController::class,'videoDelete'])->name('video.delete');
 
     });
 });
