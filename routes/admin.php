@@ -18,6 +18,7 @@ use App\Http\Controllers\SettingsController;
 
 // Admin routes starts from here:
 Route::group(['prefix' => 'admin'], function () {
+    Route::fallback(function () {return view('home.error');});
     Route::get('/login', [AdminController::class, 'loginForm'])->name('admin.login');
     Route::post('/auth', [AdminAuthController::class, 'authCheck'])->name('admin.auth');
     Route::get('/register', [AdminController::class, 'registerForm'])->name('admin.register');

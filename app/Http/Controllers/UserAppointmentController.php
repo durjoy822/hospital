@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\UserAppointment;
 use Carbon\Carbon;
@@ -60,5 +61,10 @@ class UserAppointmentController extends Controller
     {
         $dayOfWeek = Carbon::parse($date)->dayOfWeek;
         echo json_encode(Doctor::where('specialization', $id)->where('availability',1)->where('working_days', 'like', '%' . $dayOfWeek . '%')->get());
+    }
+    public function userAppointmentStatus()
+    {
+        $appointments = Appointment::where('user_id',Auth::user()->id)->get();
+        return view ('home.userAppointmentStatus',compact('appointments'));
     }
 }

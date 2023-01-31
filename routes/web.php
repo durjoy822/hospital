@@ -94,4 +94,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/review',[OrderController::class,'review'])->name('review');
     Route::post('user/appointment',[UserAppointmentController::class,'userAppointment'])->name('user.appointment');
     Route::get('/find-my-doctor/{id}/{date}',[UserAppointmentController::class,'findUserDoctor']);
+    Route::get('user/appointment',[UserAppointmentController::class,'userAppointmentStatus'])->name('user.appointment');
 });

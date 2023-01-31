@@ -43,31 +43,25 @@
                     <nav class="nav main-menu">
                         <ul class="navigation" id="navbar">
                             <li><a href="{{ route('home') }}">Home</a></li>
-
-                            <li class="dropdown">
-                                <span>Pages</span>
-                                <ul>
-                                    <li><a href="{{ route('about.us') }}">About Us</a></li>
-                                    <li><a href="{{ route('services') }}">Services</a></li>
-                                    <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                                    <li><a href="{{ route('price.table') }}">Pricing Table</a></li>
-                                    <li><a href="{{ route('doctor') }}">UI Elements</a></li>
-                                    <li><a href="{{ route('coming.soon') }}">Coming Soon</a></li>
-                                    <li><a href="{{ route('terms') }}">Terms and Condition</a></li>
-                                </ul>
-                            </li>
                             <li><a href="{{ route('doctor') }}">Doctors</a></li>
                             <li><a href="{{ route('departments') }}">Departments</a></li>
                             <li><a href="{{ route('blog') }}">Blog</a></li>
                             <li><a href="{{ route('product') }}">Medicine</a></li>
                             <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li class="dropdown">
+                                <span>Pages</span>
+                                <ul>
+                                    <li><a href="{{ route('about.us') }}">About Us</a></li>
+                                    <li><a href="{{ route('services') }}">Services</a></li>
+                                    <li><a href="{{ route('terms') }}">Terms and Condition</a></li>
+                                </ul>
+                            </li>
                             @if (Auth::check())
                                 <li class="dropdown">
                                     <span>Settings</span>
                                     <ul>
-                                        <li><a
-                                                href="{{ route('user.profile', str_replace(' ', '-', auth::user()->name)) }}">Profile</a>
-                                        </li>
+                                        <li><a href="{{ route('user.profile', str_replace(' ', '-', auth::user()->name)) }}">Profile</a></li>
+                                        <li><a href="{{ route('user.appointment') }}">My Appointment</a></li>
                                         <li><a href="{{ route('user.orders') }}">Order</a></li>
                                         <li><a href="{{ route('user.logout') }}">Logout</a></li>
                                     </ul>

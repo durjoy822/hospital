@@ -13,10 +13,10 @@
                                 <h2>{{ $carousel->title }}</h2>
                                 <div class="text">{{ $carousel->details }}</div>
                                 <div class="btn-box">
-                                    <a href="{{route($carousel->btnOne_link )}}" class="theme-btn btn-style-one"><span class="btn-title">
+                                    <a href="{{URL::to($carousel->btnOne_link)}}" class="theme-btn btn-style-one"><span class="btn-title">
                                             {{ $carousel->btnOne_name }}
                                         </span></a>
-                                    <a href="{{route($carousel->btnTwo_link )}}" class="theme-btn btn-style-two"><span
+                                    <a href="{{URL::to($carousel->btnTwo_link)}}" class="theme-btn btn-style-two"><span
                                             class="btn-title">{{ $carousel->btnTwo_name }}</span></a>
                                 </div>
                             </div>

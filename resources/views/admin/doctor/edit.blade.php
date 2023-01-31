@@ -57,9 +57,11 @@
                             <div class="form-group col-md-6">
                                 <label for="specialization">Specialization</label>
                                 <select class="form-control" id="specialization" name="specialization">
-                                    <option disabled selected>Select a department</option>
+                                    <option disabled>Select a department</option>
                                     @foreach ($speciallist as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}"
+                                            {{ old('specialization') == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('specialization')
