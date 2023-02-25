@@ -73,6 +73,7 @@
                                         </td>
                                         <td>{{ $payment->patient_name }}</td>
                                         @php $dname = \App\Models\Doctor::where('id',$payment->doctor)->first(); @endphp
+                                        <td></td>
                                         <td><a href="{{ route('doctor.show', $dname->id) }}">{{ $dname->name }}</a></td>
                                         @php $info = \App\Models\PaymentService::where('payment_id',$payment->id)->get();@endphp
                                         <td>

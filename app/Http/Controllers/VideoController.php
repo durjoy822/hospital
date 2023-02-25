@@ -95,17 +95,17 @@ class VideoController extends Controller
     public function videoDelete(Request $request){
         $video=Video::find($request->id);
         if ($video->signature){
-            if (file_exists('signature')){
+            if (file_exists($video->signature)){
                 unlink($video->signature);
             }
         }
         if($video->image_one){
-            if (file_exists('image_one')){
+            if (file_exists($video->image_one)){
                 unlink($video->image_one);
             }
         }
         if ($video->image_two){
-            if (file_exists('image_two')){
+            if (file_exists($video->image_two)){
                 unlink($video->image_two);
             }
         }
