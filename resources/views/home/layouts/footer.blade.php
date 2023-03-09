@@ -8,6 +8,7 @@
                 <div class="big-column col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="row">
                         <!--Footer Column-->
+                        @isset($hospitalInfo)
                         <div class="footer-column col-xl-7 col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget about-widget">
                                 <div class="logo">
@@ -31,6 +32,8 @@
                                 </ul>
                             </div>
                         </div>
+                        @endisset
+
 
                         <!--Footer Column-->
                         <div class="footer-column col-xl-5 col-lg-6 col-md-6 col-sm-12">
@@ -84,6 +87,7 @@
                                 <h2 class="widget-title">Contact Us</h2>
                                 <!--Footer Column-->
                                 <div class="widget-content">
+                                    @isset($hospitalInfo)
                                     <ul class="contact-list">
                                         <li>
                                             <span class="icon flaticon-placeholder"></span>
@@ -111,6 +115,7 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -136,7 +141,9 @@
                 </div>
 
                 <div class="copyright-text">
+                    @isset($hospitalInfo)
                     <p>{{ $hospitalInfo->copyright }}</p>
+                    @endisset
                 </div>
             </div>
         </div>

@@ -170,7 +170,9 @@
                         <span class="title">Need a Doctor for Check-up?</span>
                         <h2>Just Make an Appointment <br>and You’re Done!</h2>
                         @php $hospitalInfo = \App\Models\Settings::first(); @endphp
-                        <div class="number">Get Your Quote or Call: <strong>{{ $hospitalInfo->phone }}</strong></div>
+                        <div class="number">Get Your Quote or Call: <strong>@isset($hospitalInfo->phone)
+                            {{ $hospitalInfo->phone }}
+                        @endisset</strong></div>
                         @if (Auth::check())
                             <button type="button" data-toggle="modal" data-target="#appointmentModal"
                                 class="theme-btn btn-style-three"><span class="btn-title">Get an

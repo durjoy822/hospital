@@ -8,20 +8,28 @@
     <div class="header-top">
         <div class="auto-container">
             <div class="inner-container">
-                <div class="top-left">
-                    <ul class="contact-list clearfix">
-                        <li><i class="flaticon-hospital-1"></i>{{$hospitalInfo->address.', '. $hospitalInfo->city. ', '. $hospitalInfo->country}} </li>
-                        <li><i class="flaticon-back-in-time"></i>{{$hospitalInfo->time}}</li>
-                    </ul>
-                </div>
-                <div class="top-right">
-                    <ul class="social-icon-one">
-                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_one)}}"><span class="fab fa-facebook-f"></span></a></li>
-                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_two)}}"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_three)}}"><span class="fab fa-skype"></span></a></li>
-                        <li><a href="{{URL::to('https://'.$hospitalInfo->link_four)}}"><span class="fab fa-linkedin-in"></span></a></li>
-                    </ul>
-                </div>
+                @isset($hospitalInfo)
+                    <div class="top-left">
+                        <ul class="contact-list clearfix">
+                            <li><i
+                                    class="flaticon-hospital-1"></i>{{ $hospitalInfo->address . ', ' . $hospitalInfo->city . ', ' . $hospitalInfo->country }}
+                            </li>
+                            <li><i class="flaticon-back-in-time"></i>{{ $hospitalInfo->time }}</li>
+                        </ul>
+                    </div>
+                    <div class="top-right">
+                        <ul class="social-icon-one">
+                            <li><a href="{{ URL::to('https://' . $hospitalInfo->link_one) }}"><span
+                                        class="fab fa-facebook-f"></span></a></li>
+                            <li><a href="{{ URL::to('https://' . $hospitalInfo->link_two) }}"><span
+                                        class="fab fa-twitter"></span></a></li>
+                            <li><a href="{{ URL::to('https://' . $hospitalInfo->link_three) }}"><span
+                                        class="fab fa-skype"></span></a></li>
+                            <li><a href="{{ URL::to('https://' . $hospitalInfo->link_four) }}"><span
+                                        class="fab fa-linkedin-in"></span></a></li>
+                        </ul>
+                    </div>
+                @endisset
             </div>
         </div>
     </div>
@@ -33,9 +41,11 @@
             <!-- Main box -->
             <div class="main-box">
                 <div class="logo-box">
-                    <div class="logo"><a href="{{ route('home') }}"><img
-                                src="{{ asset($hospitalInfo->logo) }}" alt="" title=""></a>
-                    </div>
+                    @isset($hospitalInfo)
+                        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}"
+                                    alt="" title=""></a>
+                        </div>
+                    @endisset
                 </div>
 
                 <!--Nav Box-->
@@ -60,7 +70,9 @@
                                 <li class="dropdown">
                                     <span>Settings</span>
                                     <ul>
-                                        <li><a href="{{ route('user.profile', str_replace(' ', '-', auth::user()->name)) }}">Profile</a></li>
+                                        <li><a
+                                                href="{{ route('user.profile', str_replace(' ', '-', auth::user()->name)) }}">Profile</a>
+                                        </li>
                                         <li><a href="{{ route('user.appointment') }}">My Appointment</a></li>
                                         <li><a href="{{ route('user.orders') }}">Order</a></li>
                                         <li><a href="{{ route('user.logout') }}">Logout</a></li>
@@ -79,7 +91,7 @@
                             <button type="button" data-toggle="modal" data-target="#appointmentModal"
                                 class="theme-btn btn-style-one"><span class="btn-title">Appointment</span></button>
                         @else
-                        <a href="{{route('appointment')}}" class="theme-btn btn-style-one">Appointment</a>
+                            <a href="{{ route('appointment') }}" class="theme-btn btn-style-one">Appointment</a>
                         @endif
                     </div>
                 </div>
@@ -93,11 +105,12 @@
 
             <div class="main-box">
                 <div class="logo-box">
-                    <div class="logo"><a href="{{ route('home') }}"><img
-                                src="{{ asset($hospitalInfo->logo) }}" alt="" title=""></a>
-                    </div>
+                    @isset($hospitalInfo)
+                        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}"
+                                    alt="" title=""></a>
+                        </div>
+                    @endisset
                 </div>
-
                 <!--Keep This Empty / Menu will come through Javascript-->
             </div>
         </div>
@@ -105,9 +118,11 @@
 
     <!-- Mobile Header -->
     <div class="mobile-header">
-        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}"
-                    alt="" title=""></a></div>
+        @isset($hospitalInfo)
+        <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}" alt=""
+            title=""></a></div>
 
+        @endisset
         <!--Nav Box-->
         <div class="nav-outer clearfix">
 
