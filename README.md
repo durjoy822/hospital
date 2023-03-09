@@ -18,7 +18,9 @@ This is a hospital management website built using Laravel. It allows the admin t
 
 ## Login information
 link:https://hospital.adeveloper.info/login
+
 link:https://hospital.adeveloper.info/admin/login
+
 email: sahaapo@gmail.com
 passsword: 12345678
 
