@@ -16,6 +16,12 @@ This is a hospital management website built using Laravel. It allows the admin t
 2. Visit http://localhost:8000 in your web browser to access the website.
 3. Use the admin credentials to log in and manage the website.
 
+## Login information
+link:https://hospital.adeveloper.info/login
+link:https://hospital.adeveloper.info/admin/login
+email: sahaapo@gmail.com
+passsword: 12345678
+
 ## License
 
 This project is licensed under the MIT License.

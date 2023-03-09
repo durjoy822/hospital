@@ -121,7 +121,6 @@
         @isset($hospitalInfo)
         <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset($hospitalInfo->logo) }}" alt=""
             title=""></a></div>
-
         @endisset
         <!--Nav Box-->
         <div class="nav-outer clearfix">

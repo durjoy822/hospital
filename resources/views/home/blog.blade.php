@@ -8,7 +8,7 @@
                 <ul class="page-breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li>Blog</li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </section>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="content-box">
                         <h4><a href="{{route('blog.show',$blog->id)}}">{{$blog->title}}</a></h4>
-                        <div class="text">{{$blog->details}}</div>
+                        <div class="text">{{ Illuminate\Support\Str::limit($blog->details, 200, '...') }}</div>
                         <a href="{{route('blog.show',$blog->id)}}" class="theme-btn btn-style-one read-more"><span class="btn-title">Read More</span></a>
                         <div class="post-info">
                             <div class="post-author">Posted by: {{$blog->posted_by}}</div>

@@ -69,11 +69,11 @@
                                     @php $posts = \App\Models\Blog::inRandomOrder()->take(3)->get(); @endphp
                                     @foreach ($posts as $post)
                                         <div class="post">
-                                            <div class="thumb"><a href="blog-post-image.html"><img
+                                            <div class="thumb"><a href="{{route('blog.show',$post->id)}}"><img
                                                         src="{{ asset($post->picture) }}" alt=""></a></div>
-                                            <h4><a href="blog-post-image.html">{{ $post->title }}</a></h4>
+                                            <h4><a href="{{route('blog.show',$post->id)}}">{{ $post->title }}</a></h4>
                                             <span
-                                                class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</span>
+                                                class="date">{{ date('d M Y', strtotime($post->created_at)) }}</span>
                                         </div>
                                     @endforeach
                                 </div>

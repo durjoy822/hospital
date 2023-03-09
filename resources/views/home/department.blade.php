@@ -24,7 +24,7 @@
                 <div class="service-block-two col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><a href="{{route('single.department',[$depeartment->name])}}"><img src="{{asset($depeartment->image)}}" alt=""></a></figure>
+                            <figure class="image"><a href="{{route('single.department',[$depeartment->name])}}"><img src="{{asset($depeartment->image)}}" alt="" style="height:300px"></a></figure>
                         </div>
                         <div class="lower-content">
                             <div class="title-box">

@@ -148,106 +148,84 @@
                 <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
                     <aside class="sidebar">
                         <!--search box-->
-                        <div class="sidebar-widget search-box">
-                            <form method="post" action="blog.html">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Search....."
-                                        required="">
-                                    <button type="submit"><span class="icon fa fa-search"></span></button>
-                                </div>
-                            </form>
-                        </div>
+                        <!--<div class="sidebar-widget search-box">-->
+                        <!--    <form method="post" action="blog.html">-->
+                        <!--        <div class="form-group">-->
+                        <!--            <input type="search" name="search-field" value="" placeholder="Search....."-->
+                        <!--                required="">-->
+                        <!--            <button type="submit"><span class="icon fa fa-search"></span></button>-->
+                        <!--        </div>-->
+                        <!--    </form>-->
+                        <!--</div>-->
 
                         <!-- Categories -->
-                        <div class="sidebar-widget category-list">
-                            <div class="sidebar-title">
-                                <h3>Categories</h3>
-                            </div>
-                            <ul class="cat-list">
-                                <li><a href="#">Procedures <span>(06)</span></a></li>
-                                <li><a href="#">Transplantation <span>(02)</span></a></li>
-                                <li class="active"><a href="#">Management <span>(05)</span></a></li>
-                                <li><a href="#">Healthcare Tips <span>(25)</span></a></li>
-                                <li><a href="#">Uncategorized <span>(04)</span></a></li>
-                            </ul>
-                        </div>
+                        <!--<div class="sidebar-widget category-list">-->
+                        <!--    <div class="sidebar-title">-->
+                        <!--        <h3>Categories</h3>-->
+                        <!--    </div>-->
+                        <!--    <ul class="cat-list">-->
+                        <!--        <li><a href="#">Procedures <span>(06)</span></a></li>-->
+                        <!--        <li><a href="#">Transplantation <span>(02)</span></a></li>-->
+                        <!--        <li class="active"><a href="#">Management <span>(05)</span></a></li>-->
+                        <!--        <li><a href="#">Healthcare Tips <span>(25)</span></a></li>-->
+                        <!--        <li><a href="#">Uncategorized <span>(04)</span></a></li>-->
+                        <!--    </ul>-->
+                        <!--</div>-->
 
                         <!-- Latest News -->
                         <div class="sidebar-widget latest-news">
                             <div class="sidebar-title">
                                 <h3>Popular Products</h3>
                             </div>
+                            @php $products = DB::table('medicines')->inRandomOrder()->take(5)->get(); @endphp
                             <div class="widget-content">
+                                @foreach($products as $product)
                                 <article class="post">
                                     <div class="post-thumb"><a href="shop-single.html"><img
-                                                src="{{ asset('assets/home/images/resource/products/product-thumb-1.jpg') }}"
+                                                src="{{ asset($product->picture) }}"
                                                 alt=""></a></div>
-                                    <h5><a href="shop-single.html">First Aid Kit</a></h5>
-                                    <div class="price">$9.00</div>
-                                    <div class="rating"><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span></div>
+                                    <h5><a href="shop-single.html">{{$product->name}}</a></h5>
+                                    <div class="price">{{$product->price}} TK.</div>
                                 </article>
-
-                                <article class="post">
-                                    <div class="post-thumb"><a href="shop-single.html"><img
-                                                src="{{ asset('assets/home/images/resource/products/product-thumb-2.jpg') }}"
-                                                alt=""></a></div>
-                                    <h5><a href="shop-single.html">Vitamin C+</a></h5>
-                                    <div class="price">$20.00</div>
-                                    <div class="rating"><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span></div>
-                                </article>
-
-                                <article class="post">
-                                    <div class="post-thumb"><a href="shop-single.html"><img
-                                                src="{{ asset('assets/home/images/resource/products/product-thumb-3.jpg') }}"
-                                                alt=""></a></div>
-                                    <h5><a href="shop-single.html">Zinc Tablet</a></h5>
-                                    <div class="price">$ 18.00</div>
-                                    <div class="rating"><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                            class="fa fa-star"></span><span class="fa fa-star"></span></div>
-                                </article>
+                                @endforeach
                             </div>
                         </div>
 
                         <!-- Newslatters-->
-                        <div class="sidebar-widget newslatters">
-                            <div class="sidebar-title">
-                                <h3><span class="icon flaticon-rss-symbol"></span>Newsletter</h3>
-                            </div>
-                            <div class="text">Enter your email address below to subscribe to our newsletter</div>
-                            <form method="post" action="blog-sidebar.html">
-                                <div class="form-group">
-                                    <input type="text" name="input" value=""
-                                        placeholder="Your email address..." required="">
-                                    <button type="submit" class="theme-btn"><span
-                                            class="btn-title">Subscribe</span></button>
-                                </div>
-                            </form>
-                        </div>
+                        <!--<div class="sidebar-widget newslatters">-->
+                        <!--    <div class="sidebar-title">-->
+                        <!--        <h3><span class="icon flaticon-rss-symbol"></span>Newsletter</h3>-->
+                        <!--    </div>-->
+                        <!--    <div class="text">Enter your email address below to subscribe to our newsletter</div>-->
+                        <!--    <form method="post" action="blog-sidebar.html">-->
+                        <!--        <div class="form-group">-->
+                        <!--            <input type="text" name="input" value=""-->
+                        <!--                placeholder="Your email address..." required="">-->
+                        <!--            <button type="submit" class="theme-btn"><span-->
+                        <!--                    class="btn-title">Subscribe</span></button>-->
+                        <!--        </div>-->
+                        <!--    </form>-->
+                        <!--</div>-->
 
 
                         <!-- Tags -->
-                        <div class="sidebar-widget tags">
-                            <div class="sidebar-title">
-                                <h3>Tag Cloud</h3>
-                            </div>
-                            <ul class="popular-tags clearfix">
-                                <li><a href="#">Ideas</a></li>
-                                <li><a href="#">Doctor</a></li>
-                                <li><a href="#">Health</a></li>
-                                <li><a href="#">Department</a></li>
-                                <li><a href="#">Nurse</a></li>
-                                <li><a href="#">Growth</a></li>
-                                <li><a href="#">Expert</a></li>
-                                <li><a href="#">Tips</a></li>
-                                <li><a href="#">Service</a></li>
-                                <li><a href="#">Medical</a></li>
-                            </ul>
-                        </div>
+                        <!--<div class="sidebar-widget tags">-->
+                        <!--    <div class="sidebar-title">-->
+                        <!--        <h3>Tag Cloud</h3>-->
+                        <!--    </div>-->
+                        <!--    <ul class="popular-tags clearfix">-->
+                        <!--        <li><a href="#">Ideas</a></li>-->
+                        <!--        <li><a href="#">Doctor</a></li>-->
+                        <!--        <li><a href="#">Health</a></li>-->
+                        <!--        <li><a href="#">Department</a></li>-->
+                        <!--        <li><a href="#">Nurse</a></li>-->
+                        <!--        <li><a href="#">Growth</a></li>-->
+                        <!--        <li><a href="#">Expert</a></li>-->
+                        <!--        <li><a href="#">Tips</a></li>-->
+                        <!--        <li><a href="#">Service</a></li>-->
+                        <!--        <li><a href="#">Medical</a></li>-->
+                        <!--    </ul>-->
+                        <!--</div>-->
                     </aside>
                 </div>
             </div>
