@@ -2,7 +2,7 @@
 @section('content')
 
 <!--Sidebar Page Container-->
-<div class="sidebar-page-container">
+<div class="sidebar-page-container" style="padding-top:0px">
     <div class="auto-container">
         <div class="row clearfix">
             <!--Content Side / Our Blog-->
@@ -22,10 +22,10 @@
             </div>
 
             <!--Sidebar Side-->
-            <div class="sidebar-side col-xl-3 col-lg-4 col-md-12 col-sm-12">
+          {{--  <div class="sidebar-side col-xl-3 col-lg-4 col-md-12 col-sm-12">
                 <aside class="sidebar services-sidebar">
                     
-                    <!--Brochures Box-->
+                    Brochures Box
                     <div class="brochures-box">
                         <div class="inner">
                             <h4>Download Brochures</h4>
@@ -42,140 +42,140 @@
                         <a href="contact.html" class="theme-btn btn-style-one"><span class="btn-title">Contact</span></a>
                     </div>
                 </aside>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
 <!-- End Sidebar Page Container -->
 
     <!-- Services Section -->
-<section class="services-section-two">
-    <div class="auto-container">
-        <div class="carousel-outer">
+<!--<section class="services-section-two">-->
+<!--    <div class="auto-container">-->
+<!--        <div class="carousel-outer">-->
             <!-- Services Carousel -->
-            <div class="services-carousel owl-carousel owl-theme default-dots">
+<!--            <div class="services-carousel owl-carousel owl-theme default-dots">-->
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-1.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-heart-2"></span>
-                                <h4><a href="department-detail.html">Cardiology Department</a></h4> 
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-heart-2"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-1.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-heart-2"></span>-->
+<!--                                <h4><a href="department-detail.html">Cardiology Department</a></h4> -->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-heart-2"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-2.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-brain"></span>
-                                <h4><a href="department-detail.html">Neurology Department</a></h4>
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-brain"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-2.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-brain"></span>-->
+<!--                                <h4><a href="department-detail.html">Neurology Department</a></h4>-->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-brain"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-3.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-kidney"></span>
-                                <h4><a href="department-detail.html">Urology Department</a></h4>
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-kidney"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-3.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-kidney"></span>-->
+<!--                                <h4><a href="department-detail.html">Urology Department</a></h4>-->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-kidney"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-12.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-ovum"></span>
-                                <h4><a href="department-detail.html">Gynecological</a></h4> 
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-ovum"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-12.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-ovum"></span>-->
+<!--                                <h4><a href="department-detail.html">Gynecological</a></h4> -->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-ovum"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-10.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-parents"></span>
-                                <h4><a href="department-detail.html">Pediatrical</a></h4>
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-parents"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-10.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-parents"></span>-->
+<!--                                <h4><a href="department-detail.html">Pediatrical</a></h4>-->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-parents"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-11.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-science"></span>
-                                <h4><a href="department-detail.html">Laboratory</a></h4>
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-science"></span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-11.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-science"></span>-->
+<!--                                <h4><a href="department-detail.html">Laboratory</a></h4>-->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-science"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <!-- service Block -->
-                <div class="service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-10.jpg')}}" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <div class="title-box">
-                                <span class="icon flaticon-parents"></span>
-                                <h4><a href="department-detail.html">Pediatrical</a></h4>
-                            </div>
-                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>
-                            <span class="icon-right flaticon-parents"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--                <div class="service-block-two">-->
+<!--                    <div class="inner-box">-->
+<!--                        <div class="image-box">-->
+<!--                            <figure class="image"><a href="department-detail.html"><img src="{{asset('assets/home/images/resource/service-10.jpg')}}" alt=""></a></figure>-->
+<!--                        </div>-->
+<!--                        <div class="lower-content">-->
+<!--                            <div class="title-box">-->
+<!--                                <span class="icon flaticon-parents"></span>-->
+<!--                                <h4><a href="department-detail.html">Pediatrical</a></h4>-->
+<!--                            </div>-->
+<!--                            <div class="text">Introduction. Cardiology is the study heart conditions. The Consultant with whom you have an appointment is a specialist.</div>-->
+<!--                            <span class="icon-right flaticon-parents"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <!-- End service Section -->
 
 

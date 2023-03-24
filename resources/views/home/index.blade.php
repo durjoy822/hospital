@@ -375,13 +375,13 @@
                     <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                         <div class="inner-box">
                             <div class="image-box">
-                                <figure class="image"><a href="blog-post-image.html"><img
+                                <figure class="image"><a href="{{route('blog.show',$post->id)}}"><img
                                             src="{{ asset($post->picture) }}" alt=""></a>
                                 </figure>
-                                <a href="#" class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</a>
+                                <a href="#" class="date">{{ date('d M Y', strtotime($post->created_at)) }}</a>
                             </div>
                             <div class="lower-content">
-                                <h4><a href="blog-post-image.html">{{ $post->title }}</a></h4>
+                                <h4><a href="{{route('blog.show',$post->id)}}">{{ $post->title }}</a></h4>
                                 <div class="text">Nullam mauris vitae tortor sodales efficitur. Quisque orci ante. Proin
                                     amet
                                     turpis</div>

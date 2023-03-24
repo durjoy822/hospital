@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\Medicine;
+use App\Models\Settings;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
@@ -110,11 +113,17 @@ class MedicineController extends Controller
     public function home()
     {
         $drugs = Medicine::where('quantity', '>', 0)->latest()->paginate(12);
-        return view('home.product',compact('drugs'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.product',compact('drugs','hospitalInfo','posts','departments'));
     }
     public function show($id =null)
     {
         $drug = Medicine::findOrFail($id);
-        return view('home.single-product',compact('drug'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.single-product',compact('drug','hospitalInfo','posts','departments'));
     }
 }

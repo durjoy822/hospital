@@ -40,75 +40,80 @@
         <div class="row">
             <!-- Widget Item -->
             <div class="col-md-12">
-                <div class="widget-area-2 proclinic-box-shadow">
-                    <div class="row widget-title">
-                        <div class="col-md-8"><h3>Medicine List</h3></div>
-                        <div class="col-md-4 text-md-right"><a href="{{route('medicine.create')}}" class="btn btn-sm btn-info">Add Medicine</a></div>
+                <div class="widget-area-2 proclinic-box-shadow ">
+                    <div class="card-header">
+                        <div class="row widget-title">
+                            <div class="col-md-8">
+                                <h3>Medicine List</h3>
+                            </div>
+                            <div class="col-md-4 text-md-right"><a href="{{ route('medicine.create') }}"
+                                    class="btn btn-sm btn-info">Add Medicine</a></div>
+                        </div>
                     </div>
-                    <div class="table-responsive mb-3">
-                        <table id="tableId" class="table table-bordered table-striped table-responsive overflow-scroll">
-                            <thead>
-                                <tr>
-                                    <th class="no-sort">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="select-all">
-                                            <label class="custom-control-label" for="select-all"></label>
-                                        </div>
-                                    </th>
-                                    <th>Photo</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($medicine as $drug)
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td>
+                                        <th class="no-sort">
                                             <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" id="1">
-                                                <label class="custom-control-label" for="1"></label>
+                                                <input class="custom-control-input" type="checkbox" id="select-all">
+                                                <label class="custom-control-label" for="select-all"></label>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('medicine.show', $drug->id) }}"><img class="img-fluid"
-                                                    style="width: 100px; height:50px" src="{{ asset($drug->picture) }}"></a>
-                                        </td>
-                                        <td><a href="{{ route('medicine.show', $drug->id) }}">{{ $drug->name }}</a></td>
-                                        <td>{{$drug->price}}</td>
-                                        <td>{{$drug->details}}</td>
-                                        <td>
-                                            <a href="{{route('medicine.edit',$drug->id)}}" class="btn btn-small btn-primary"><span class="ti-pencil-alt"></span>Edit</a>
-                                            <a href="{{route('medicine.delete',$drug->id)}}" class="btn btn-small btn-danger"><span class="ti-trash"></span>Delete</a>
-                                        </td>
+                                        </th>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Details</th>
+                                        <th>Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                        <!--Export links-->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center export-pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-printer"></span> print</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- /Export links-->
-                        <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
-                            DELETE</button>
-                        <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span>
-                            EDIT</button>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th class="no-sort">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" id="select-all">
+                                                <label class="custom-control-label" for="select-all"></label>
+                                            </div>
+                                        </th>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Details</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach ($medicine as $drug)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="1">
+                                                    <label class="custom-control-label" for="1"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('medicine.show', $drug->id) }}"><img class="img-fluid"
+                                                        style="width: 100px; height:50px"
+                                                        src="{{ asset($drug->picture) }}"></a>
+                                            </td>
+                                            <td><a href="{{ route('medicine.show', $drug->id) }}">{{ $drug->name }}</a>
+                                            </td>
+                                            <td>{{ $drug->price }}</td>
+                                            <td>{{ $drug->details }}</td>
+                                            <td>
+                                                <a href="{{ route('medicine.edit', $drug->id) }}"
+                                                    class="btn btn-small btn-primary"><span
+                                                        class="ti-pencil-alt"></span>Edit</a>
+                                                <a href="{{ route('medicine.delete', $drug->id) }}"
+                                                    class="btn btn-small btn-danger"><span
+                                                        class="ti-trash"></span>Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

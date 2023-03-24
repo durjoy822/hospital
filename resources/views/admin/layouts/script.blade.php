@@ -7,4 +7,14 @@
 
  <!-- Custom Script-->
  <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
-@include('admin.layouts.ajax')
+
+
+
+ <link href="{{ asset('assets/admin/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+ <!-- Page level plugins -->
+ <script src="{{ asset('assets/admin/datatables/jquery.dataTables.min.js') }}"></script>
+ <script src="{{ asset('assets/admin/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+ <!-- Page level custom scripts -->
+ <script src="{{ asset('assets/admin/datatables/datatables-demo.js') }}"></script>
+ @include('admin.layouts.ajax')

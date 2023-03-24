@@ -8,7 +8,7 @@
                 <ul class="page-breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li>Blog</li>
-                </ul>
+                </ul> 
             </div>
         </div>
     </section>

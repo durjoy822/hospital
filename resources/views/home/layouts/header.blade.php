@@ -1,6 +1,5 @@
 <!-- Preloader -->
 <div class="preloader"></div>
-@php $hospitalInfo = \App\Models\Settings::first(); @endphp
 <!-- Main Header-->
 <header class="main-header header-style-one">
 

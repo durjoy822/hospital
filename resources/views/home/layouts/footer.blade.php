@@ -1,5 +1,4 @@
 <footer class="main-footer">
-    @php $hospitalInfo = \App\Models\Settings::first(); @endphp
     <!--Widgets Section-->
     <div class="widgets-section" style="background-image: url(assets/home/images/background/7.jpg);">
         <div class="auto-container">
@@ -40,11 +39,6 @@
                             <div class="footer-widget">
                                 <h2 class="widget-title">Departments</h2>
                                 <ul class="user-links">
-                                    @php
-                                        $departments = \App\Models\Department::inRandomOrder()
-                                            ->take(6)
-                                            ->get();
-                                    @endphp
                                     @foreach ($departments as $department)
                                         <li><a
                                                 href="{{ route('single.department', $department->name) }}">{{ $department->name }}</a>
@@ -66,7 +60,6 @@
                                 <h2 class="widget-title">Latest News</h2>
                                 <!--Footer Column-->
                                 <div class="widget-content">
-                                    @php $posts = \App\Models\Blog::inRandomOrder()->take(3)->get(); @endphp
                                     @foreach ($posts as $post)
                                         <div class="post">
                                             <div class="thumb"><a href="{{route('blog.show',$post->id)}}"><img

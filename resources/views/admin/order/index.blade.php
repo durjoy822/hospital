@@ -40,31 +40,48 @@
         <div class="row">
             <!-- Widget Item -->
             <div class="col-md-12">
-                <div class="widget-area-2 proclinic-box-shadow">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3 class="widget-title">Orders List</h3>
+                <div class="widget-area-2 proclinic-box-shadow ">
+                    <div class="card-header">
+                        <div class="row widget-title">
+                            <div class="col-md-8">
+                                <h3>Orders List</h3>
+                            </div>
+                            <div class="col-md-4 text-md-right"></div>
                         </div>
                     </div>
-                    <div class="table-responsive mb-3">
-                        <table id="tableId"
-                            class="table table-bordered table-striped table-responsive overflow-scroll justify-content-center">
-                            <thead>
-                                <tr>
-                                    <th class="no-sort">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="select-all">
-                                            <label class="custom-control-label" for="select-all"></label>
-                                        </div>
-                                    <th>Order Id</th>
-                                    <th>Orderd Time</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" id="select-all">
+                                                <label class="custom-control-label" for="select-all"></label>
+                                            </div>
+                                        <th>Order Id</th>
+                                        <th>Orderd Time</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th class="no-sort">
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" id="select-all">
+                                                <label class="custom-control-label" for="select-all"></label>
+                                            </div>
+                                        <th>Order Id</th>
+                                        <th>Orderd Time</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach ($orders as $order)
                                     <tr>
                                         <td class="no-sort">
                                             <div class="custom-control custom-checkbox">
@@ -83,31 +100,9 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-
-                        <!--Export links-->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center export-pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-printer"></span> print</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- /Export links-->
-                        <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
-                            DELETE</button>
-                        <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span>
-                            EDIT</button>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

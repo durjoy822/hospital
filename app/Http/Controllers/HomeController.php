@@ -9,40 +9,60 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Blog;
 use App\Models\Carousel;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 
 class HomeController extends Controller
 {
-    public  function home(){
+    public  function home()
+    {
         $carousels = Carousel::latest()->get();
         $upperCarousel   = Service::where('section', 0)->get();
         $services   = Service::where('section', 1)->get();
-        return view('home.index',compact('carousels','upperCarousel','services'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.index', compact('carousels', 'upperCarousel', 'services', 'hospitalInfo','posts','departments'));
     }
     public function appointment()
     {
-        return view ('home.appointment');
+        return view('home.appointment');
     }
     public function departments()
     {
-        $dep=Department::inRandomOrder()->take(6)->paginate(6);
-        return view ('home.department',[
-            'dep'=>$dep,
+        $dep = Department::inRandomOrder()->take(6)->paginate(6);
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.department', [
+            'dep' => $dep,
+            'hospitalInfo' => $hospitalInfo,
+            'posts' => $posts,
+            'departments' => $departments,
         ]);
     }
     public function singleDepartment($slug)
     {
-        $singleDep=Department::where('name',$slug)->first();
-        return view ('home.single-department',[
-            'singleDep'=>$singleDep,
+        $singleDep = Department::where('name', $slug)->first();
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.single-department', [
+            'singleDep' => $singleDep,
+            'hospitalInfo' => $hospitalInfo,
+            'posts' => $posts,
+            'departments' => $departments,
         ]);
     }
     public function blog()
     {
         $blogs = Blog::latest()->paginate(5);
-        return view ('home.blog',compact('blogs'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.blog', compact('blogs', 'hospitalInfo','posts','departments'));
     }
     public function login()
     {
@@ -54,18 +74,19 @@ class HomeController extends Controller
     }
     public function contactUs(Request $request)
     {
-        $request->validate([
-            'name'     => 'required',
-            'phone'    => 'required',
-            'email'    => 'required',
-            'message'  => 'required',
-        ],
-        [
-            'name.required'=>'please input your name!',
-            'phone.required'=>'phone is required!',
-            'message.required'=>'Message is required',
-            'email.required' => 'Email is required',
-        ]
+        $request->validate(
+            [
+                'name'     => 'required',
+                'phone'    => 'required',
+                'email'    => 'required',
+                'message'  => 'required',
+            ],
+            [
+                'name.required' => 'please input your name!',
+                'phone.required' => 'phone is required!',
+                'message.required' => 'Message is required',
+                'email.required' => 'Email is required',
+            ]
 
         );
         $data = array();
@@ -76,35 +97,55 @@ class HomeController extends Controller
         Mail::to('hospital@adeveloper.info')->send(new Contract($data));
         Session::flash('success', 'Your message has been sent to our operator team, Our team will call you soon');
         return redirect()->route('contact');
-
     }
     public function aboutUs()
     {
-        return view('home.about-us');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.about-us', compact('hospitalInfo','posts','departments'));
     }
     public function services()
     {
-        $services=Service::where('section',1)->get();
-        return view ('home.services',compact('services'));
+        $hospitalInfo = Settings::first();
+        $services = Service::where('section', 1)->get();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.services', compact('services', 'hospitalInfo','posts','departments'));
     }
     public function gallery()
     {
-        return view ('home.gallery');
+        $hospitalInfo =Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.gallery', compact('hospitalInfo','posts','departments'));
     }
     public function priceTable()
     {
-        return view ('home.priceTable');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.priceTable', compact('hospitalInfo','posts','departments'));
     }
     public function comingSoon()
     {
-        return view ('home.comingSoon');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.comingSoon', compact('hospitalInfo','posts','departments'));
     }
     public function error()
     {
-        return view ('home.error');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.error', compact('hospitalInfo','posts','departments'));
     }
     public function terms()
     {
-        return view ('home.terms');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.terms', compact('hospitalInfo','posts','departments'));
     }
 }
