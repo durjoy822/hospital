@@ -51,25 +51,39 @@
                         </div>
                     </div>
                     <div class="table-responsive mb-3">
-                        <table id="tableId"
-                               class="table table-bordered table-striped table-responsive overflow-scroll justify-content-center">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th class="no-sort">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" id="select-all">
-                                        <label class="custom-control-label" for="select-all"></label>
-                                    </div>
-                                <th>SL</th>
-                                <th>Section</th>
-                                <th>Title</th>
-                                <th>Detils</th>
-                                <th>Icon</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th class="no-sort">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="select-all">
+                                            <label class="custom-control-label" for="select-all"></label>
+                                        </div>
+                                    <th>SL</th>
+                                    <th>Section</th>
+                                    <th>Title</th>
+                                    <th>Detils</th>
+                                    <th>Icon</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
+                            <tfoot>
+                                <tr>
+                                    <th class="no-sort">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="select-all">
+                                            <label class="custom-control-label" for="select-all"></label>
+                                        </div>
+                                    <th>SL</th>
+                                    <th>Section</th>
+                                    <th>Title</th>
+                                    <th>Detils</th>
+                                    <th>Icon</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
                             <tbody>
-                            @foreach ($services as $service)
+                                @foreach ($services as $service)
                                 <tr>
                                     <td class="no-sort">
                                         <div class="custom-control custom-checkbox">
@@ -100,29 +114,6 @@
                             @endforeach
                             </tbody>
                         </table>
-
-                        <!--Export links-->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center export-pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-printer"></span> print</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- /Export links-->
-                        <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
-                            DELETE</button>
-                        <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span>
-                            EDIT</button>
                     </div>
                 </div>
             </div>
