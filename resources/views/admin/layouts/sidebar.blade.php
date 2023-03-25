@@ -113,7 +113,7 @@
                     <a href="{{route('setting.index')}}">Setting </a>
                 </li>
                 <li>
-                    <a href="{{route('video.index')}}">Video Section </a>
+                    <a href="{{route('video.index')}}">Medical Information</a>
                 </li>
                 <li>
                     <a href="{{route('admin.sponsor')}}">Sponsors </a>

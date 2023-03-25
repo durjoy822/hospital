@@ -41,8 +41,10 @@
             <!-- Widget Item -->
             <div class="col-md-12">
                 <div class="widget-area-2 proclinic-box-shadow">
-                    <span class="widget-title h3">All testimonial</span>
-                    <a href="{{route('admin.testimonial.create')}}" class="col-6 text-right">New testimonial</a>
+                    <div class="row">
+                        <div class="col-md-10"><span class="widget-title h3">All testimonial</span></div>
+                        <div class="col-md-2 text-right"><a href="{{route('admin.testimonial.create')}}" class="text-right widget-title">New testimonial</a></div>
+                    </div>
                     <div class="table-responsive mb-3">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
