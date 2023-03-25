@@ -26,4 +26,5 @@ passsword: 12345678
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
