@@ -44,9 +44,9 @@
 				<div class="widget-area-2 proclinic-box-shadow">
 					<h3 class="widget-title">Patients List</h3>
 					<div class="table-responsive mb-3">
-						<table id="tableId" class="table table-bordered table-striped">
-							<thead>
-								<tr>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
 									<th class="no-sort">
 										<div class="custom-control custom-checkbox">
 											<input class="custom-control-input" type="checkbox" id="select-all">
@@ -59,10 +59,25 @@
 									<th>Phone</th>
 									<th>Action</th>
 								</tr>
-							</thead>
-							<tbody>
+                            </thead>
+                            <tfoot>
+                                <tr>
+									<th class="no-sort">
+										<div class="custom-control custom-checkbox">
+											<input class="custom-control-input" type="checkbox" id="select-all">
+											<label class="custom-control-label" for="select-all"></label>
+										</div>
+									</th>
+									<th>Patient ID</th>
+									<th>Patient Name</th>
+									<th>Age</th>
+									<th>Phone</th>
+									<th>Action</th>
+								</tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach($patients as $patient)
 								<tr>
-									@foreach($patients as $patient)
 									<td>
 										<div class="custom-control custom-checkbox">
 											<input class="custom-control-input" type="checkbox" id="1">
@@ -84,28 +99,8 @@
 									</td>
 								</tr>
 								@endforeach
-
-							</tbody>
-						</table>
-						<!--Export links-->
-						<nav aria-label="Page navigation example">
-							<ul class="pagination justify-content-center export-pagination">
-								<li class="page-item">
-									<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#"><span class="ti-printer"></span> print</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-								</li>
-							</ul>
-						</nav>
-						<!-- /Export links-->
-
+                            </tbody>
+                        </table>
 					</div>
 				</div>
 			</div>
