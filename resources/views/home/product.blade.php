@@ -83,20 +83,6 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Categories -->
-                        <div class="sidebar-widget category-list">
-                            <div class="sidebar-title">
-                                <h3>Categories</h3>
-                            </div>
-                            <ul class="cat-list">
-                                <li><a href="#">Procedures <span>(06)</span></a></li>
-                                <li><a href="#">Transplantation <span>(02)</span></a></li>
-                                <li class="active"><a href="#">Management <span>(05)</span></a></li>
-                                <li><a href="#">Healthcare Tips <span>(25)</span></a></li>
-                                <li><a href="#">Uncategorized <span>(04)</span></a></li>
-                            </ul>
-                        </div>
-
                         <!-- Latest News -->
                         <div class="sidebar-widget latest-news">
                             <div class="sidebar-title">
@@ -152,26 +138,6 @@
                                             class="btn-title">Subscribe</span></button>
                                 </div>
                             </form>
-                        </div>
-
-
-                        Tags
-                        <div class="sidebar-widget tags">
-                            <div class="sidebar-title">
-                                <h3>Tag Cloud</h3>
-                            </div>
-                            <ul class="popular-tags clearfix">
-                                <li><a href="#">Ideas</a></li>
-                                <li><a href="#">Doctor</a></li>
-                                <li><a href="#">Health</a></li>
-                                <li><a href="#">Department</a></li>
-                                <li><a href="#">Nurse</a></li>
-                                <li><a href="#">Growth</a></li>
-                                <li><a href="#">Expert</a></li>
-                                <li><a href="#">Tips</a></li>
-                                <li><a href="#">Service</a></li>
-                                <li><a href="#">Medical</a></li>
-                            </ul>
                         </div>
                     </aside>
                 </div>

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Mail\Contract;
 use App\Models\Service;
+use App\Models\Sponsor;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 use App\Models\Department;
 use App\Models\Blog;
 use App\Models\Carousel;
 use App\Models\Settings;
+use App\Models\Video;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -24,7 +27,10 @@ class HomeController extends Controller
         $hospitalInfo = Settings::first();
         $posts = Blog::inRandomOrder()->take(3)->get();
         $departments = Department::inRandomOrder()->take(6)->get();
-        return view('home.index', compact('carousels', 'upperCarousel', 'services', 'hospitalInfo','posts','departments'));
+        $video=Video::first();
+        $sponsors=Sponsor::all();
+        $testimonial=Testimonial::all();
+        return view('home.index', compact('carousels', 'upperCarousel', 'services', 'hospitalInfo','posts','departments','video','sponsors','testimonial'));
     }
     public function appointment()
     {
