@@ -52,21 +52,18 @@
     <section class="about-section">
         <div class="auto-container">
             <div class="row">
+
                 <!-- Content Column -->
                 <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
                     <div class="inner-column">
                         <div class="sec-title">
                             <span class="sub-title">OUR MEDICAL</span>
-                            <h2>We're setting Standards in Research what's more, Clinical Care.</h2>
+                            <h2>{{$video->title}}</h2>
                             <span class="divider"></span>
-                            <p>We provide the most full medical services, so every person could have the pportunity o
-                                receive qualitative medical help.</p>
-                            <p> Our Clinic has grown to provide a world class facility for the treatment of tooth loss,
-                                dental cosmetics and bore advanced restorative dentistry. We are among the most qualified
-                                implant providers in the AUS with over 30 years of uality training and experience.</p>
+                            <p>{{$video->details }}</p>
                         </div>
                         <div class="link-box">
-                            <figure class="signature"><img src="{{ asset('assets/home/images/resource/signature.png') }}"
+                            <figure class="signature"><img src="{{ asset($video->signature ) }}"
                                     alt=""></figure>
                         </div>
                     </div>
@@ -76,21 +73,22 @@
                 <div class="images-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="video-link">
-                            <a href="https://www.youtube.com/watch?v=4UvS3k8D4rs" class="play-btn lightbox-image"
+                            <a href="{{URL::to($video->video)}}" class="play-btn lightbox-image"
                                 data-fancybox="images"><span class="flaticon-play-button-1"></span></a>
                         </div>
-                        <figure class="image-1"><img src="{{ asset('assets/home/images/resource/image-1.png') }}"
-                                alt="">
+                        <figure class="image-1"><img src="{{ asset($video->image_one) }}"
+                                alt="image_1">
                         </figure>
-                        <figure class="image-2"><img src="{{ asset('assets/home/images/resource/image-2.png') }}"
-                                alt="">
+                        <figure class="image-2"><img src="{{ asset($video->image_two) }}"
+                                alt="image_two">
                         </figure>
                         <figure class="image-3">
                             <span class="hex"></span>
-                            <img src="{{ asset('assets/home/images/resource/image-3.png') }}" alt="">
+                            <img src="{{ asset($video->image_three) }}" alt="image_three">
                         </figure>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -247,106 +245,66 @@
             <div class="testimonial-outer">
                 <!-- Client Testimonial Carousel -->
                 <div class="client-testimonial-carousel owl-carousel owl-theme">
-
+                @foreach($testimonial as $person)
                     <!--Testimonial Block -->
                     <div class="testimonial-block">
                         <div class="inner-box">
-                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                                the type of service you get for more serious issues. Thanks!</div>
+                            <div class="text">{{$person->review}}</div>
                         </div>
                     </div>
-
+                @endforeach
                     <!--Testimonial Block -->
-                    <div class="testimonial-block">
-                        <div class="inner-box">
-                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                                the type of service you get for more serious issues. Thanks!</div>
-                        </div>
-                    </div>
+{{--                    <div class="testimonial-block">--}}
+{{--                        <div class="inner-box">--}}
+{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
+{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
+{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <!--Testimonial Block -->
-                    <div class="testimonial-block">
-                        <div class="inner-box">
-                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                                the type of service you get for more serious issues. Thanks!</div>
-                        </div>
-                    </div>
+{{--                    <!--Testimonial Block -->--}}
+{{--                    <div class="testimonial-block">--}}
+{{--                        <div class="inner-box">--}}
+{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
+{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
+{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <!--Testimonial Block -->
-                    <div class="testimonial-block">
-                        <div class="inner-box">
-                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                                the type of service you get for more serious issues. Thanks!</div>
-                        </div>
-                    </div>
+{{--                    <!--Testimonial Block -->--}}
+{{--                    <div class="testimonial-block">--}}
+{{--                        <div class="inner-box">--}}
+{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
+{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
+{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <!--Testimonial Block -->
-                    <div class="testimonial-block">
-                        <div class="inner-box">
-                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                                the type of service you get for more serious issues. Thanks!</div>
-                        </div>
-                    </div>
+{{--                    <!--Testimonial Block -->--}}
+{{--                    <div class="testimonial-block">--}}
+{{--                        <div class="inner-box">--}}
+{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
+{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
+{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
 
                 <!-- Product Thumbs Carousel -->
                 <div class="client-thumb-outer">
                     <div class="client-thumbs-carousel owl-carousel owl-theme">
+                        @foreach($testimonial as $person)
                         <div class="thumb-item">
                             <figure class="thumb-box"><img
-                                    src="{{ asset('assets/home/images/resource/testi-thumb-1.jpg') }}" alt="">
+                                    src="{{asset($person->image)}}" alt="1">
                             </figure>
                             <div class="author-info">
                                 <span class="icon fa fa-quote-left"></span>
-                                <div class="author-name">Lara Croft</div>
-                                <div class="designation">Restaurant Owner</div>
+                                <div class="author-name">{{$person->name}}</div>
+                                <div class="designation">{{$person->company_name}}</div>
                             </div>
                         </div>
-                        <div class="thumb-item">
-                            <figure class="thumb-box"><img
-                                    src="{{ asset('assets/home/images/resource/testi-thumb-2.jpg') }}" alt="">
-                            </figure>
-                            <div class="author-info">
-                                <span class="icon fa fa-quote-left"></span>
-                                <div class="author-name">Lara Croft</div>
-                                <div class="designation">Restaurant Owner</div>
-                            </div>
-                        </div>
-                        <div class="thumb-item">
-                            <figure class="thumb-box"><img
-                                    src="{{ asset('assets/home/images/resource/testi-thumb-3.jpg') }}" alt="">
-                            </figure>
-                            <div class="author-info">
-                                <span class="icon fa fa-quote-left"></span>
-                                <div class="author-name">Lara Croft</div>
-                                <div class="designation">Restaurant Owner</div>
-                            </div>
-                        </div>
-                        <div class="thumb-item">
-                            <figure class="thumb-box"><img
-                                    src="{{ asset('assets/home/images/resource/testi-thumb-2.jpg') }}" alt="">
-                            </figure>
-                            <div class="author-info">
-                                <span class="icon fa fa-quote-left"></span>
-                                <div class="author-name">Lara Croft</div>
-                                <div class="designation">Restaurant Owner</div>
-                            </div>
-                        </div>
-                        <div class="thumb-item">
-                            <figure class="thumb-box"><img
-                                    src="{{ asset('assets/home/images/resource/testi-thumb-3.jpg') }}" alt="">
-                            </figure>
-                            <div class="author-info">
-                                <span class="icon fa fa-quote-left"></span>
-                                <div class="author-name">Lara Croft</div>
-                                <div class="designation">Restaurant Owner</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -405,28 +363,20 @@
     <!-- Clients Section -->
     <section class="clients-section">
         <div class="auto-container">
-
             <!-- Sponsors Outer -->
             <div class="sponsors-outer">
+
                 <!--clients carousel-->
                 <ul class="clients-carousel owl-carousel owl-theme">
-                    <li class="slide-item"> <a href="#"><img src="{{ asset('assets/home/images/clients/1.png') }}"
+                    @foreach($sponsors as $sponsor)
+                    <li class="slide-item"> <a href="#"><img src="{{ asset($sponsor->logo) }}"
                                 alt=""></a>
                     </li>
-                    <li class="slide-item"> <a href="#"><img src="{{ asset('assets/home/images/clients/2.png') }}"
-                                alt=""></a>
-                    </li>
-                    <li class="slide-item"> <a href="#"><img src="{{ asset('assets/home/images/clients/3.png') }}"
-                                alt=""></a>
-                    </li>
-                    <li class="slide-item"> <a href="#"><img src="{{ asset('assets/home/images/clients/4.png') }}"
-                                alt=""></a>
-                    </li>
-                    <li class="slide-item"> <a href="#"><img src="{{ asset('assets/home/images/clients/5.png') }}"
-                                alt=""></a>
-                    </li>
+                    @endforeach
                 </ul>
+
             </div>
+
         </div>
     </section>
 @endsection

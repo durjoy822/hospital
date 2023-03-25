@@ -59,6 +59,7 @@ class VideoController extends Controller
         $video->title       = $request->title;
         $video->details     = $request->details;
         $video->video       = $request->video;
+        
         if ($request->file('signature')){
             if ($video->signature !=null){
                 unlink($video->signature);
