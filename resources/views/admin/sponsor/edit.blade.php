@@ -51,6 +51,7 @@
                             </div>
 
                             <div class="col-sm-6 col-md-4 form-group">
+                                <img src="{{asset($sponsor->logo) }}" style="width: 50px">
                                 <label for="logo">Logo</label>
                                 <input  type="file" class="form-control" name="logo" id="logo">
                             </div>
