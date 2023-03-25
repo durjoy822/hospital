@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Blog;
+use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\Settings;
 use App\Models\UserAppointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -65,6 +68,9 @@ class UserAppointmentController extends Controller
     public function userAppointmentStatus()
     {
         $appointments = Appointment::where('user_id',Auth::user()->id)->get();
-        return view ('home.userAppointmentStatus',compact('appointments'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view ('home.userAppointmentStatus',compact('appointments','hospitalInfo','posts','departments'));
     }
 }

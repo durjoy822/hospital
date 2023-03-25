@@ -66,11 +66,17 @@ class HomeController extends Controller
     }
     public function login()
     {
-        return view('home.login');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.login',compact('hospitalInfo','posts','departments'));
     }
     public function contact()
     {
-        return view('home.contact');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.contact',compact('hospitalInfo','posts','departments'));
     }
     public function contactUs(Request $request)
     {

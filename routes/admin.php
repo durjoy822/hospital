@@ -15,6 +15,8 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VideoController;
 
 // Admin routes starts from here:
@@ -105,5 +107,18 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/video_update',[VideoController::class,'videoUpdate'])->name('video.update');
         Route::post('/video_delete',[VideoController::class,'videoDelete'])->name('video.delete');
 
+        Route::get('/sponsor', [SponsorController::class, 'index'])->name('admin.sponsor');
+        Route::get('/sponsor/create', [SponsorController::class, 'create'])->name('admin.sponsor.create');
+        Route::post('/sponsor/store', [SponsorController::class, 'store'])->name('admin.sponsor.store');
+        Route::get('/sponsor/edit/{id}', [SponsorController::class, 'edit'])->name('admin.sponsor.edit');
+        Route::post('/sponsor/update/{id}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
+        Route::get('/sponsor/delete/{id}', [SponsorController::class, 'delete'])->name('admin.sponsor.delete');
+
+        Route::get('/testimonial', [TestimonialController::class, 'index'])->name('admin.testimonial');
+        Route::get('/testimonial/create', [TestimonialController::class, 'create'])->name('admin.testimonial.create');
+        Route::post('/testimonial/store', [TestimonialController::class, 'store'])->name('admin.testimonial.store');
+        Route::get('/testimonial/edit/{id}', [TestimonialController::class, 'edit'])->name('admin.testimonial.edit');
+        Route::post('/testimonial/update/{id}', [TestimonialController::class, 'update'])->name('admin.testimonial.update');
+        Route::get('/testimonial/delete/{id}', [TestimonialController::class, 'delete'])->name('admin.testimonial.delete');
     });
 });

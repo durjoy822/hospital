@@ -73,7 +73,7 @@ Route::get('/shop', [MedicineController::class, 'home'])->name('product');
 Route::post('/register', [UserAuthController::class, 'store'])->name('user.register');
 Route::post('/login/check', [UserAuthController::class, 'login'])->name('user.login');
 Route::get('/password/forgot',[UserAuthController::class,'showForgotForm'])->name('forgot.password.form');
-Route::post('/password/forgot',[UserAuthController::class,'sendResetLink'])->name('forgot.password.link');
+Route::post('/password/forget',[UserAuthController::class,'sendResetLink'])->name('forgot.password.link');
 Route::get('/password/reset/{token}',[UserAuthController::class,'showResetForm'])->name('user.reset.password.form');
 Route::post('/password/reset',[UserAuthController::class,'resetPassword'])->name('user.reset.password');
 

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderProcessed;
+use App\Models\Blog;
 use App\Models\Cart;
+use App\Models\Department;
 use App\Models\Medicine;
 use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\Review;
+use App\Models\Settings;
 use App\Models\ShippingAddress;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -118,14 +121,20 @@ class OrderController extends Controller
     public function userOrder()
     {
         $orders = Order::where('user_id', Auth::user()->id)->get();
-        return view('home.orders', compact('orders'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.orders', compact('orders','hospitalInfo','posts','departments'));
     }
     public function show($id = null)
     {
         $order = Order::findOrFail($id);
         $infos = OrderInfo::where('order_id', $order->id)->get();
         $ship = ShippingAddress::findorFail($order->shipping_id);
-        return view('home.orderInfo', compact('order', 'infos', 'ship'));
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.orderInfo', compact('order', 'infos', 'ship','hospitalInfo','posts','departments'));
     }
     public function update(Request $request, $id = null)
     {

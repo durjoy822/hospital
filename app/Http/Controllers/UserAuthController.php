@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Department;
+use App\Models\Settings;
 use App\Models\User;
 use App\Models\UserInfo;
 use Carbon\Carbon;
@@ -58,7 +61,10 @@ class UserAuthController extends Controller
     }
     public function showForgotForm()
     {
-        return view('home.user.forgot');
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.user.forgot',compact('hospitalInfo','posts','departments'));
     }
 
     public function sendResetLink(Request $request)
