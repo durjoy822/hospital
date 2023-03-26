@@ -177,14 +177,14 @@
                             <div class="sidebar-title">
                                 <h3>Popular Products</h3>
                             </div>
-                            @php $products = DB::table('medicines')->inRandomOrder()->take(5)->get(); @endphp
+{{--                            @php $products = DB::table('medicines')->inRandomOrder()->take(5)->get(); @endphp--}}
                             <div class="widget-content">
                                 @foreach($products as $product)
                                 <article class="post">
-                                    <div class="post-thumb"><a href="shop-single.html"><img
+                                    <div class="post-thumb"><a href={{ route('medicine.show', $product->id) }}><img
                                                 src="{{ asset($product->picture) }}"
                                                 alt=""></a></div>
-                                    <h5><a href="shop-single.html">{{$product->name}}</a></h5>
+                                    <h5><a href="{{ route('medicine.show', $product->id) }}">{{$product->name}}</a></h5>
                                     <div class="price">{{$product->price}} TK.</div>
                                 </article>
                                 @endforeach

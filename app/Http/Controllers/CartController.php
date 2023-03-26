@@ -8,13 +8,19 @@ use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\Department;
+use App\Models\Settings;
+use App\Models\Blog;
 
 class CartController extends Controller
 {
     public function cart()
     {
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
         $carts = Cart::where('user_id', Auth::user()->id)->get();
-        return view('home.cart', compact('carts'));
+        $departments = Department::inRandomOrder()->take(6)->get();
+        return view('home.cart', compact('carts','departments','hospitalInfo','posts'));
     }
     public function bag($id = null)
     {
