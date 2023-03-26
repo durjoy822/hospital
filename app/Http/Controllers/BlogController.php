@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
+use App\Models\Department;
+use App\Models\Settings;
 
 class BlogController extends Controller
 {
@@ -50,8 +52,11 @@ class BlogController extends Controller
     }
     public function show($id = null)
     {
+        $hospitalInfo = Settings::first();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
         $blog = Blog::findOrFail($id);
-        return view ('home.singleBlog',compact('blog'));
+        return view ('home.singleBlog',compact('blog','hospitalInfo','posts','departments'));
     }
     public function edit($id = null)
     {

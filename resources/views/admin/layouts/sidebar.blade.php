@@ -121,6 +121,9 @@
                 <li>
                     <a href="{{route('admin.testimonial')}}">Testimonial </a>
                 </li>
+                <li>
+                    <a href="{{route('admin.newsletter')}}">Newsletter/subscriber </a>
+                </li>
             </ul>
         </li>
     </ul>

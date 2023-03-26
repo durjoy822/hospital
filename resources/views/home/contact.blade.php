@@ -16,7 +16,7 @@
                         <div class="inner">
                             <span class="icon flaticon-worldwide"></span>
                             <h4><strong>Address</strong></h4>
-                            <p>185, Pickton Near Street, <br>Los Angeles, USA</p>
+                            <p>{{$hospitalInfo->address}}</p>
                         </div>
                     </div>
 
@@ -24,8 +24,7 @@
                         <div class="inner">
                             <span class="icon flaticon-phone"></span>
                             <h4><strong>Phone</strong></h4>
-                            <p><a href="#">(+92) 313 888 000</a></p>
-                            <p><a href="#">(+92) 313 999 000</a></p>
+                            <p><a href="#">(+880) {{$hospitalInfo->phone}}</a></p>
                         </div>
                     </div>
 
@@ -33,8 +32,7 @@
                         <div class="inner">
                             <span class="icon flaticon-email"></span>
                             <h4><strong>Email</strong></h4>
-                            <p><a href="mailto:support@example.com">support@example.com</a></p>
-                            <p><a href="mailto:support@example.com">support@example.com</a></p>
+                            <p><a href="mailto:support@example.com">{{$hospitalInfo->email}}</a></p>
                         </div>
                     </div>
                 </div>

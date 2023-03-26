@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\NewsletterController;
 
 
 /*
@@ -44,6 +45,8 @@ Route::get('/blog/show/{id}',[BlogController::class,'show'])->name('blog.show');
 Route::get('/medicine/show/{slug}',[MedicineController::class,'show'])->name('medicine.show');
 Route::get('/shop',[MedicineController::class,'home'])->name('product');
 Route::get('/cart/{id}',[CartController::class,'cart'])->name('cart');
+
+Route::post('/product/search',[MedicineController::class,'productSerach'])->name('product.search');
 
 
 Route::post('/register',[UserAuthController::class,'store'])->name('user.register');
@@ -96,4 +99,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('user/appointment',[UserAppointmentController::class,'userAppointment'])->name('user.appointment');
     Route::get('/find-my-doctor/{id}/{date}',[UserAppointmentController::class,'findUserDoctor']);
     Route::get('user/appointment',[UserAppointmentController::class,'userAppointmentStatus'])->name('user.appointment');
+
+
+    Route::post('newsletter/store',[NewsletterController::class,'newsletterStore'])->name('admin.newsletter.store');
+
 });

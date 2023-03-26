@@ -116,7 +116,8 @@ class MedicineController extends Controller
         $hospitalInfo = Settings::first();
         $posts = Blog::inRandomOrder()->take(3)->get();
         $departments = Department::inRandomOrder()->take(6)->get();
-        return view('home.product',compact('drugs','hospitalInfo','posts','departments'));
+        $populerMedi=Medicine::inRandomOrder()->take(4)->get();
+        return view('home.product',compact('drugs','hospitalInfo','posts','departments','populerMedi'));
     }
     public function show($id =null)
     {
@@ -124,6 +125,17 @@ class MedicineController extends Controller
         $hospitalInfo = Settings::first();
         $posts = Blog::inRandomOrder()->take(3)->get();
         $departments = Department::inRandomOrder()->take(6)->get();
-        return view('home.single-product',compact('drug','hospitalInfo','posts','departments'));
+        $products = Medicine::inRandomOrder()->take(5)->get();
+        return view('home.single-product',compact('drug','hospitalInfo','posts','departments','products'));
+    }
+
+    public function productSerach(Request $request){
+        $drugs = Medicine::where('quantity', '>', 0)->latest()->paginate(12);
+        $populerMedi=Medicine::inRandomOrder()->take(4)->get();
+        $departments = Department::inRandomOrder()->take(6)->get();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        $searchTerm = $request->input('search');
+        $products = Medicine::where('name', 'LIKE', "%$searchTerm%")->get();
+        return view('home.product_search',compact('drugs','products','populerMedi','departments','posts'));
     }
 }
