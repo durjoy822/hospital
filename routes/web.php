@@ -60,6 +60,7 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 route::post('/contact-us',[HomeController::class,'contactUs'])->name('contact.us');
+route::post('/contact-us/appointment',[HomeController::class,'contactUsAppointment'])->name('contact.us.appointment');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');

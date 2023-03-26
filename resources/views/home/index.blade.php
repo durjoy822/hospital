@@ -58,12 +58,12 @@
                     <div class="inner-column">
                         <div class="sec-title">
                             <span class="sub-title">OUR MEDICAL</span>
-                            <h2>{{$video->title}}</h2>
+                            <h2>{{$video->title ?? ''}}</h2>
                             <span class="divider"></span>
-                            <p>{{$video->details }}</p>
+                            <p>{{$video->details ?? ''}}</p>
                         </div>
                         <div class="link-box">
-                            <figure class="signature"><img src="{{ asset($video->signature ) }}"
+                            <figure class="signature"><img src="{{ asset($video->signature ?? '' ) }}"
                                     alt=""></figure>
                         </div>
                     </div>
@@ -73,18 +73,18 @@
                 <div class="images-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="video-link">
-                            <a href="{{URL::to($video->video)}}" class="play-btn lightbox-image"
+                            <a href="{{URL::to($video->video ?? '')}}" class="play-btn lightbox-image"
                                 data-fancybox="images"><span class="flaticon-play-button-1"></span></a>
                         </div>
-                        <figure class="image-1"><img src="{{ asset($video->image_one) }}"
+                        <figure class="image-1"><img src="{{ asset($video->image_one ?? '') }}"
                                 alt="image_1">
                         </figure>
-                        <figure class="image-2"><img src="{{ asset($video->image_two) }}"
+                        <figure class="image-2"><img src="{{ asset($video->image_two ??'') }}"
                                 alt="image_two">
                         </figure>
                         <figure class="image-3">
                             <span class="hex"></span>
-                            <img src="{{ asset($video->image_three) }}" alt="image_three">
+                            <img src="{{ asset($video->image_three ??'') }}" alt="image_three">
                         </figure>
                     </div>
                 </div>

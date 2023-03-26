@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contract;
+use App\Mail\RequestAppointment;
 use App\Models\Service;
 use App\Models\Sponsor;
 use App\Models\Testimonial;
@@ -109,6 +110,33 @@ class HomeController extends Controller
         Mail::to('hospital@adeveloper.info')->send(new Contract($data));
         Session::flash('success', 'Your message has been sent to our operator team, Our team will call you soon');
         return redirect()->route('contact');
+    }
+    public function contactUsAppointment(Request $request)
+    {
+        $request->validate(
+            [
+                'name'     => 'required',
+                'phone'    => 'required',
+                'email'    => 'required',
+                'message'  => 'required',
+            ],
+            [
+                'name.required' => 'please input your name!',
+                'phone.required' => 'phone is required!',
+                'message.required' => 'Message is required',
+                'email.required' => 'Email is required',
+            ]
+
+        );
+        $data = array();
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['email'] = $request->email;
+        $data['message'] = $request->message;
+        $data['doctor_name'] = $request->doctor_name;
+        Mail::to('hospital@adeveloper.info')->send(new RequestAppointment($data));
+        Session::flash('success', 'Your message has been sent to our operator team, Our team will call you soon');
+        return redirect()->route('home');
     }
     public function aboutUs()
     {

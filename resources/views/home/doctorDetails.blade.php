@@ -6,8 +6,8 @@
                 <!-- Content Side -->
                 <div class="content-side col-lg-8 col-md-12 col-sm-12 order-2">
                     <div class="docter-detail">
-                        <h3 class="name">{{ $doctor->name }}</h3>
-                        <span class="designation">{{ $doctor->education }}</span>
+                        <h3 class="name">{{ $doctor->name ?? ''}}</h3>
+                        <span class="designation">{{ $doctor->education ?? ''}}</span>
                         <div class="text">{{ $doctor->details }}</div>
                         <ul class="doctor-info-list">
                             <li>
@@ -16,19 +16,19 @@
                             </li>
                             <li>
                                 <strong>Education</strong>
-                                <p>{{ $doctor->education }}.</p>
+                                <p>{{ $doctor->education ?? ''}}.</p>
                             </li>
                             <li>
                                 <strong>Experience</strong>
-                                <p>{{ $doctor->experience }}</p>
+                                <p>{{ $doctor->experience ?? ''}}</p>
                             </li>
                             <li>
                                 <strong>Address</strong>
-                                <p>{{ $doctor->address }}</p>
+                                <p>{{ $doctor->address ?? ''}}</p>
                             </li>
                             <li>
                                 <strong>Timing</strong>
-                                @php $d=json_decode($doctor->working_days); @endphp
+                                @php $d=json_decode($doctor->working_days ?? ''); @endphp
                                 <p>
                                     @isset($d)
                                         @foreach ($d as $day)
@@ -53,11 +53,11 @@
                             </li>
                             <li>
                                 <strong>Phone</strong>
-                                <p>{{ $doctor->phone }}</p>
+                                <p>{{ $doctor->phone ?? ''}}</p>
                             </li>
                             <li>
                                 <strong>Email</strong>
-                                <p>{{ $doctor->email }}</p>
+                                <p>{{ $doctor->email  ?? ''}}</p>
                             </li>
                         </ul>
                     </div>
@@ -70,27 +70,47 @@
                         </div>
 
                         <!--Comment Form-->
-                        <form action="#" method="post" id="email-form">
+                        <form action="{{route('contact.us.appointment')}}" method="post" id="email-form">@csrf
                             <div class="row">
-                                <div class="form-group col-lg-6 col-md-12">
-                                    <input type="text" name="username" placeholder="Your Name">
+                                <div class="form-group col-lg-12">
+                                    <div class="response"></div>
+                                </div>
+                                <input type="hidden" name="doctor_name" value="{{$doctor->name ?? ''}}">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="username" placeholder="Full Name *" value="{{ old('name') }}">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="email" placeholder="Email Address *" value="{{ old('email') }}">
+                                        @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" name="phone" class="username" placeholder="Your Phone" value="{{ old('phone') }}">
+                                        @error('phone')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-lg-6 col-md-12">
-                                    <input type="text" name="phone" placeholder="Your Phone">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="message" name="message" placeholder="Massage">{{ old('message') }}</textarea>
+                                        @error('message')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-lg-12 col-md-12">
-                                    <input type="email" name="email" placeholder="Your Email *">
-                                </div>
-
-                                <div class="form-group col-lg-12 col-md-12">
-                                    <textarea name="contact_message" placeholder="Tell us about Pasent"></textarea>
-                                </div>
-
-                                <div class="form-group col-lg-12 col-md-12">
-                                    <button class="theme-btn btn-style-one" type="button" name="submit-form"><span
-                                            class="btn-title">Submit Query</span></button>
+                                <div class="form-group col-lg-12 text-center pt-3">
+                                    <button class="theme-btn btn-style-one" type="submit" id="submit"
+                                        ><span class="btn-title">Send Message</span></button>
                                 </div>
                             </div>
                         </form>
