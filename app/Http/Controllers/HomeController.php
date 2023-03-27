@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\Contract;
 use App\Mail\RequestAppointment;
 use App\Models\Service;
-use App\Models\Sponsor;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -16,6 +15,7 @@ use App\Models\Settings;
 use App\Models\Video;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Models\Sponsor;
 
 
 class HomeController extends Controller
@@ -31,7 +31,7 @@ class HomeController extends Controller
         $video=Video::first();
         $sponsors=Sponsor::all();
         $testimonial=Testimonial::all();
-        return view('home.index', compact('carousels', 'upperCarousel', 'services', 'hospitalInfo','posts','departments','video','sponsors','testimonial'));
+        return view('home.index', compact('carousels', 'upperCarousel', 'services', 'hospitalInfo','posts','departments','video','testimonial','sponsors'));
     }
     public function appointment()
     {

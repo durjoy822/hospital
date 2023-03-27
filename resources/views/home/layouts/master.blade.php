@@ -16,6 +16,7 @@
 
     @yield('content')
 
+
     @include('home.layouts.footer')
 
 
@@ -62,7 +63,7 @@
             <ul class="box-version option-box"> <li class="active">Wide</li> <li class="box">Boxed</li> </ul>
             <div class="box-mode-bg">
                 <h6>Boxed Mode Backgrounds</h6>
-                <ul class="clearfix"> 
+                <ul class="clearfix">
                     <li class="active" style="background-image: url(assets/home/images/background/boxed-bg/1.png')}});"></li>
                     <li style="background-image: url(assets/home/images/background/boxed-bg/2.png')}});"></li>
                     <li style="background-image: url(assets/home/images/background/boxed-bg/3.png')}});"></li>

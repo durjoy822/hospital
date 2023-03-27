@@ -253,41 +253,6 @@
                         </div>
                     </div>
                 @endforeach
-                    <!--Testimonial Block -->
-{{--                    <div class="testimonial-block">--}}
-{{--                        <div class="inner-box">--}}
-{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
-{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
-{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <!--Testimonial Block -->--}}
-{{--                    <div class="testimonial-block">--}}
-{{--                        <div class="inner-box">--}}
-{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
-{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
-{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <!--Testimonial Block -->--}}
-{{--                    <div class="testimonial-block">--}}
-{{--                        <div class="inner-box">--}}
-{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
-{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
-{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <!--Testimonial Block -->--}}
-{{--                    <div class="testimonial-block">--}}
-{{--                        <div class="inner-box">--}}
-{{--                            <div class="text">Medical Centre is a great place to get all of your medical needs. I came in--}}
-{{--                                for a check up and did not wait more than 5 minutes before I was seen. I can only imagine--}}
-{{--                                the type of service you get for more serious issues. Thanks!</div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
 
                 <!-- Product Thumbs Carousel -->
@@ -360,24 +325,7 @@
     </section>
     <!--End News Section -->
 
-    <!-- Clients Section -->
-    <section class="clients-section">
-        <div class="auto-container">
-            <!-- Sponsors Outer -->
-            <div class="sponsors-outer">
-
-                <!--clients carousel-->
-                <ul class="clients-carousel owl-carousel owl-theme">
-                    @foreach($sponsors as $sponsor)
-                    <li class="slide-item"> <a href="#"><img src="{{ asset($sponsor->logo) }}"
-                                alt=""></a>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </div>
-
-        </div>
-    </section>
+{{--sponsor section--}}
+@include('home.layouts.sponsor');
 @endsection
 <!--End Clients Section -->

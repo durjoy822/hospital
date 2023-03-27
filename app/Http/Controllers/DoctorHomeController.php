@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Department;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 

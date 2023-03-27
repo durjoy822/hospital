@@ -12,6 +12,7 @@ use App\Models\Department;
 use App\Models\Settings;
 use App\Models\Blog;
 
+
 class CartController extends Controller
 {
     public function cart()
@@ -85,6 +86,8 @@ class CartController extends Controller
     {
         $info = ShippingAddress::where('user_id',Auth::user()->id)->where('is_default',0)->first();
         $bags = Cart::where('user_id',Auth::user()->id)->get();
-        return view ('home.checkout',compact('bags','info'));
+        $departments = Department::inRandomOrder()->take(6)->get();
+        $posts = Blog::inRandomOrder()->take(3)->get();
+        return view ('home.checkout',compact('bags','info','departments','posts'));
     }
 }

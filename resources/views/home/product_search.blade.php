@@ -12,6 +12,7 @@
                     </div>
 
                     <div class="row">
+                        @if($products->count())
                         @foreach ($products as $drug)
                         <!-- Shop Item -->
                         <div class="shop-item col-lg-4 col-md-6 col-sm-12">
@@ -39,6 +40,9 @@
                             </div>
                         </div>
                         @endforeach
+                            @else
+                        <h3>Searching product Not found!</h3>
+                            @endif
                     </div>
 
                     <!--Styled Pagination-->

@@ -84,6 +84,7 @@ class PatientController extends Controller
 
     }
     public function patientDelete(Request $request){
+        dd($request->all());
         $patient=Patient::find($request->id);
         $patient->delete();
         if($patient->id){

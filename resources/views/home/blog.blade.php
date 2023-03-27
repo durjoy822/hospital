@@ -8,7 +8,7 @@
                 <ul class="page-breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li>Blog</li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </section>
@@ -22,7 +22,7 @@
             <div class="news-block-three {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><a href="{{route('blog.show',$blog->id)}}"><img src="{{asset($blog->picture)}}" alt=""></a></figure>
+                        <figure class="image"><a href="{{route('blog.show',$blog->id)}}"><img src="{{asset($blog->picture)}}" alt="" style="height: 350px"></a></figure>
                         <a href="#" class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</a>
                     </div>
                     <div class="content-box">

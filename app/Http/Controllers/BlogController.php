@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -56,7 +57,8 @@ class BlogController extends Controller
         $posts = Blog::inRandomOrder()->take(3)->get();
         $departments = Department::inRandomOrder()->take(6)->get();
         $blog = Blog::findOrFail($id);
-        return view ('home.singleBlog',compact('blog','hospitalInfo','posts','departments'));
+        $sponsors=Sponsor::all();
+        return view ('home.singleBlog',compact('blog','hospitalInfo','posts','departments','sponsors'));
     }
     public function edit($id = null)
     {
