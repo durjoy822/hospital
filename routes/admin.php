@@ -19,6 +19,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\CommentController;
 
 // Admin routes starts from here:
 Route::group(['prefix' => 'admin'], function () {
@@ -123,6 +124,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/testimonial/delete/{id}', [TestimonialController::class, 'delete'])->name('admin.testimonial.delete');
 
         Route::get('newsletter',[NewsletterController::class,'newsletterIndex'])->name('admin.newsletter');
+        Route::get('commet/index',[CommentController::class,'CommentIndex'])->name('admin.comment.index');
 
     });
 });

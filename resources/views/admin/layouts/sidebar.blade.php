@@ -124,6 +124,9 @@
                 <li>
                     <a href="{{route('admin.newsletter')}}">Newsletter/subscriber </a>
                 </li>
+                <li>
+                    <a href="{{route('admin.comment.index')}}">Comment </a>
+                </li>
             </ul>
         </li>
     </ul>

@@ -14,6 +14,7 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserAppointmentController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\CommentController;
 
 
 /*
@@ -100,7 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/find-my-doctor/{id}/{date}',[UserAppointmentController::class,'findUserDoctor']);
     Route::get('user/appointment',[UserAppointmentController::class,'userAppointmentStatus'])->name('user.appointment');
 
-
     Route::post('newsletter/store',[NewsletterController::class,'newsletterStore'])->name('admin.newsletter.store');
+
+    Route::post('comment/store',[CommentController::class,'commentStore'])->name('user.comment.store');
 
 });
