@@ -17,11 +17,11 @@ This is a hospital management website built using Laravel. It allows the admin t
 3. Use the admin credentials to log in and manage the website.
 
 ## Login information
-link:https://hospital.adeveloper.info/login
+http://hospital.devdurjoy.com/
 
-link:https://hospital.adeveloper.info/admin/login
+https://hospital.devdurjoy.com/admin/login
 
-email: sahaapo@gmail.com
+email: nayemcse22@gmail.com
 passsword: 12345678
 
 ## License
